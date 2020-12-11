@@ -1,0 +1,40 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike,
+strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody,
+tfoot, thead, tr, th, td ,textarea,input { margin:0; padding:0;  }
+address,cite,dfn,em,var, i {font-style:normal;}
+body {font-size: 16px; line-height: 1.5; font-family:'Microsoft Yahei','simsun','arial','tahoma';  color: #222; background: #fff; }
+table { border-collapse:collapse; border-spacing:0; }
+h1, h2, h3, h4, h5, h6, th { font-size: 100%; font-weight: normal; }
+button,input,select,textarea{font-size:100%;}
+fieldset,img{border:0;}
+a { text-decoration: none; color: #666; background: none ;outline: none;}
+a:focus, a:hover {  text-decoration: none !important;  }
+ul, ol { list-style: none; }
+:focus{ outline:none;}
+.clearfix{ clear: both; content: ""; display: block; overflow: hidden }
+.clear{clear: both;}
+.fl{ float: left; }
+.fr{float: right;}
+.tc{ text-align: center; }
+.tl{text-align: left;}
+.tr{text-align: right;}
+.br-2{border-right: 2px solid #3b3b3b;}
+.word-hei{color: #3b3b3b}
+.mb30{  margin-bottom: 30px} .mb60{  margin-bottom: 60px}.mb19{  margin-bottom: 19px}.mb10{  margin-bottom: 10px}
+.mt0{margin-top: 0}.mt15{margin-top: 15px}.mt20{margin-top: 15px !important;}.mt30{  margin-top: 30px} .mt50{  margin-top: 50px !important;}
+.ml21{margin-left: 21px}.ml0{ margin-left: 0 !important; }
+.mr15{margin-right: 15px}
+.pr45{
+  padding-right: 45px;
+}
+.padb60{padding-bottom: 60px;}
+.pt10{  padding-top: 10px}.pt15{  padding-top: 15px}.pl15{  padding-left: 15px}.pr15{  padding-right: 15px}
+.pl10{  padding-left: 10px}.pr10{  padding-right: 10px}
+.pl0{padding-left: 0 !important;}.pr0{padding-right: 0 !important;}
+a:focus, a:hover {
+    color: #3b3b3b;
+    text-decoration: underline;
+}
+.line130{line-height: 130px}
+.wid1000{width: 1000px !important;}.wid1010{width: 1010px !important;}
+
