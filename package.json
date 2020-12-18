@@ -5,12 +5,18 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "dev": "vue-cli-service serve --mode development --open",
+    "ceshi": "vue-cli-service serve --mode test --open",
+    "test": "vue-cli-service build --mode test",
+    "publish": "vue-cli-service build && vue-cli-service build --mode test"
   },
   "dependencies": {
     "axios": "^0.21.0",
     "core-js": "^3.6.5",
+    "echarts": "^5.0.0",
     "element-ui": "^2.14.1",
+    "js-cookie": "^2.2.1",
     "swiper": "^6.4.1",
     "vue": "^2.6.11",
     "vue-awesome-swiper": "^4.1.1",

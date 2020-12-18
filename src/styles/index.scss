@@ -170,7 +170,27 @@ code {
     background: #d0d0d0;
   }
 }
-
+.el-button--danger {
+  color: #FFF;
+  background-color: #d50f10 !important;
+  border-color: #d50f10 !important;
+}
+.daohang{
+  color: rgb(51,51,51);
+}
+//分页颜色
+.el-pagination.is-background .el-pager li:not(.disabled).active {
+  background-color: #d50f10 !important;
+  color: #FFF;
+}
+.el-pagination button, .el-pagination span:not([class*=suffix]) {
+  padding: 0 5px !important;
+  color: rgb(51,51,51) !important;
+  font-weight: normal !important;
+}
+.el-pagination.is-background .btn-next, .el-pagination.is-background .btn-prev, .el-pagination.is-background .el-pager li {
+  border: 1px solid #eee !important;
+}
 .link-type,
 .link-type:focus {
   color: #337ab7;

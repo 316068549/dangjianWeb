@@ -4,7 +4,13 @@ import router from './router'
 import store from './store'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
+import filter from './common/filter'
+import util from './common/util'
 // import 'swiper/dist/css/swiper.css';
+var  echarts = require('echarts');
+
+Vue.prototype.$echarts = echarts
+
 import {
     Swiper as SwiperClass,
     Pagination,   //使用那个组件就在这里面添加
@@ -19,6 +25,18 @@ import 'swiper/swiper-bundle.css'
 SwiperClass.use([Pagination, Mousewheel, Autoplay,Navigation,EffectFade]);
 Vue.use(getAwesomeSwiper(SwiperClass));
 Vue.use(ElementUI);
+
+// 全局导入过滤器
+Object.keys(filter).forEach(key => Vue.filter(key, filter[key]))
+//查看页面日期格式化
+Vue.filter("date_from_unix", unixTime => {
+    if(unixTime){
+        unixTime = unixTime.replace(/-/g,"/");
+        unixTime = unixTime.replace('T',' ');
+        unixTime = unixTime.substring(0,19);
+        return util.formatDate.format(new Date((unixTime)), 'yyyy-MM-dd')
+    }
+})
 
 Vue.config.productionTip = false
 

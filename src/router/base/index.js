@@ -3,12 +3,12 @@ import login from '../../views/login/Login'
 
 
 export default {
-  path: '/',
-  redirect: '/login',
+  path: '/login',
+    redirect: '/login',
   component:Loginlayout,
   children:[
     {
-      path: 'login',
+      path: '/',
       title: '登录',
       component: login,
       hidden: true

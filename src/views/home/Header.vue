@@ -42,58 +42,86 @@
                 pageSize: 50,
                 navData : [
                     {
-                        "link" : "/home",
+                        "link" : "/",
                         "name" : "首页",
                         "havesub" : false
                     },
                     {
-                    "link" : "/aa",
+                    "link" : "",
                     "name" : "信息门户",
                     "havesub" : true,
                     "sub" : [
                        {
                        "name" : "党建要闻",
-                       "subLink" : "product/b5c10d5a6add48058424d68c12c4687f"
+                       "subLink" : "/home/newslist"
                    },{
                        "name" : "通知公告",
-                       "subLink" : "product/2"
+                       "subLink" : "/home/notice"
                    },{
                             "name" : "党内公示",
-                            "subLink" : "product/2"
+                            "subLink" : "/home/gongshi"
                         },{
                             "name" : "党政生日",
-                            "subLink" : "product/2"
+                            "subLink" : "/home/birthlist"
                         },{
                             "name" : "党建相册",
-                            "subLink" : "product/2"
+                            "subLink" : "/home/pictures"
                         },{
                             "name" : "优秀党员风采",
-                            "subLink" : "product/2"
+                            "subLink" : "/home/elegant"
                         },{
                             "name" : "党建数据",
-                            "subLink" : "product/2"
+                            "subLink" : "/home/shuju"
                         },{
                             "name" : "问卷调查",
-                            "subLink" : "product/2"
+                            "subLink" : "/home/question"
                         },{
                             "name" : "办事指南",
-                            "subLink" : "product/2"
+                            "subLink" : "/home/guide"
                         }
                     ]
-                },{
+                },
+                    {
                     "link" : "/about",
                     "name" : "教育在线",
                     "havesub" : false
                 },{
-                    "link" : "/service",
+                    "link" : "",
                     "name" : "制度建设",
-                    "havesub" : false
+                    "havesub" : true,
+                        "sub" : [
+                            {
+                                "name" : "党章",
+                                "subLink" : "/home/dangzhang"
+                            },{
+                                "name" : "党规党纪",
+                                "subLink" : "/home/danggui"
+                            },{
+                                "name" : "学习文件",
+                                "subLink" : "/home/wenjian"
+                            },{
+                                "name" : "反腐倡廉",
+                                "subLink" : "/home/fanfu"
+                            },{
+                                "name" : "统战群工",
+                                "subLink" : "/home/qungong"
+                            },{
+                                "name" : "当时精粹",
+                                "subLink" : "/home/jingcui"
+                            },{
+                                "name" : "党报要论",
+                                "subLink" : "/home/yaolun"
+                            },{
+                                "name" : "党建专题",
+                                "subLink" : "/home/matter"
+                            }
+                        ]
                 },{
                     "link" : "/company",
                     "name" : "组织生活",
                     "havesub" : false
                 },{
-                    "link" : "/company",
+                    "link" : "/home/bigdata",
                     "name" : "大数据中心",
                     "havesub" : false
                 }
