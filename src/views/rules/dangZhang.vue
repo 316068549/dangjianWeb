@@ -12,7 +12,7 @@
                 </div>
                 <div class="ht5"></div>
                 <div class="newsbox" style="text-align: left;overflow: auto;">
-                    <div class="news_name"><h1>党规党纪</h1></div>
+                    <div class="news_name"><h1>党章</h1></div>
                     <div class="col-xs-3 catemenu-box">
                         <ul class="catmenu-ul">
                             <h3 style="font-size: 20px;">制度建设
@@ -20,21 +20,42 @@
                                     <!--<a class="daohang">制度建设</a>-->
                                 <!--</router-link>-->
                             </h3>
-                            <li  class="cactive">
+                            <li class="cactive">
                                 <router-link to='/home/dangzhang' >
                                     <a class="daohang">党章</a>
                                 </router-link>
-                                </li>
-                            <li  >
+                            </li>
+                            <li>
                                 <router-link to='/home/danggui' >
                                     <a class="daohang">党规党纪</a>
                                 </router-link>
                             </li>
-                            <li>
+                            <li >
+                                <router-link to='/home/study' >
+                                    <a class="daohang">学习文件</a>
+                                </router-link>
+                            </li>
+                            <li >
                                 <router-link to='/home/fanfu' >
                                     <a class="daohang">反腐倡廉</a>
                                 </router-link>
-                            </li>
+                            </li> <li >
+                            <router-link to='/home/qungong' >
+                                <a class="daohang">统战群工</a>
+                            </router-link>
+                        </li> <li >
+                            <router-link to='/home/jingcui' >
+                                <a class="daohang">当时精粹</a>
+                            </router-link>
+                        </li> <li >
+                            <router-link to='/home/yaolun' >
+                                <a class="daohang">党报要论</a>
+                            </router-link>
+                        </li> <li >
+                            <router-link to='/home/zhuanti' >
+                                <a class="daohang">党建专题</a>
+                            </router-link>
+                        </li>
                         </ul>
                     </div>
                     <section class="col-xs-9">

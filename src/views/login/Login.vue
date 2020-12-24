@@ -10,15 +10,15 @@
           <router-link to='/home'>
             <a >返回首页</a>
           </router-link>
-          <span></span>
-          <a href="javascript:;" class="collection_web">收藏网站</a>
+          <!--<span></span>-->
+          <!--<a href="javascript:;" class="collection_web">收藏网站</a>-->
         </div>
       </div>
     </div>
     <div class="login_content clearfix">
       <div class="login_box myfr">
         <el-tabs v-model="activeName" type="card" @tab-click="handleClick" :stretch="true">
-          <el-tab-pane label="买 家 登 录" name="0"></el-tab-pane>
+          <el-tab-pane label=" 登 录" name="0"></el-tab-pane>
           <!--<el-tab-pane label="商家登录" name="1"></el-tab-pane>-->
         </el-tabs>
         <el-form ref="loginForm" :model="form" label-width="7px" style="margin-top: 5px" :rules="rules">
@@ -29,31 +29,33 @@
             <el-input v-model="form.password" placeholder="登录密码"></el-input>
           </el-form-item>
           <el-form-item prop="" label-width="255px" style="margin-top: -20px">
-            <router-link to='/' style="margin-top: -16px;">
-              <span style="color: rgb(153,153,153)">忘记密码？</span>
-            </router-link>
+            <!--<router-link to='/' style="margin-top: -16px;">-->
+              <!--<span style="color: rgb(153,153,153)">忘记密码？</span>-->
+            <!--</router-link>-->
+            <br>
           </el-form-item>
           <el-form-item prop="">
             <el-button type="primary"
                        @click="onSubmit('loginForm')"
-                       style="font-size: 18px;background-color: rgb(255,54,111);width: 310px;height: 48px;;color: white;border: none;margin-left: 13px;margin-top: -10px "
+                       style="font-size: 18px;background-color: #d50f10;width: 310px;height: 48px;;color: white;border: none;margin-left: 13px;margin-top: -10px "
             >立即登录</el-button>
           </el-form-item>
           <el-form-item>
-            <p class="entry_mode clearfix">
-              <span class="myfl">你也可以用以下方式登录:</span>
-              <router-link to='/register' style="margin-top: -16px;">
-                <a class="myfr">
-                  <em></em>
-                  <i>快速注册</i>
-                </a>
-              </router-link>
-            </p>
+            <!--<p class="entry_mode clearfix">-->
+              <!--<span class="myfl">你也可以用以下方式登录:</span>-->
+              <!--<router-link to='/register' style="margin-top: -16px;">-->
+                <!--<a class="myfr">-->
+                  <!--<em></em>-->
+                  <!--<i>快速注册</i>-->
+                <!--</a>-->
+              <!--</router-link>-->
+            <!--</p>-->
           </el-form-item>
         </el-form>
       </div>
     </div>
-    <div class="register_bottom" style="margin-top: 196px">2020年 &nbsp; 吹牛逼有限公司 &nbsp;&nbsp;粤ICP17003883号-1 &nbsp;&nbsp;版权所有</div>  </div>
+    <!--<div class="register_bottom" style="margin-top: 196px">2020年 &nbsp; 吹牛逼有限公司 &nbsp;&nbsp;粤ICP17003883号-1 &nbsp;&nbsp;版权所有</div> -->
+  </div>
 </template>
 
 
@@ -126,14 +128,15 @@
 .login_header .myfr span{height: 12px;width: 1px;background: #bfbfbf;margin: 0 16px;}
 .login_header .myfr a{font-size: 12px;color: #999;}
 /*登录内容区*/
-.login_content{width: 1200px;height: 500px;padding-top: 100px;margin: auto;background: url("../../static/img/login_bag.png?v=11") no-repeat 38px 178px;}
+/*.login_content{width: 1200px;height: 500px;padding-top: 100px;margin: auto;background: url("../../static/img/login_bag.png?v=11") no-repeat 38px 178px;}*/
+.login_content{width: 351px;height: 500px;padding-top: 100px;margin: auto;}
 .login_content .login_box{width: 351px;height: 388px;border: 1px solid #ccc;border-radius: 4px;}
 .login_content .login_box .tabchange em{display: inline-block;width: 1px;height: 52px;background: #ccc;}
 .login_content .login_box .tabchange span{display: inline-block;width: 174px;height: 51px;line-height: 51px;text-align: center;font-size: 16px;color: #666;cursor: pointer;}
 .login_content .login_box .tabchange .bor_bottom{border-bottom: 1px solid #ccc;background: #f2f3f7;}
 .login_content .login_box .tabchange .sign_select{color: #ff366f;}
 .login_content .login_box .system_error{height: 26px;line-height: 26px;padding: 0 20px;color: red;}
-.login_content .login_box input{width: 298px;height: 46px;border: 1px solid #ccc;border-radius: 4px;outline: none;margin-left: 20px;padding-left: 10px;line-height: 46px;}
+.login_content .login_box input{width: 298px;height: 46px;border: 1px solid #ccc;border-radius: 4px;outline: none;padding-left: 10px;line-height: 46px;}
 .login_content .login_box .username_error,.login_content .login_box .password_error{height: 18px;line-height: 18px;color: red;margin: 0 20px;}
 .login_content .login_box .username_error span,.login_content .login_box .password_error span{padding-left: 16px;background: url("../../static/img/advert/login_error_icon.png") no-repeat 0 center;display: none;}
 .login_content .login_box .forget_password a{display: inline-block;margin-right: 20px;color: #999999;line-height: 24px;}

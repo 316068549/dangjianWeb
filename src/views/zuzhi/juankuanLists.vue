@@ -6,77 +6,95 @@
                     <router-link to='/home' style="margin-top: -16px;">
                         <a class="daohang">网站首页</a>&gt;&nbsp;
                     </router-link>
-                    <router-link to='/home/gongshi' style="margin-top: -16px;">
-                        <a class="daohang">党内公示</a>
+                    <router-link to='/home/juankuan' style="margin-top: -16px;">
+                        <a class="daohang">捐款捐物</a>
                     </router-link>
                 </div>
                 <div class="ht5"></div>
                 <div class="newsbox" style="text-align: left;overflow: auto;">
-                    <div class="news_name"><h1>党内公示</h1></div>
+                    <div class="news_name"><h1>捐款捐物</h1></div>
                     <div class="col-xs-3 catemenu-box">
                         <ul class="catmenu-ul">
-                            <h3 style="font-size: 20px;"> 信息门户
+                            <h3 style="font-size: 20px;">组织生活
+                                <!--<router-link to='/home' >-->
+                                    <!--<a class="daohang">制度建设</a>-->
+                                <!--</router-link>-->
                             </h3>
+                            <li >
+                                <router-link to='/home/sanhui' >
+                                    <a class="daohang">三会一课</a>
+                                </router-link>
+                                </li>
+                            <li  >
+                                <router-link to='/home/liangxue' >
+                                    <a class="daohang">两学一做</a>
+                                </router-link>
+                            </li>
                             <li>
-                                <router-link to='/home/newslist' >
-                                    <a class="daohang">党建要闻</a>
+                                <router-link to='/home/minzhu' >
+                                    <a class="daohang">民主生活会</a>
                                 </router-link>
                             </li>
                             <li >
-                                <router-link to='/home/notices' >
-                                    <a class="daohang">通知公告</a>
+                                <router-link to='/home/xuanju' >
+                                    <a class="daohang">民主选举</a>
                                 </router-link>
                             </li>
                             <li class="cactive">
-                                <router-link to='/home/gongshi' >
-                                    <a class="daohang">党内公示</a>
+                                <router-link to='/home/juankuan' >
+                                    <a class="daohang">捐款捐物</a>
+                                </router-link>
+                            </li><li>
+                                <router-link to='/home/mailbox' >
+                                    <a class="daohang">书记信箱</a>
+                                </router-link>
+                            </li><li>
+                                <router-link to='/home/plan' >
+                                    <a class="daohang">计划总结</a>
                                 </router-link>
                             </li>
-                            <li >
-                                <router-link to='/home/birthlist' >
-                                    <a class="daohang">党政生日</a>
-                                </router-link>
-                            </li> <li >
-                            <router-link to='/home/pictures' >
-                                <a class="daohang">党建相册</a>
-                            </router-link>
-                        </li> <li >
-                            <router-link to='/home/elegant' >
-                                <a class="daohang">优秀党员风采</a>
-                            </router-link>
-                        </li> <li >
-                            <router-link to='/home/shuju' >
-                                <a class="daohang">党建数据</a>
-                            </router-link>
-                        </li> <li >
-                            <router-link to='/home/question' >
-                                <a class="daohang">问卷调查</a>
-                            </router-link>
-                        </li> <li >
-                            <router-link to='/home/guide' >
-                                <a class="daohang">办事指南</a>
-                            </router-link>
-                        </li>
                         </ul>
                     </div>
                     <section class="col-xs-9">
                         <section class="hot">
+
+
+                            <!--<ul class="hdNews">-->
+                                <!--<li v-for="(item,index) in newslist"  >-->
+                                    <!--<div class="newslist" @click="gotoDetail(item.id)">-->
+                                        <!--<p class="title">-->
+                                            <!--<a href="javascript:;">-->
+                                                <!--{{item.title}}<br>-->
+                                                <!--<i class="el-icon-user" v-if="item.author"></i>{{item.author}}-->
+
+                                            <!--</a>-->
+                                        <!--</p>-->
+                                        <!--&lt;!&ndash; <p class="desc"><a target="_blank" class="more_link" href="/index.php/home/content/index/aid/1771.html">[详情]</a></p> &ndash;&gt;-->
+                                        <!--&lt;!&ndash;<span class="new_time">2020-02-24</span>&ndash;&gt;-->
+
+                                        <!--<span class="new_time"><div class="green">{{item.status}}</div> <span style="padding-top: 10px">{{item.time}}</span></span>-->
+                                    <!--</div>-->
+                                    <!--<div class="clear"></div>-->
+                                <!--</li>-->
+                            <!--</ul>-->
+
                             <ul class="hdNews">
                                 <li v-for="(item,index) in newslist"  >
                                     <div class="newslist" @click="gotoDetail(item.id)">
                                         <p class="title">
                                             <a href="javascript:;">
-                                                <!--{{item.title}}</a>-->
-                                                {{item.addr}}
+                                                {{item.title}}—{{item.author}}
                                             </a>
                                         </p>
-                                        <!-- <p class="desc"><a target="_blank" class="more_link" href="/index.php/home/content/index/aid/1771.html">[详情]</a></p> -->
-                                        <!--<span class="new_time">2020-02-24</span>-->
-                                        <span class="new_time">{{item.applyTime}}</span>
+                                        <span class="new_time">{{item.time}}</span>
                                     </div>
                                     <div class="clear"></div>
                                 </li>
                             </ul>
+
+
+
+
                         </section>
                     </section>
                 </div>
@@ -93,7 +111,7 @@
                     </el-pagination>
                     <!--<div><ul class="pagination">  <li class="disabled"><a href="#">1</a></li><li><a href="/index.php/home/list/index/sid/30/p/2.html">2</a></li><li><a href="/index.php/home/list/index/sid/30/p/3.html">3</a></li> <li><a href="/index.php/home/list/index/sid/30/p/2.html">下一页</a></li> </ul></div>                <div class="clear"></div>-->
                 </div>
-            </div>
+        </div>
         </div>
     </div>
 
@@ -101,25 +119,32 @@
 </template>
 
 <script>
+    import {findNews} from "../../api/web-api/companyNews-api";
     import {findPageNews} from "../../api/web-api/guide-api";
+    import {SERVER_HOST} from './../../common/portConfig'
 
     export default {
         data() {
             return {
-                total: 0,
+                total: 8,
                 pageNum: 1,
                 pageSize: 10,
                 src: 'https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg',
                 newslist:[
-                    // {
-                    //     id:1,
-                    //     title: '入党程序有关知识的问与答',
-                    // }
+                    {
+                        id:1,
+                        title: '给贫',
+                        author: '测试',
+                        time: '2020-12-20 09:00',
+                        status: '已结束',
+                        content: '投票选举预备党员',
+                    }
                 ]
             };
         },
         mounted() {
-            this.getAboutPage();
+            document.getElementById('web-content').style.backgroundColor='#EEE';
+           // this.getAboutPage();
         },
         methods: {
             handleCurrentChange(val) {
@@ -163,7 +188,7 @@
             gotoDetail(id){
                 console.log(id)
                 // $router.push({path: '/administrator/maintenance/view/'+scope.row.id})
-                this.$router.push({path: '/home/detail/'+id,query: { type: 'gongshi' }});
+                this.$router.push({path: '/home/detail/'+id,query: { type: 'juankuan' }});
                 // this.$router.push({path: '/home/guidedetail'});
             },
         }
@@ -175,6 +200,59 @@
     .pic{
         width: 23.5%;
         margin: 2% 2% 0 0;
+    }
+    .grid {
+        width: 100%;
+    }
+    .news-list {
+        padding-bottom: 60px;
+    }
+    .news-list li {
+        float: left;
+        width: 23.5%;
+        margin: 2% 2% 0 0;
+    }
+    .news-list li:nth-child(4){
+        margin-right:0 ;
+    }
+    .ns-item {
+        display: block;
+        img{
+            width: 100%;
+        }
+        padding: 10px;
+        border-radius: 2px;
+        background: #fff;
+        opacity:1;
+    }
+    .ns-thumb{
+        overflow: hidden;
+    }
+    .fade {
+        transition: color .3s linear,background .3s linear,box-shadow .2s linear,opacity .2s linear;
+    }
+
+    .ns-info {
+        line-height: 25px;
+        color: #666;
+        font-size: 14px;
+    }
+    .ns-info h3 {
+        font-size: 18px;
+        line-height: 25px;
+        padding: 5px 0 8px;
+        margin-top: 10px;
+        color: #333;
+    }
+    .ns-info p {
+        height: 30px;
+        overflow: hidden;
+    }
+    .ns-item .date {
+        text-align: right;
+        margin-top: 10px;
+        font-size: 12px;
+        color: #999;
     }
     .box{
         width: 1100px;
@@ -201,7 +279,7 @@
     .hdNews{ border-bottom:1px dotted #DCDCDC;margin-top:20px;}
     .hdNews li{font-size:18px;line-height:2.5;border-bottom:1px dashed #ddd; text-indent:10px;}
     .hdNews li a{color:#333}
-    .hdNews li span{font-size:14px;color:#555;float:right;margin-top: 5px;}
+    .hdNews li span{font-size:14px;color:#555;float:right;}
     .hdNews p{ line-height:1.5; font-size:14px;}
     .hdNews h2{font-size:16px; line-height:1.5;}
     .hasPic{ height:101px; padding-top:8px; overflow:hidden;}
@@ -432,7 +510,7 @@
     }
     .tit p{
         font-size: 20px;
-        line-height: 30px;
+       line-height: 30px;
         text-indent: 12px;
         max-height: 64px;
         overflow: hidden;
@@ -466,15 +544,15 @@
             font-size: 12px;
         }
         /*.main{*/
-        /*margin-left: 15px !important;*/
-        /*margin-right: 15px !important;*/
+            /*margin-left: 15px !important;*/
+            /*margin-right: 15px !important;*/
         /*}*/
         .group_buying{
             padding: 15px 0;
         }
 
         .m-tit{
-            margin-left: 1px !important;
+        margin-left: 1px !important;
         }
         .group_buying ul li{
             padding: 10px 0 5px 0;
@@ -494,8 +572,8 @@
         .tit h4 {
             font-size: 15px;
             line-height: 25px;
-            padding: 0;
-            text-indent: 0;
+             padding: 0;
+             text-indent: 0;
             width: 100%;
             white-space: nowrap;
             padding-right: 10px;
@@ -504,7 +582,7 @@
         }
         .tit p {
             font-size: 13px;
-            line-height: 18px;
+           line-height: 18px;
             overflow: hidden;
             text-indent: 0;
             max-height: 34px;

@@ -6,170 +6,105 @@
                     <router-link to='/home' style="margin-top: -16px;">
                         <a class="daohang">网站首页</a>&gt;&nbsp;
                     </router-link>
-                    <router-link to='/home/guide' style="margin-top: -16px;">
-                        <a class="daohang">办事指南</a>
+                    <router-link to='/home/shuju' style="margin-top: -16px;">
+                        <a class="daohang">党建数据</a>
                     </router-link>
                 </div>
                 <div class="ht5"></div>
-                <div class="newsbox" style="text-align: left">
-                    <div class="news_name"><h1>办事指南</h1></div>
-                    <ul>
-                        <li v-for="(item,index) in newslist"  >
-                            <div class="newslist" @click="gotoDetail(item.id)">
-                                <p class="title">
-                                    <a href="javascript:;">
-                                        <!--{{item.title}}</a>-->
-                                        {{item.addr}}
-                                    </a>
-                                </p>
-                                <!-- <p class="desc"><a target="_blank" class="more_link" href="/index.php/home/content/index/aid/1771.html">[详情]</a></p> -->
-                                <!--<span class="new_time">2020-02-24</span>-->
-                                <span class="new_time">{{item.applyTime}}</span>
-                            </div>
-                            <div class="clear"></div>
-                        </li>
-                  </ul>
-                </div>
-                <div class="fanye" style="text-align:center;margin-top: 40px">
-                    <el-pagination class="tc mb30"
-                                   @size-change="handleSizeChange"
-                                   prev-text="上一页"
-                                   next-text="下一页"
-                                   @current-change="handleCurrentChange"
-                                   background
-                                   :page-size="pageSize"
-                                   layout="total, prev, pager, next"
-                                   :total="total" >
-                    </el-pagination>
-                    <!--<div><ul class="pagination">  <li class="disabled"><a href="#">1</a></li><li><a href="/index.php/home/list/index/sid/30/p/2.html">2</a></li><li><a href="/index.php/home/list/index/sid/30/p/3.html">3</a></li> <li><a href="/index.php/home/list/index/sid/30/p/2.html">下一页</a></li> </ul></div>                <div class="clear"></div>-->
-                </div>
-            <!--<section class="row">-->
-                <!--<h2 class="col-md-12 m-tit">-->
-                    <!--<em>办事指南</em>-->
-                <!--</h2>-->
-                <!--<div class="col-md-12" style="padding: 20px 0 50px 0">-->
-                    <!--<el-row>-->
-                        <!--<el-col :span="6" class="pic" v-for="(item,index) in newslist" :style="{marginRight: index==0||index%3?'2%':'0'}" >-->
-                            <!--<div class="demo-image__placeholder"  @click="gotoDetail(item.id)">-->
-                                <!--<div class="block">-->
-                                    <!--&lt;!&ndash;<img src="../../assets/img/ren.jpg" alt="">&ndash;&gt;-->
-                                    <!--<el-image :src="item.src">-->
-                                        <!--<div slot="placeholder" class="image-slot">-->
-                                            <!--加载中<span class="dot">...</span>-->
-                                        <!--</div>-->
-                                    <!--</el-image>-->
-                                    <!--<span class="demonstration">{{item.title}}</span>-->
-                                <!--</div>-->
-                            <!--</div>-->
-                        <!--</el-col>-->
-                    <!--</el-row>-->
+                <el-row class="warp">
+                    <el-col :span="24" class="warp-main">
 
-                    <!--&lt;!&ndash;<el-pagination class="tc mb30"&ndash;&gt;-->
-                                   <!--&lt;!&ndash;@size-change="handleSizeChange"&ndash;&gt;-->
-                            <!--&lt;!&ndash;@current-change="handleCurrentChange"&ndash;&gt;-->
-                                   <!--&lt;!&ndash;background&ndash;&gt;-->
-                            <!--&lt;!&ndash;:page-size="pageSize"&ndash;&gt;-->
-                            <!--&lt;!&ndash;layout="total, prev, pager, next"&ndash;&gt;-->
-                            <!--&lt;!&ndash;:total="total" >&ndash;&gt;-->
-                    <!--&lt;!&ndash;</el-pagination>&ndash;&gt;-->
+                        <el-row class="first-row" :gutter="20">
+                            <el-col :span="8">
+                                <div id="business2" class="block">
+                                    <equip-pie :pie-data="pieData3" :y-data="yData3" :num="pieTotal3" :name="pieName3" :type="1" v-if="pieTotal3"></equip-pie>
+                                </div>
+                            </el-col>
+                            <el-col :span="8">
+                                <div id="projects222" class="block">
+                                    <equip-pie :pie-data="pieData" :y-data="yData" :num="pieTotal" :name="pieName" :type="1" v-if="pieTotal"></equip-pie>
+                                </div>
+                            </el-col>
+                            <el-col :span="8">
+                                <div id="projects22" class="block">
+                                    <equip-pie :pie-data="pieData2" :y-data="yData2" :num="pieTotal2" :name="pieName2" :type="1" v-if="pieTotal2"></equip-pie>
+                                </div>
+                            </el-col>
 
-                <!--</div>-->
-            <!--</section>-->
+                        </el-row>
+
+                    </el-col>
+                </el-row>
         </div>
         </div>
     </div>
-
-
 </template>
 
 <script>
     import {findPageNews} from "../../api/web-api/guide-api";
+    import BiLine from "../../components/echarts/bi-line";
+    import BiHBar from "../../components/echarts/bi-h-bar";
+    import EquipPie from "../../components/echarts/equip-pie";
 
-    export default {
-        data() {
-            return {
-                total: 0,
-                pageNum: 1,
-                pageSize: 5,
-                src: 'https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg',
-                newslist:[
-                    // {
-                    //     id:1,
-                    //     title: '入党程序有关知识的问与答',
-                    // },{
-                    //     id:1,
-                    //     title: '入党程序有关知识的问与答',
-                    // },{
-                    //     id:1,
-                    //     title: '入党程序有关知识的问与答',
-                    // },{
-                    //     id:1,
-                    //     title: '入党程序有关知识的问与答',
-                    // },{
-                    //     id:1,
-                    //     title: '入党程序有关知识的问与答',
-                    // },{
-                    //     id:1,
-                    //     title: '入党程序有关知识的问与答',
-                    // },
-
-                ]
-            };
+    export default{
+        name: "bigData",
+        components: {EquipPie,BiLine,BiHBar},
+        data(){
+            return{
+                yData:["0-9岁", "10-19岁", "20-29岁", "30-39岁", "40岁+"],
+                yData2:["高中及以下", "大专", "本科", "硕士", "博士及以上"],
+                yData3:["男", "女"],
+                pieData:[
+                    {value: 1, name: '0-9岁'},
+                    {value: 22, name: '10-19岁'},
+                    {value: 134, name: '20-29岁'},
+                    {value: 135, name: '30-39岁'},
+                    {value: 135, name: '40岁+'},
+                ],
+                pieData2:[
+                    {value: 1, name: '高中及以下'},
+                    {value: 22, name: '大专'},
+                    {value: 134, name: '本科'},
+                    {value: 135, name: '硕士'},
+                    {value: 135, name: '博士及以上'},
+                ], pieData3:[
+                    {value: 122, name: '男'},
+                    {value: 132, name: '女'}
+                ],
+                pieTotal:1,
+                pieTotal2:1,
+                pieTotal3:1,
+                pieName:'年龄分布',
+                pieName2:'学历分布',
+                pieName3:'性别分布',
+                projects: 0,
+                orders:0,
+                business: 0,
+                webUsers: 0,
+                projectArray:[],
+                ordersArray:[],
+                businessArray:[],
+                usersArray:[],
+            }
         },
-        mounted() {
-            this.getAboutPage();
+        methods:{
+            init(){
+            },
         },
-        methods: {
-            handleCurrentChange(val) {
-                this.pageNum = val;
-                this.getAboutPage();
-            },
-            handleSizeChange(val) {
-                this.pageSize = val;
-                this.getAboutPage();
-            },
-            createTimeFormat: function (row, colnm,cellValue, index) {
-                if (row.createTime) {
-                    return util.formatDate.format(new Date(cellValue), 'yyyy-MM-dd hh:mm:ss');
-                }
-            },
-            getAboutPage() {
-                let that=this;
-                let para = {
-                    pageNum: this.pageNum,
-                    pageSize: this.pageSize,
-                };
-                findPageNews(para).then(
-                    (res) => {
-                        console.log(res);
-                        if(res.code===1){
-                            that.total = res.data.total;
-                            that.newslist = res.data.records;
-                            console.log(this.newslist)
-                        }else {
-                            that.$message({
-                                message:"查询失败",
-                                type:'error',
-                            });
-                        }
-                    },
-                    (error) => {
-                        console.log(error);
-                    }
-                );
-            },
-            gotoDetail(id){
-                console.log(id)
-                // $router.push({path: '/administrator/maintenance/view/'+scope.row.id})
-                this.$router.push({path: '/home/guidedetail/'+id});
-                // this.$router.push({path: '/home/guidedetail'});
-            },
+        mounted(){
+            // this.init();
         }
     }
 
 </script>
 
 <style scoped lang="scss">
+    .block {
+        margin-bottom: 20px;
+        padding: 15px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
     .pic{
         width: 23.5%;
         margin: 2% 2% 0 0;

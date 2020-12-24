@@ -15,11 +15,69 @@
                     <div class="newtit">{{news.title}}</div>
                     <div class="newtime">
                         <span>{{news.author}}</span>   |   <span>{{news.createTime}}</span>
-                        <!--|   <span>阅读：2587</span>-->
+                        |   <span>阅读：2587</span>
                     </div>
                     <div class="newcon">
                         <p v-html="news.content"></p>
                     </div>
+                    <!--留言板-->
+                    <div id="messageboard" v-if="type=='juankuan'" style="width: 70%;margin: 0 auto;">
+                        <h2 class="text-left" style="font-size: 15px;line-height: 30px;padding-left: 10px;">留言板</h2>
+                        <br>
+                        <el-form ref="form" label-width="10px">
+                            <!--<el-form-item label="标题">-->
+                                <!--<el-input v-model="title" placeholder="请输入标题"></el-input>-->
+                            <!--</el-form-item>-->
+                            <el-form-item label="" style="margin-bottom: 5px">
+                                <el-input v-model="content" placeholder="请输入"></el-input>
+                            </el-form-item>
+                            <el-form-item class="text-right">
+                                <el-button type="danger" @click="add()" size="mini">发表</el-button>
+                                <!--<el-button @click="handleReset">重置</el-button>-->
+                            </el-form-item>
+                            <!--<el-table border :data="mydata">-->
+                                <!--<el-table-column label="编号" inline-template :context="_self">-->
+                                    <!--<span>{{$index+1}}</span>-->
+                                <!--</el-table-column>-->
+                                <!--<el-table-column prop="title" label="标题">-->
+                                <!--</el-table-column>-->
+                                <!--<el-table-column prop="content" label="内容">-->
+                                <!--</el-table-column>-->
+                                <!--<el-table-column label="操作" inline-template :context="_self">-->
+                                    <!--<span><el-button size="small" @click="showDialog()">删除</el-button></span>-->
+                                <!--</el-table-column>-->
+                            <!--</el-table>-->
+                            <!--<div style="text-align:right" v-show="mydata.length>0">-->
+                                <!--<el-button size="small" @click="showDelallDialog()">全部删除</el-button>-->
+                            <!--</div>-->
+                        </el-form>
+                        <div class="projectlistbox" style="margin: 0 10px;padding-bottom: 50px">
+                            <div class="projectlist" v-for="(item,index) in projectmemoData" :key="index">
+                                <div style="font-size:12px;font-weight:bold;"><span>{{item.createby}}</span>&nbsp;&nbsp;<span>{{item.createdate}}</span></div>
+                                <p >{{item.content}}</p>
+                                <!--<div v-show="item.isedit">-->
+                                    <!--<Input type="textarea" :rows="3" v-model="projectmemoedit" placeholder="请输入"></Input>-->
+                                <!--</div>-->
+                                <!--<div class="createby-createdate">-->
+                                    <!--<div></div>-->
+                                    <!--<div>-->
+                                        <!--<span v-show="!item.isedit" @click="editProjectMemo(item)" class="edit-delete-save">编辑</span>-->
+                                        <!--<span v-show="!item.isedit" @click="deleteProjectMemo(item)" class="edit-delete-save">删除</span>-->
+                                        <!--<span v-show="item.isedit" @click="saveeditProjectMemo(item)" class="edit-delete-save">保存</span>-->
+                                    <!--</div>-->
+                                </div>
+                            </div>
+
+                        <el-dialog title="提示" v-model="dialogVisible" size="tiny">
+                            <span v-if="nowIndex==-2">删除全部条留言</span>
+                            <span v-else>删除此条留言</span>
+                            <span slot="footer" class="dialog-footer">
+          <el-button @click="dialogVisible = false">取 消</el-button>
+          <el-button type="primary" @click="del(nowIndex)" >确 定</el-button>
+        </span>
+                        </el-dialog>
+                    </div>
+                    <!--留言板end-->
                 </div>
                 <div class="clear"></div>
             </div>
@@ -37,7 +95,19 @@
         data() {
             return {
                 title:'',
+                content: '',
+                mydata: [],
+                dialogVisible: false,
+                nowIndex: -100,
+                projectmemoedit:'',
                 type:'',
+                projectmemoData:[
+                    {
+                        createby:'未知用户',
+                        createdate:'2020-11-09',
+                        content:'河南省2020年统一考试录用公务员焦作市体检结果及进入考察人员名单公告',
+                    }
+                ],
                 news:{
                     title:'河南省2020年统一考试录用公务员焦作市体检结果及进入考察人员名单公告',
                     content:'河南省2020年统一考试录用公务员焦作市体检结果及进入考察人员名单公告',
@@ -83,8 +153,127 @@
                     case 'fanfu':
                         this.title = '反腐倡廉'
                         break;
+                    case 'juankuan':
+                    this.title = '捐款捐物'
+                    break;
+                    case 'notices':
+                    this.title = '通知公告'
+                    break;
+                    case 'gongshi':
+                    this.title = '党内公示'
+                    break;
+                    case 'guide':
+                    this.title = '办事指南'
+                    break;
                 }
 
+            },
+            add() {
+                if (this.title == '' || this.content == '') {
+                    this.$message.error('请填写完整');
+                } else {
+                    this.projectmemoData.push({
+                        title: this.title,
+                        content: this.content,
+                    });
+                    this.title = '';
+                    this.content = '';
+                }
+            },
+            showDialog() {
+                this.dialogVisible = true;
+            },
+            showDelallDialog() {
+                this.dialogVisible = true;
+                this.nowIndex = -2;
+            },
+            del(n) {
+                if (n == -2) {
+                    this.mydata = [];
+                } else {
+                    this.mydata.splice(n, 1);
+                }
+                this.nowIndex = -100;
+                this.dialogVisible = false;
+            },
+            handleReset() {
+                this.title = '';
+                this.content = '';
+            }
+,
+            // 项目留言板
+            getProjectMemolist(aaa) {
+                var params = {
+                    projectid: aaa
+                };
+                // ProjectMemolist(params).then(res => {
+                //     if (res.data.flag == 1) {
+                //         if (res.data.success == 1) {
+                //             this.projectmemoData = res.data.data;
+                //             this.projectmemoData.forEach(item => {
+                //                 item.isedit = false;
+                //             })
+                //         } else {
+                //             popup.alert(this, "error", res.data.err.msg);
+                //         }
+                //     }
+                // });
+            },
+            // 发布
+            saveProjectMemo() {
+                // var params = {
+                //     projectmemo: this.projectmemo,
+                //     projectid: this.projectid
+                // };
+                // saveProjectMemo(params).then(res => {
+                //     if (res.data.flag == 1) {
+                //         if (res.data.success == 1) {
+                //             this.projectmemo = '';
+                //             this.getProjectMemolist(this.projectid);
+                //             popup.alert(this, "success", "保存成功");
+                //         } else {
+                //             popup.alert(this, "error", res.data.err.msg);
+                //         }
+                //     }
+                // });
+            },
+            //编辑
+            // editProjectMemo(obj) {
+            //     this.projectmemoedit = obj.projectmemo;
+            //     obj.isedit = true;
+            // },
+            saveeditProjectMemo(obj) {
+                // obj.isedit = false;
+                // var params = {
+                //     projectmemoid: obj.projectmemoid,
+                //     projectmemo: this.projectmemoedit
+                // }
+                // saveProjectMemo(params).then(res => {
+                //     if (res.data.flag == 1) {
+                //         if (res.data.success == 1) {
+                //             this.getProjectMemolist(this.projectid);
+                //             popup.alert(this, "success", "保存成功");
+                //         } else {
+                //             popup.alert(this, "error", res.data.err.msg);
+                //         }
+                //     }
+                // });
+            },
+            //删除
+            deleteProjectMemo(obj) {
+                // var params = {
+                //     projectmemoid: obj.projectmemoid
+                // }
+                // delProjectMemo(params).then(res => {
+                //     if (res.data.flag == 1) {
+                //         if (res.data.success == 1) {
+                //             this.getProjectMemolist(this.projectid);
+                //             popup.alert(this, "success", "删除成功");
+                //         } else {
+                //             popup.alert(this, "error", res.data.err.msg);
+                //         }
+                //     }
+                // });
             }
         }
     }
@@ -96,13 +285,29 @@
         width: 1100px;
         margin: 0 auto;
     }
+    .projectlist{
+        width: 100%;
+        margin-bottom: 15px;
+        font-size: 13px;
+        p{
+            font-size: 12px;
+        }
+        padding: 10px;
+        color:RGB(73,80,96);
+        text-align: left;
+        line-height: 1.5;
+        /*text-indent: 2em;*/
+        min-height: 30px;
+        border-radius: 5px;
+        background: RGB(238,238,238);
+    }
     .newtit{text-align:center;font-size:20px;margin:20px 0px;font-weight:bold;}
     .big_nav{margin-bottom:10px;font-size:16px;}
     .news_name{height:40px;border-bottom:3px solid #e2e2e2;}
     .news_name h1{border-bottom:3px solid #d50f10;line-height:40px;display:inline-block;font-size:18px;color:#d50f10;}
     .newtime{text-align:center;font-size:16px;color:#999;margin:10px 0px;line-height:40px;border-bottom:dashed 1px #dfdfdf;padding-bottom:10px;}
     .newtime span{margin:0px 20px;}
-    .newcon{line-height:28px;font-size:16px;text-indent:2em;margin:10px 0px;padding-top:10px;min-height: 300px}
+    .newcon{line-height:28px;font-size:16px;text-indent:2em;margin:10px 0px;padding-top:10px;margin-bottom: 50px}
 
     .newcon img{max-width:100%;text-align:center !important;}
     @media (min-width: 768px){

@@ -4,6 +4,7 @@ import router from './router'
 import store from './store'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
+import './assets/icon/iconfont.css';
 import filter from './common/filter'
 import util from './common/util'
 // import 'swiper/dist/css/swiper.css';

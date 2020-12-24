@@ -1,0 +1,44 @@
+{
+  "id": "2282538",
+  "name": "elementui",
+  "font_family": "iconfont",
+  "css_prefix_text": "el-icon-my",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "6775641",
+      "name": "爱心 _实心",
+      "font_class": "aixin_shixin",
+      "unicode": "eca1",
+      "unicode_decimal": 60577
+    },
+    {
+      "icon_id": "6775644",
+      "name": "爱心",
+      "font_class": "aixin",
+      "unicode": "eca2",
+      "unicode_decimal": 60578
+    },
+    {
+      "icon_id": "841416",
+      "name": "like",
+      "font_class": "like",
+      "unicode": "e6ef",
+      "unicode_decimal": 59119
+    },
+    {
+      "icon_id": "1190349",
+      "name": "like",
+      "font_class": "like1",
+      "unicode": "e8ab",
+      "unicode_decimal": 59563
+    },
+    {
+      "icon_id": "10168285",
+      "name": "like",
+      "font_class": "like2",
+      "unicode": "e631",
+      "unicode_decimal": 58929
+    }
+  ]
+}

@@ -175,8 +175,19 @@ code {
   background-color: #d50f10 !important;
   border-color: #d50f10 !important;
 }
+.green{
+  color:#73D661
+}.hong{
+  color:#d50f10
+}
 .daohang{
   color: rgb(51,51,51);
+}
+.ht5{
+  height: 50px;
+}
+.box{
+  min-height: 350px;
 }
 //分页颜色
 .el-pagination.is-background .el-pager li:not(.disabled).active {

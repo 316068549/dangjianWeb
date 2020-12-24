@@ -6,13 +6,13 @@
                     <router-link to='/home' style="margin-top: -16px;">
                         <a class="daohang">网站首页</a>&gt;&nbsp;
                     </router-link>
-                    <router-link to='/home/gongshi' style="margin-top: -16px;">
-                        <a class="daohang">党内公示</a>
+                    <router-link to='/home/noticelist' style="margin-top: -16px;">
+                        <a class="daohang">通知公告</a>
                     </router-link>
                 </div>
                 <div class="ht5"></div>
                 <div class="newsbox" style="text-align: left;overflow: auto;">
-                    <div class="news_name"><h1>党内公示</h1></div>
+                    <div class="news_name"><h1>通知公告</h1></div>
                     <div class="col-xs-3 catemenu-box">
                         <ul class="catmenu-ul">
                             <h3 style="font-size: 20px;"> 信息门户
@@ -22,12 +22,12 @@
                                     <a class="daohang">党建要闻</a>
                                 </router-link>
                             </li>
-                            <li >
+                            <li class="cactive">
                                 <router-link to='/home/notices' >
                                     <a class="daohang">通知公告</a>
                                 </router-link>
                             </li>
-                            <li class="cactive">
+                            <li >
                                 <router-link to='/home/gongshi' >
                                     <a class="daohang">党内公示</a>
                                 </router-link>
@@ -62,23 +62,48 @@
                     <section class="col-xs-9">
                         <section class="hot">
                             <ul class="hdNews">
-                                <li v-for="(item,index) in newslist"  >
-                                    <div class="newslist" @click="gotoDetail(item.id)">
-                                        <p class="title">
-                                            <a href="javascript:;">
-                                                <!--{{item.title}}</a>-->
-                                                {{item.addr}}
-                                            </a>
-                                        </p>
-                                        <!-- <p class="desc"><a target="_blank" class="more_link" href="/index.php/home/content/index/aid/1771.html">[详情]</a></p> -->
-                                        <!--<span class="new_time">2020-02-24</span>-->
-                                        <span class="new_time">{{item.applyTime}}</span>
-                                    </div>
-                                    <div class="clear"></div>
-                                </li>
+                            <li v-for="(item,index) in newslist"  >
+                            <div class="newslist" @click="gotoDetail(item.id)">
+                            <p class="title">
+                            <a href="javascript:;">
+                            <!--{{item.title}}</a>-->
+                            {{item.addr}}
+                            </a>
+                            </p>
+                            <!-- <p class="desc"><a target="_blank" class="more_link" href="/index.php/home/content/index/aid/1771.html">[详情]</a></p> -->
+                            <!--<span class="new_time">2020-02-24</span>-->
+                            <span class="new_time">{{item.applyTime}}</span>
+                            </div>
+                            <div class="clear"></div>
+                            </li>
                             </ul>
+                            <!--<ul class="hdNews">-->
+                                <!--<li><a href="http://www.sx-dj.gov.cn/a/rcgg/20200901/32488.shtml" target="_blank">图解：参加就业见习，你需要了解这些</a><span>(2020-09-01 15:03:57)</span></li>-->
+                                <!--<li><a href="http://www.sx-dj.gov.cn/a/rcgg/20200831/32360.shtml" target="_blank">陕西省2020年省级机关公开遴选公务员公告</a><span>(2020-08-31 08:59:49)</span></li>-->
+                                <!--<li><a href="http://www.sx-dj.gov.cn/a/rcgg/20200831/32358.shtml" target="_blank">陕西省2020年统一考试录用公务员公告</a><span>(2020-08-31 08:59:10)</span></li>-->
+                                <!--<li><a href="http://www.sx-dj.gov.cn/a/rcgg/20200831/32355.shtml" target="_blank">2020年陕西省省属事业单位公开招聘工作人员公告</a><span>(2020-08-31 08:58:16)</span></li>-->
+                                <!--<li><a href="http://www.sx-dj.gov.cn/a/rcgg/20200610/27547.shtml" target="_blank">图说：就业季 这些政策请收好</a><span>(2020-06-10 15:51:31)</span></li>-->
+                                <!--<li><a href="http://www.sx-dj.gov.cn/a/rcgg/20191008/9811.shtml" target="_blank">2019年陕西省人才计划申报材料下载入口</a><span>(2019-10-08 17:12:14)</span></li>-->
+                                <!--<li><a href="http://www.sx-dj.gov.cn/a/rcgg/20190917/8658.shtml" target="_blank">陕西省2019年从优秀村干部中考试录用乡镇公务员公告</a><span>(2019-09-17 17:07:00)</span></li>-->
+                            <!--</ul>-->
                         </section>
                     </section>
+                    <!--<ul>-->
+                        <!--<li v-for="(item,index) in newslist"  >-->
+                            <!--<div class="newslist" @click="gotoDetail(item.id)">-->
+                                <!--<p class="title">-->
+                                    <!--<a href="javascript:;">-->
+                                        <!--&lt;!&ndash;{{item.title}}</a>&ndash;&gt;-->
+                                        <!--{{item.addr}}-->
+                                    <!--</a>-->
+                                <!--</p>-->
+                                <!--&lt;!&ndash; <p class="desc"><a target="_blank" class="more_link" href="/index.php/home/content/index/aid/1771.html">[详情]</a></p> &ndash;&gt;-->
+                                <!--&lt;!&ndash;<span class="new_time">2020-02-24</span>&ndash;&gt;-->
+                                <!--<span class="new_time">{{item.applyTime}}</span>-->
+                            <!--</div>-->
+                            <!--<div class="clear"></div>-->
+                        <!--</li>-->
+                  <!--</ul>-->
                 </div>
                 <div class="fanye" style="text-align:center;margin-top: 40px">
                     <el-pagination class="tc mb30"
@@ -93,7 +118,39 @@
                     </el-pagination>
                     <!--<div><ul class="pagination">  <li class="disabled"><a href="#">1</a></li><li><a href="/index.php/home/list/index/sid/30/p/2.html">2</a></li><li><a href="/index.php/home/list/index/sid/30/p/3.html">3</a></li> <li><a href="/index.php/home/list/index/sid/30/p/2.html">下一页</a></li> </ul></div>                <div class="clear"></div>-->
                 </div>
-            </div>
+            <!--<section class="row">-->
+                <!--<h2 class="col-md-12 m-tit">-->
+                    <!--<em>办事指南</em>-->
+                <!--</h2>-->
+                <!--<div class="col-md-12" style="padding: 20px 0 50px 0">-->
+                    <!--<el-row>-->
+                        <!--<el-col :span="6" class="pic" v-for="(item,index) in newslist" :style="{marginRight: index==0||index%3?'2%':'0'}" >-->
+                            <!--<div class="demo-image__placeholder"  @click="gotoDetail(item.id)">-->
+                                <!--<div class="block">-->
+                                    <!--&lt;!&ndash;<img src="../../assets/img/ren.jpg" alt="">&ndash;&gt;-->
+                                    <!--<el-image :src="item.src">-->
+                                        <!--<div slot="placeholder" class="image-slot">-->
+                                            <!--加载中<span class="dot">...</span>-->
+                                        <!--</div>-->
+                                    <!--</el-image>-->
+                                    <!--<span class="demonstration">{{item.title}}</span>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</el-col>-->
+                    <!--</el-row>-->
+
+                    <!--&lt;!&ndash;<el-pagination class="tc mb30"&ndash;&gt;-->
+                                   <!--&lt;!&ndash;@size-change="handleSizeChange"&ndash;&gt;-->
+                            <!--&lt;!&ndash;@current-change="handleCurrentChange"&ndash;&gt;-->
+                                   <!--&lt;!&ndash;background&ndash;&gt;-->
+                            <!--&lt;!&ndash;:page-size="pageSize"&ndash;&gt;-->
+                            <!--&lt;!&ndash;layout="total, prev, pager, next"&ndash;&gt;-->
+                            <!--&lt;!&ndash;:total="total" >&ndash;&gt;-->
+                    <!--&lt;!&ndash;</el-pagination>&ndash;&gt;-->
+
+                <!--</div>-->
+            <!--</section>-->
+        </div>
         </div>
     </div>
 
@@ -114,7 +171,23 @@
                     // {
                     //     id:1,
                     //     title: '入党程序有关知识的问与答',
-                    // }
+                    // },{
+                    //     id:1,
+                    //     title: '入党程序有关知识的问与答',
+                    // },{
+                    //     id:1,
+                    //     title: '入党程序有关知识的问与答',
+                    // },{
+                    //     id:1,
+                    //     title: '入党程序有关知识的问与答',
+                    // },{
+                    //     id:1,
+                    //     title: '入党程序有关知识的问与答',
+                    // },{
+                    //     id:1,
+                    //     title: '入党程序有关知识的问与答',
+                    // },
+
                 ]
             };
         },
@@ -163,7 +236,7 @@
             gotoDetail(id){
                 console.log(id)
                 // $router.push({path: '/administrator/maintenance/view/'+scope.row.id})
-                this.$router.push({path: '/home/detail/'+id,query: { type: 'gongshi' }});
+                this.$router.push({path: '/home/detail/'+id,query: { type: 'notices' }});
                 // this.$router.push({path: '/home/guidedetail'});
             },
         }
@@ -432,7 +505,7 @@
     }
     .tit p{
         font-size: 20px;
-        line-height: 30px;
+       line-height: 30px;
         text-indent: 12px;
         max-height: 64px;
         overflow: hidden;
@@ -466,15 +539,15 @@
             font-size: 12px;
         }
         /*.main{*/
-        /*margin-left: 15px !important;*/
-        /*margin-right: 15px !important;*/
+            /*margin-left: 15px !important;*/
+            /*margin-right: 15px !important;*/
         /*}*/
         .group_buying{
             padding: 15px 0;
         }
 
         .m-tit{
-            margin-left: 1px !important;
+        margin-left: 1px !important;
         }
         .group_buying ul li{
             padding: 10px 0 5px 0;
@@ -494,8 +567,8 @@
         .tit h4 {
             font-size: 15px;
             line-height: 25px;
-            padding: 0;
-            text-indent: 0;
+             padding: 0;
+             text-indent: 0;
             width: 100%;
             white-space: nowrap;
             padding-right: 10px;
@@ -504,7 +577,7 @@
         }
         .tit p {
             font-size: 13px;
-            line-height: 18px;
+           line-height: 18px;
             overflow: hidden;
             text-indent: 0;
             max-height: 34px;

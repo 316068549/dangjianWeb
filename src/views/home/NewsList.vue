@@ -3,7 +3,7 @@
         <div class="container">
             <section class="row">
                 <h2 class="col-md-12 m-tit">
-                    <em>党政生日</em>
+                    <em>党建要闻</em>
                 </h2>
                 <div class="col-md-12 bd-upon">
                     <div class="group_buying">

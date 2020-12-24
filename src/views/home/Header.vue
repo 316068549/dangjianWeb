@@ -56,7 +56,7 @@
                        "subLink" : "/home/newslist"
                    },{
                        "name" : "通知公告",
-                       "subLink" : "/home/notice"
+                       "subLink" : "/home/notices"
                    },{
                             "name" : "党内公示",
                             "subLink" : "/home/gongshi"
@@ -98,13 +98,13 @@
                                 "subLink" : "/home/danggui"
                             },{
                                 "name" : "学习文件",
-                                "subLink" : "/home/wenjian"
+                                "subLink" : "/home/study"
                             },{
                                 "name" : "反腐倡廉",
                                 "subLink" : "/home/fanfu"
                             },{
                                 "name" : "统战群工",
-                                "subLink" : "/home/qungong"
+                                "subLink" : "/home/tongzhan"
                             },{
                                 "name" : "当时精粹",
                                 "subLink" : "/home/jingcui"
@@ -113,13 +113,37 @@
                                 "subLink" : "/home/yaolun"
                             },{
                                 "name" : "党建专题",
-                                "subLink" : "/home/matter"
+                                "subLink" : "/home/zhuanti"
                             }
                         ]
                 },{
-                    "link" : "/company",
+                    "link" : "",
                     "name" : "组织生活",
-                    "havesub" : false
+                        "havesub" : true,
+                        "sub" : [
+                            {
+                                "name" : "三会一课",
+                                "subLink" : "/home/sanhui"
+                            },{
+                                "name" : "两学一做",
+                                "subLink" : "/home/sanhui"
+                            },{
+                                "name" : "民主生活会",
+                                "subLink" : "/home/sanhui"
+                            },{
+                                "name" : "民主选举",
+                                "subLink" : "/home/xuanju"
+                            },{
+                                "name" : "捐款捐物",
+                                "subLink" : "/home/juankuan"
+                            },{
+                                "name" : "书记信箱",
+                                "subLink" : "/home/mailbox"
+                            },{
+                                "name" : "计划总结",
+                                "subLink" : "/home/plan"
+                            }
+                        ]
                 },{
                     "link" : "/home/bigdata",
                     "name" : "大数据中心",
@@ -155,9 +179,9 @@
             // },
             addShow:function(){
                   let aa = document.body.clientHeight;
-                if(aa<768){
-                    $('#target-menu').removeClass('show');
-                }
+                // if(aa<768){
+                //     $('#target-menu').removeClass('show');
+                // }
             },
             addItem:function () {
                 var drpBox = document.getElementById('drpmenu');
