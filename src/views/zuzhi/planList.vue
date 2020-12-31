@@ -12,7 +12,7 @@
                 </div>
                 <div class="ht5"></div>
                 <div class="newsbox" style="text-align: left;overflow: auto;">
-                    <div class="news_name"><h1>planlist</h1></div>
+                    <div class="news_name"><h1>计划总结</h1></div>
                     <div class="col-xs-3 catemenu-box">
                         <ul class="catmenu-ul">
                             <h3 style="font-size: 20px;">组织生活

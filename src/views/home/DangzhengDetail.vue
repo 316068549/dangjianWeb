@@ -6,8 +6,8 @@
                     <router-link to='/home' style="margin-top: -16px;">
                         <a class="daohang">网站首页</a>&gt;&nbsp;
                     </router-link>
-                    <router-link :to="'/home/'+type" style="margin-top: -16px;">
-                        <a class="daohang">{{title}}</a>
+                    <router-link to="/home/birthlist" style="margin-top: -16px;">
+                        <a class="daohang">党政生日</a>
                     </router-link>
                 </div>
                 <div class="ht5"></div>
@@ -21,35 +21,21 @@
                         <p v-html="news.content"></p>
                     </div>
                     <!--留言板-->
-                    <div id="messageboard" v-if="type=='juankuan'" style="width: 70%;margin: 0 auto;">
-                        <h2 class="text-left" style="font-size: 15px;line-height: 30px;padding-left: 10px;">留言板</h2>
+                    <div id="messageboard"  style="width: 70%;margin: 0 auto;">
+                        <h2 class="text-left" style="font-size: 15px;line-height: 30px;padding-left: 10px;">留言板&nbsp;&nbsp;  <span @click="handleReset" size="mini" style="color:cornflowerblue;cursor: pointer;font-size: 12px">选择表情</span></h2>
                         <br>
                         <el-form ref="form" label-width="10px">
-                            <!--<el-form-item label="标题">-->
-                                <!--<el-input v-model="title" placeholder="请输入标题"></el-input>-->
-                            <!--</el-form-item>-->
                             <el-form-item label="" style="margin-bottom: 5px">
-                                <el-input v-model="content" placeholder="请输入"></el-input>
+                                <p class="fff" ref='sxx' v-html="content3.replace(/\#[\u4E00-\u9FA5]{1,3}\;/gi, emotion)"   @keyup.delete="aa()" contenteditable></p>
+                                <emotion v-if="isShowd" @emotion="handleEmotion" :height="200" ></emotion>
+                                <!--<el-input v-model="content" placeholder="请输入"></el-input>-->
                             </el-form-item>
                             <el-form-item class="text-right">
+                                <p>文本输入框</p>
+                                <p   >{{bainma}}</p>
                                 <el-button type="danger" @click="add()" size="mini">发表</el-button>
-                                <!--<el-button @click="handleReset">重置</el-button>-->
+
                             </el-form-item>
-                            <!--<el-table border :data="mydata">-->
-                                <!--<el-table-column label="编号" inline-template :context="_self">-->
-                                    <!--<span>{{$index+1}}</span>-->
-                                <!--</el-table-column>-->
-                                <!--<el-table-column prop="title" label="标题">-->
-                                <!--</el-table-column>-->
-                                <!--<el-table-column prop="content" label="内容">-->
-                                <!--</el-table-column>-->
-                                <!--<el-table-column label="操作" inline-template :context="_self">-->
-                                    <!--<span><el-button size="small" @click="showDialog()">删除</el-button></span>-->
-                                <!--</el-table-column>-->
-                            <!--</el-table>-->
-                            <!--<div style="text-align:right" v-show="mydata.length>0">-->
-                                <!--<el-button size="small" @click="showDelallDialog()">全部删除</el-button>-->
-                            <!--</div>-->
                         </el-form>
                         <div class="projectlistbox" style="margin: 0 10px;padding-bottom: 50px">
                             <div class="projectlist" v-for="(item,index) in projectmemoData" :key="index">
@@ -80,6 +66,21 @@
                     <!--留言板end-->
                 </div>
                 <div class="clear"></div>
+
+                <div class="container" >
+                    <!--<p>文本输入框</p>-->
+                    <!--<p   >{{bainma}}</p>-->
+                    <!--<textarea class="text" rows="5" v-html="content.replace(/\#[\u4E00-\u9FA5]{1,3}\;/gi, emotion)" ></textarea>-->
+                    <!--<p>表情选择框</p>-->
+                    <!--<emotion @emotion="handleEmotion" :height="200" ></emotion>-->
+                    <!--<p>效果显示框</p>-->
+                    <!--<div class="text-place"  >-->
+
+                        <!-- /\#[\u4E00-\u9FA5]{1,3}\;/gi 匹配出含 #XXX; 的字段 -->
+                        <!--<p ref='sxx'  v-html="content3.replace(/\#[\u4E00-\u9FA5]{1,3}\;/gi, emotion)" @keyup="aa" contenteditable></p>-->
+                        <!--<p ref='sxx' v-html="content3.replace(/\#[\u4E00-\u9FA5]{1,3}\;/gi, emotion)"   @keyup="aa" contenteditable></p>-->
+                    <!--</div>-->
+                </div>
             </div>
 
         </div>
@@ -89,6 +90,8 @@
 </template>
 
 <script>
+     import Emotion from '../../components/Emotion/index'
+     import $ from 'jquery'
 //    import {SERVER_HOST} from '../../common/portConfig'
       import {findPageNewsDetail} from "../../api/web-api/rules-api";
     export default {
@@ -96,8 +99,14 @@
             return {
                 title:'',
                 content: '',
+                bainma:'',
+                touList:[],
+                content3: '',
+                comment: '',
+                // content: '',
                 mydata: [],
                 dialogVisible: false,
+                isShowd: false,
                 nowIndex: -100,
                 projectmemoedit:'',
                 type:'',
@@ -116,62 +125,88 @@
                 }
             };
         },
+        components: {
+            Emotion
+        },
+        created(){
+            // "path": "../../static/js/emotion/arclist/", //表情文件路径
+
+        },
         mounted() {
+            // $(document).ready(function(){
+            //     setTimeout(function () {
+            //         $('a').emotion();
+            //     },2000)
+            //
+            // });
+
+
+            console.log($('a'))
+            console.log($('.clear'));
            this.getNews();
+
         },
         methods: {
+            aa(){
+                console.log(3333333333)
+                // this.content=this.$refs.sxx.innerHtml;
+            },
+            handleEmotion (i) {
+                // console.log(this.$refs.sxx.innerHTML);
+                console.log(i);
+                this.touList.push(i);
+                this.content=this.$refs.sxx.innerHTML;
+                this.content3=this.$refs.sxx.innerHTML;
+                // console.log(this.content);
+                // this.content=this.$refs.sxx.innerHTML;
+               // this.content=this.$refs.sxx.innerText;
+                this.content += i;
+                const list = ['微笑', '撇嘴', '色', '发呆', '得意', '流泪', '害羞', '闭嘴', '睡', '大哭', '尴尬', '发怒', '调皮', '呲牙', '惊讶', '难过', '酷', '冷汗', '抓狂', '吐', '偷笑', '可爱', '白眼', '傲慢', '饥饿', '困', '惊恐', '流汗', '憨笑', '大兵', '奋斗', '咒骂', '疑问', '嘘', '晕', '折磨', '衰', '骷髅', '敲打', '再见', '擦汗', '抠鼻', '鼓掌', '糗大了', '坏笑', '左哼哼', '右哼哼', '哈欠', '鄙视', '委屈', '快哭了', '阴险', '亲亲', '吓', '可怜', '菜刀', '西瓜', '啤酒', '篮球', '乒乓', '咖啡', '饭', '猪头', '玫瑰', '凋谢', '示爱', '爱心', '心碎', '蛋糕', '闪电', '炸弹', '刀', '足球', '瓢虫', '便便', '月亮', '太阳', '礼物', '拥抱', '强', '弱', '握手', '胜利', '抱拳', '勾引', '拳头', '差劲', '爱你', 'NO', 'OK', '爱情', '飞吻', '跳跳', '发抖', '怄火', '转圈', '磕头', '回头', '跳绳', '挥手', '激动', '街舞', '献吻', '左太极', '右太极']
+                console.log(this.touList)
+                this.content = this.content.replace(/<img src="https:\/\/res.wx.qq.com\/mpres\/htmledition\/images\/icon\/emotion\/([0-9]*).gif">/g, '#'+this.touList['$1']+';')
+                var arr= this.content.split('#undefined;');
+                console.log(arr)
+                let dd='';
+                if(arr){
+                    arr.forEach( (val,index)=> {
+                        if(index<arr.length-1){
+                            dd+=arr[index]+this.touList[index];
+                        }else{
+                            dd+=arr[index];
+                        }
+
+                    })
+                }
+
+                console.log('编码'+dd)
+                this.bainma = dd;
+                this.content3 += i;
+                // console.log(this.content);
+            },
+            //将匹配结果替换表情图片
+            emotion (res) {
+                let word = res.replace(/\#|\;/gi,'')
+                const list = ['微笑', '撇嘴', '色', '发呆', '得意', '流泪', '害羞', '闭嘴', '睡', '大哭', '尴尬', '发怒', '调皮', '呲牙', '惊讶', '难过', '酷', '冷汗', '抓狂', '吐', '偷笑', '可爱', '白眼', '傲慢', '饥饿', '困', '惊恐', '流汗', '憨笑', '大兵', '奋斗', '咒骂', '疑问', '嘘', '晕', '折磨', '衰', '骷髅', '敲打', '再见', '擦汗', '抠鼻', '鼓掌', '糗大了', '坏笑', '左哼哼', '右哼哼', '哈欠', '鄙视', '委屈', '快哭了', '阴险', '亲亲', '吓', '可怜', '菜刀', '西瓜', '啤酒', '篮球', '乒乓', '咖啡', '饭', '猪头', '玫瑰', '凋谢', '示爱', '爱心', '心碎', '蛋糕', '闪电', '炸弹', '刀', '足球', '瓢虫', '便便', '月亮', '太阳', '礼物', '拥抱', '强', '弱', '握手', '胜利', '抱拳', '勾引', '拳头', '差劲', '爱你', 'NO', 'OK', '爱情', '飞吻', '跳跳', '发抖', '怄火', '转圈', '磕头', '回头', '跳绳', '挥手', '激动', '街舞', '献吻', '左太极', '右太极']
+                let index = list.indexOf(word)
+                return `<img src="https://res.wx.qq.com/mpres/htmledition/images/icon/emotion/${index}.gif" >`
+            },
+            //将匹配结果替换文字
+            emotion2 (res) {
+                res.replace(/<img src="[\w]*\/([0-9]*).[\w]{3}">/g, '[em]');
+                let word = res.replace(/\#|\;/gi,'')
+                const list = ['微笑', '撇嘴', '色', '发呆', '得意', '流泪', '害羞', '闭嘴', '睡', '大哭', '尴尬', '发怒', '调皮', '呲牙', '惊讶', '难过', '酷', '冷汗', '抓狂', '吐', '偷笑', '可爱', '白眼', '傲慢', '饥饿', '困', '惊恐', '流汗', '憨笑', '大兵', '奋斗', '咒骂', '疑问', '嘘', '晕', '折磨', '衰', '骷髅', '敲打', '再见', '擦汗', '抠鼻', '鼓掌', '糗大了', '坏笑', '左哼哼', '右哼哼', '哈欠', '鄙视', '委屈', '快哭了', '阴险', '亲亲', '吓', '可怜', '菜刀', '西瓜', '啤酒', '篮球', '乒乓', '咖啡', '饭', '猪头', '玫瑰', '凋谢', '示爱', '爱心', '心碎', '蛋糕', '闪电', '炸弹', '刀', '足球', '瓢虫', '便便', '月亮', '太阳', '礼物', '拥抱', '强', '弱', '握手', '胜利', '抱拳', '勾引', '拳头', '差劲', '爱你', 'NO', 'OK', '爱情', '飞吻', '跳跳', '发抖', '怄火', '转圈', '磕头', '回头', '跳绳', '挥手', '激动', '街舞', '献吻', '左太极', '右太极']
+                let index = list.indexOf(word)
+                return `<img src="https://res.wx.qq.com/mpres/htmledition/images/icon/emotion/${index}.gif" >`
+            },
             getNews() {
                 console.log(this.$route)
-                this.type = this.$route.query.type;
                 let aa = {
                     id: this.$route.params.id
                 }
-                switch (this.type) {
-                    case 'danggui':
-                        this.title = '党规党纪'
-                        findPageNewsDetail(aa).then((res) => {
-                                if (res.code===1) {
-                                    if(res.data){
-                                        this.news=res.data;
-                                        this.news.author='组织部'
-                                        console.log(this.news)
-                                    }
-                                }else{
-                                    this.$message({
-                                        message: res.data.msg,
-                                        type: 'error'
-                                    });
-                                }
-                            },
-                            (error) => {
-                                console.log(error);
-                            })
-                        break;
-                    case 'dangzhang':
-                        this.title = '党章'
-                        break;
-                    case 'fanfu':
-                        this.title = '反腐倡廉'
-                        break;
-                    case 'juankuan':
-                    this.title = '捐款捐物'
-                    break;
-                    case 'notices':
-                    this.title = '通知公告'
-                    break;
-                    case 'gongshi':
-                    this.title = '党内公示'
-                    break;
-                    case 'guide':
-                    this.title = '办事指南'
-                    break;
-                    case 'newslist':
-                    this.title = '党建要闻'
-                    break;
-                }
-
             },
             add() {
+                this.content =this.bainma;
+                this.title =this.bainma;
                 if (this.title == '' || this.content == '') {
                     this.$message.error('请填写完整');
                 } else {
@@ -200,83 +235,9 @@
                 this.dialogVisible = false;
             },
             handleReset() {
-                this.title = '';
-                this.content = '';
-            }
-,
-            // 项目留言板
-            getProjectMemolist(aaa) {
-                var params = {
-                    projectid: aaa
-                };
-                // ProjectMemolist(params).then(res => {
-                //     if (res.data.flag == 1) {
-                //         if (res.data.success == 1) {
-                //             this.projectmemoData = res.data.data;
-                //             this.projectmemoData.forEach(item => {
-                //                 item.isedit = false;
-                //             })
-                //         } else {
-                //             popup.alert(this, "error", res.data.err.msg);
-                //         }
-                //     }
-                // });
-            },
-            // 发布
-            saveProjectMemo() {
-                // var params = {
-                //     projectmemo: this.projectmemo,
-                //     projectid: this.projectid
-                // };
-                // saveProjectMemo(params).then(res => {
-                //     if (res.data.flag == 1) {
-                //         if (res.data.success == 1) {
-                //             this.projectmemo = '';
-                //             this.getProjectMemolist(this.projectid);
-                //             popup.alert(this, "success", "保存成功");
-                //         } else {
-                //             popup.alert(this, "error", res.data.err.msg);
-                //         }
-                //     }
-                // });
-            },
-            //编辑
-            // editProjectMemo(obj) {
-            //     this.projectmemoedit = obj.projectmemo;
-            //     obj.isedit = true;
-            // },
-            saveeditProjectMemo(obj) {
-                // obj.isedit = false;
-                // var params = {
-                //     projectmemoid: obj.projectmemoid,
-                //     projectmemo: this.projectmemoedit
-                // }
-                // saveProjectMemo(params).then(res => {
-                //     if (res.data.flag == 1) {
-                //         if (res.data.success == 1) {
-                //             this.getProjectMemolist(this.projectid);
-                //             popup.alert(this, "success", "保存成功");
-                //         } else {
-                //             popup.alert(this, "error", res.data.err.msg);
-                //         }
-                //     }
-                // });
-            },
-            //删除
-            deleteProjectMemo(obj) {
-                // var params = {
-                //     projectmemoid: obj.projectmemoid
-                // }
-                // delProjectMemo(params).then(res => {
-                //     if (res.data.flag == 1) {
-                //         if (res.data.success == 1) {
-                //             this.getProjectMemolist(this.projectid);
-                //             popup.alert(this, "success", "删除成功");
-                //         } else {
-                //             popup.alert(this, "error", res.data.err.msg);
-                //         }
-                //     }
-                // });
+                this.isShowd=!this.isShowd
+                // this.title = '';
+                // this.content = '';
             }
         }
     }
@@ -284,6 +245,38 @@
 </script>
 
 <style scoped lang="scss">
+    /*@import '../../static/js/emotion/dist/emotion.css';*/
+
+    .fff{
+        border: 1px solid #C0C4CC;
+        line-height: 40px;
+        min-height: 40px;
+        text-align: left;
+        padding: 0 15px;
+        border-radius: 5px;
+    }
+    .text {
+        display: block;
+        margin: 0 auto;
+        margin-bottom: 10px;
+        width: 400px;
+        resize: none;
+        box-sizing: border-box;
+        padding: 5px 10px;
+        border-radius: 8px;
+    }
+    .text-place {
+        height: 80px;
+        box-sizing: border-box;
+        padding: 5px 10px;
+        border-radius: 8px;
+        background: #ddd5d5;
+    }
+    .text-place p {
+        display: flex;
+        align-items: center;
+        margin: 0;
+    }
     .box{
         width: 1100px;
         margin: 0 auto;

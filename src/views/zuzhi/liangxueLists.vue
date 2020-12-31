@@ -6,13 +6,13 @@
                     <router-link to='/home' style="margin-top: -16px;">
                         <a class="daohang">网站首页</a>&gt;&nbsp;
                     </router-link>
-                    <router-link to='/home/danggui' style="margin-top: -16px;">
-                        <a class="daohang">三会一课</a>
+                    <router-link to='/home/liangxue' style="margin-top: -16px;">
+                        <a class="daohang">两学一做</a>
                     </router-link>
                 </div>
                 <div class="ht5"></div>
                 <div class="newsbox" style="text-align: left;overflow: auto;">
-                    <div class="news_name"><h1>三会一课</h1></div>
+                    <div class="news_name"><h1>两学一做</h1></div>
                     <div class="col-xs-3 catemenu-box">
                         <ul class="catmenu-ul">
                             <h3 style="font-size: 20px;">组织生活
@@ -20,12 +20,12 @@
                                     <!--<a class="daohang">制度建设</a>-->
                                 <!--</router-link>-->
                             </h3>
-                            <li class="cactive">
+                            <li >
                                 <router-link to='/home/sanhui' >
                                     <a class="daohang">三会一课</a>
                                 </router-link>
                                 </li>
-                            <li  >
+                            <li  class="cactive">
                                 <router-link to='/home/liangxue' >
                                     <a class="daohang">两学一做</a>
                                 </router-link>

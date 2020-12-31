@@ -9,7 +9,7 @@
                     <div class="group_buying">
                         <ul>
                             <li class="clearfix" v-for="item in newslist">
-                                <a :href="'/newsdetail/'+item.id">
+                                <a href="javascript:;" @click="gotoDetail(item.id)">
                                     <!--<img :src="SERVER_HOST+'/file/downloadFile/'+item.image" alt=""/>-->
                                     <div class="tit">
                                          <h4>{{item.title}}</h4>
@@ -105,6 +105,11 @@
                         console.log(error);
                     }
                 );
+            },
+            gotoDetail(id){
+                console.log(id)
+                // $router.push({path: '/administrator/maintenance/view/'+scope.row.id})
+                this.$router.push({path: '/home/detail/'+id,query: { type: 'newslist' }});
             },
             // getAboutPage() {
             //     // findCompanyNews(para).then((res) => {

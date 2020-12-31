@@ -34,11 +34,15 @@ import noticeList from '../../views/home/noticeList'
 import planList from '../../views/zuzhi/planList'
 import zuzhiDetail from '../../views/zuzhi/zuzhiDetail'
 import xuanjuDetail from '../../views/zuzhi/xuanjuDetail'
+import DangzhengDetail from '../../views/home/DangzhengDetail'
 import bigdata from '../../views/home/bigData'
+import changepwd from '../../views/user/changepwd'
+import profile from '../../views/user/profile'
 
 
 export default {
   path: '*',
+  //   path: '/home',
   redirect: '/home',
   component:Layout,
   children:[
@@ -55,9 +59,10 @@ export default {
             {path: 'gongshi', component: Gongshi},
             {path: 'question', component: Question},
             {path: 'birthlist', component: Birthlist},
+            {path: 'birthdetail/:id', component: DangzhengDetail},
             {path: 'newslist', component: NewsList},
             {path: 'pictures', component: Pictures},
-            {path: 'picdetail', component: PictureDetail},
+            {path: 'picdetail/:id', component: PictureDetail},
             {path: 'elegant', component: Elegants},
             {path: 'elegantdetail', component: Eelegantdetail},
             {path: 'guide', component: guide},
@@ -90,6 +95,8 @@ export default {
             {path: 'juankuan', component: sanhui},
             {path: 'mailbox', component: sanhui},
             {path: 'plan', component: sanhui},
+            {path: 'changepwd', component: changepwd},
+            {path: 'profile', component: profile},
             ],
       hidden: true
     }

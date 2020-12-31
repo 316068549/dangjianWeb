@@ -46,7 +46,7 @@
   }
   @media (min-width: 768px){
     .el-header{
-      height: 70px !important;
+      height: 50px !important;
     }
     /*.web-content{
        margin-top: -70px;
@@ -57,7 +57,7 @@
     /*background-color: #25aad6;*/
     color: #333;
     text-align: center;
-    line-height: 70px;
+    line-height: 50px;
     padding: 0 0px;
   }
 

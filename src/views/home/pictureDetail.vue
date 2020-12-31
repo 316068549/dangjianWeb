@@ -18,16 +18,25 @@
                     <em>111</em>
                 </h2>
                 <div class="col-md-12" style="padding-top: 20px">
+                    <!--<img width="200" src="https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg" preview="1" preview-text="描述文字">-->
+                    <!--<img width="200" src="https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg" preview="1" preview-text="描述文字">-->
+                    <!--<img width="200" src="https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg" preview="2" preview-text="描述文字">-->
+                    <!--<img width="200" src="https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg" preview="2" preview-text="描述文字">-->
                     <el-row>
                         <el-col :span="6" class="pic" v-for="(item,index) in newslist" :style="{marginRight: index==0||index%3?'2%':'0'}">
                             <div class="demo-image__placeholder">
                                 <div class="block">
-
-                                    <el-image :src="item.src">
-                                        <div slot="placeholder" class="image-slot">
-                                            加载中<span class="dot">...</span>
-                                        </div>
-                                    </el-image>
+                                    <div  class="el-image">
+                                        <img style=" width: 100%;
+    height: 100%;position: relative;    vertical-align: top;
+    display: inline-block;"  :src="item.src" preview="1" preview-text="描述文字">
+                                    </div>
+                              <!---->
+                                    <!--<el-image :src="item.src" preview="1" preview-text="描述文字">-->
+                                        <!--<div slot="placeholder" class="image-slot">-->
+                                            <!--加载中<span class="dot">...</span>-->
+                                        <!--</div>-->
+                                    <!--</el-image>-->
                                     <span @click="like(item,index)" class="fl" style="padding-left: 5px" >
                                           <span class="el-icon-myaixin_shixin" v-if="item.islike"></span>
                                     <span class="el-icon-myaixin" v-if="!item.islike" ></span>

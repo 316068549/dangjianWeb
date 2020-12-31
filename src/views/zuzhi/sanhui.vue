@@ -6,13 +6,13 @@
                     <router-link to='/home' style="margin-top: -16px;">
                         <a class="daohang">网站首页</a>&gt;&nbsp;
                     </router-link>
-                    <router-link to='/home/danggui' style="margin-top: -16px;">
-                        <a class="daohang">三会一课</a>
-                    </router-link>
+                    <!--<router-link to='/home/danggui' style="margin-top: -16px;">-->
+                        <a class="daohang">组织生活</a>
+                    <!--</router-link>-->
                 </div>
                 <div class="ht5"></div>
                 <div class="newsbox" style="text-align: left;overflow: auto;">
-                    <div class="news_name"><h1>党规党纪</h1></div>
+                    <div class="news_name"><h1>组织生活</h1></div>
                     <div class="col-xs-3 catemenu-box">
                         <ul class="catmenu-ul">
                             <h3 style="font-size: 20px;">组织生活
@@ -21,35 +21,35 @@
                                 <!--</router-link>-->
                             </h3>
                             <li >
-                                <router-link to='/home/sanhui' >
+                                <router-link to='/home/sanhuilist' >
                                     <a class="daohang">三会一课</a>
                                 </router-link>
                                 </li>
                             <li  >
-                                <router-link to='/home/liangxue' >
+                                <router-link to='/home/liangxuelist' >
                                     <a class="daohang">两学一做</a>
                                 </router-link>
                             </li>
                             <li>
-                                <router-link to='/home/minzhu' >
+                                <router-link to='/home/minzhulist' >
                                     <a class="daohang">民主生活会</a>
                                 </router-link>
                             </li>
                             <li>
-                                <router-link to='/home/xuanju' >
+                                <router-link to='/home/xuanjulist' >
                                     <a class="daohang">民主选举</a>
                                 </router-link>
                             </li>
                             <li>
-                                <router-link to='/home/juankuan' >
+                                <router-link to='/home/juankuanlist' >
                                     <a class="daohang">捐款捐物</a>
                                 </router-link>
                             </li><li>
-                                <router-link to='/home/mailbox' >
+                                <router-link to='/home/maillist' >
                                     <a class="daohang">书记信箱</a>
                                 </router-link>
                             </li><li>
-                                <router-link to='/home/plan' >
+                                <router-link to='/home/planlist' >
                                     <a class="daohang">计划总结</a>
                                 </router-link>
                             </li>
@@ -168,9 +168,18 @@
                     break;
                     case 2:
                         this.$router.push({path: '/home/minzhulist'});
-
                     break;
                     case 3:
+                        this.$router.push({path: '/home/xuanjulist'});
+                    break;
+                    case 4:
+                        this.$router.push({path: '/home/juankuanlist'});
+                    break;
+                    case 5:
+                        this.$router.push({path: '/home/maillist'});
+                    break;
+                    case 6:
+                        this.$router.push({path: '/home/planlist'});
                     break;
                 }
 

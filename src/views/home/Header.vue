@@ -84,7 +84,31 @@
                     {
                     "link" : "/about",
                     "name" : "教育在线",
-                    "havesub" : false
+                        "havesub" : true,
+                        "sub" : [
+                            {
+                                "name" : "学习管理",
+                                "subLink" : ""
+                            },{
+                                "name" : "课程管理",
+                                "subLink" : ""
+                            },{
+                                "name" : "在线学习",
+                                "subLink" : ""
+                            },{
+                                "name" : "在线考试",
+                                "subLink" : ""
+                            },{
+                                "name" : "在线统计",
+                                "subLink" : ""
+                            },{
+                                "name" : "认证管理",
+                                "subLink" : ""
+                            },{
+                                "name" : "历史党建馆",
+                                "subLink" : ""
+                            }
+                        ]
                 },{
                     "link" : "",
                     "name" : "制度建设",
@@ -147,8 +171,50 @@
                 },{
                     "link" : "/home/bigdata",
                     "name" : "大数据中心",
-                    "havesub" : false
-                }
+                    "havesub" : false,
+                        "sub" : [
+                            {
+                                "name" : "党员情况统计",
+                                "subLink" : ""
+                            },{
+                                "name" : "党组织情况统计",
+                                "subLink" : ""
+                            },{
+                                "name" : "党员缴费统计",
+                                "subLink" : ""
+                            },{
+                                "name" : "党员3D画像",
+                                "subLink" : ""
+                            },{
+                                "name" : "党组织党建地图",
+                                "subLink" : ""
+                            },{
+                                "name" : "党建台账",
+                                "subLink" : ""
+                            },{
+                                "name" : "公文阅览统计",
+                                "subLink" : ""
+                            },{
+                                "name" : "进度排名",
+                                "subLink" : ""
+                            },{
+                                "name" : "舆情分析",
+                                "subLink" : ""
+                            },
+                        ]
+                },{
+                        "link" : "/home/bigdata",
+                        "name" : "个人中心",
+                        "havesub" : true,
+                        "sub" : [
+                            {
+                                "name" : "修改密码",
+                                "subLink" : "/home/changepwd"
+                            },{
+                                "name" : "修改个人信息",
+                                "subLink" : "/home/profile"
+                            }]
+                    }
                 ]
             }
         },
@@ -217,21 +283,15 @@
     /*top: 0;*/
     /*left: 0;*/
     width: 100%;
-    height: 70px;
-    /*background-color: #25aad6;*/
-    /*background: rgba(0,0,0,.7);*/
-    /*opacity: 0.8;*/
-    /*position:fixed;*/
-    /*z-index:10;*/
-    /*width: 100%;*/
-    /*height: 60px;*/
+    height: 50px;
+
   }
 
   .header,.navbar{
     /*background: #25aad6;*/
 
     border: none;
-    height: 70px;
+    height: 50px;
   }
   .header{
     background: #d50f10;
@@ -274,7 +334,7 @@
   }
   .navbar-brand {
     padding: 15px 15px;
-    height: 70px;
+    height: 50px;
   }
 
   .navbar-default .navbar-toggle {
@@ -356,8 +416,8 @@
   }
   @media (min-width: 768px){
     .navbar-nav>li>a {
-      height: 70px;
-      line-height: 70px;
+      height: 50px;
+      line-height:50px;
       padding-top: 0px;
       padding-bottom: 0px;
       width: 100px;
@@ -368,7 +428,7 @@
       height: 40px;
     }
     .navbar-default .navbar-collapse  {
-      margin-left: 500px;
+      margin-left: 470px;
     }
     .navbar {
       width: 1200px;

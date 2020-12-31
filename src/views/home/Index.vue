@@ -12,9 +12,11 @@
         <!--<img :src="require('../../assets/images/banner1.jpg')" alt="">-->
         <!--<img src="http://192.168.1.151:8081/file/downloadFile/3cf28226-2bb3-4c6c-a0ba-b84fa5100279.jpg" alt="">-->
         <swiper :options="swiperOption" ref="mySwiper" class="swiperBox">
-          <swiper-slide v-for="(slide, index) in swiperSlides" :key="index">
-            <img :src="slide.image" >
-            <div class="jieshao">{{slide.title}}</div>
+          <swiper-slide v-for="(slide, index) in swiperSlides" :key="index" >
+            <a href="javascript:;" @click="goPage(index)">
+              <img :src="slide.image"  >
+              <div class="jieshao">{{slide.title}}</div>
+            </a>
             <!--<img :src="SERVER_HOST+'/file/downloadFile/'+slide.image" >-->
           </swiper-slide>
           <!--<div class="swiper-pagination "  slot="pagination"></div>-->
@@ -36,7 +38,7 @@
       <div class="tab_new_box">
         <el-tabs type="border-card">
           <el-tab-pane>
-            <span slot="label"><i class="el-icon-date"></i> 通知公告</span>
+            <span slot="label"><i class="el-icon-date"></i>党建要闻  </span>
             <div class="new_container" style="display: block;">
               <ul>
                 <li>
@@ -66,7 +68,7 @@
               </li>            </ul>
             </div>
           </el-tab-pane>
-          <el-tab-pane label="党建要闻">
+          <el-tab-pane label="通知公告">
             <div class="new_container" style="display: block;">
               <ul>
                 <li>
@@ -107,7 +109,7 @@
     <div class="box">
       <div class="new_list">
         <div class="new_tit">
-          <h3><i class="icon iconfont icon-danghui-copy"></i>基层党建</h3>
+          <h3><i class="icon iconfont icon-danghui-copy"></i>党内公示</h3>
           <span class="more"><a href="/index.php/home/list/index/sid/19.html">更多</a></span>
           <div class="clear"></div>
         </div>
@@ -134,7 +136,7 @@
       </div>
       <div class="new_list">
         <div class="new_tit">
-          <h3><i class="icon iconfont icon-danghui-copy"></i>干部之家</h3>
+          <h3><i class="icon iconfont icon-danghui-copy"></i>办事指南</h3>
           <span class="more"><a href="/index.php/home/list/index/sid/20.html">更多</a></span>
           <div class="clear"></div>
         </div>
@@ -158,7 +160,7 @@
       </div>
       <div class="new_list no_mar">
         <div class="new_tit">
-          <h3><i class="icon iconfont icon-danghui-copy"></i>人才天地</h3>
+          <h3><i class="icon iconfont icon-danghui-copy"></i>党规党纪</h3>
           <span class="more"><a href="/index.php/home/list/index/sid/21.html">更多</a></span>
           <div class="clear"></div>
         </div>
@@ -183,86 +185,86 @@
     </div>
     <!--新闻模块2-->
     <div class="ht"></div>
-    <div class="box">
-      <div class="banner_img">
-        <a href="http://www.jzdj.org/" target="_blank">
-          <img src="../../assets/img/5d565aca5c170.jpg">
-        </a>
-      </div>
-    </div>
-    <div class="ht20"></div>
-    <div class="box">
-      <div class="new_list">
-        <div class="new_tit">
-          <h3><i class="icon iconfont icon-danghui-copy"></i>公务员工作</h3>
-          <span class="more"><a href="/index.php/home/list/index/sid/22.html">更多</a></span>
-          <div class="clear"></div>
-        </div>
-        <ul>
-          <li>
-            <a href="http://www.wsbm.jzrsks.com/cjcx/2020/202/Default.aspx" target="_blank">	                    	                    河南省2020年统一考试录用公务员焦作市...</a>
-          </li><li>
-          <a href="http://www.scs.gov.cn/zcfg/202003/t20200313_16203.html" target="_blank">	                    	                    公务员范围规定</a>
-        </li><li>
-          <a href="http://www.scs.gov.cn/zcfg/202003/t20200313_16204.html" target="_blank">	                    	                    公务员登记办法</a>
-        </li><li>
-          <a href="http://www.scs.gov.cn/zcfg/202003/t20200313_16205.html" target="_blank">	                    	                    公务员职务、职级与级别管理办法</a>
-        </li><li>
-          <a href="http://www.scs.gov.cn/zcfg/202003/t20200313_16206.html" target="_blank">	                    	                    参照《中华人民共和国公务员法》管理的单位...</a>
-        </li><li>
-          <a href="http://www.scs.gov.cn/zcfg/202001/t20200108_16198.html" target="_blank">	                    	                    公务员录用规定</a>
-        </li>			</ul>
-      </div>
-      <div class="new_list">
-        <div class="new_tit">
-          <h3><i class="icon iconfont icon-danghui-copy"></i>党员教育</h3>
-          <span class="more"><a href="/index.php/home/list/index/sid/30.html">更多</a></span>
-          <div class="clear"></div>
-        </div>
-        <ul>
-          <li>
-            <a href="/index.php/home/content/index/aid/1771.html">
-              2019年12月焦作市党员干部远程教育学...</a>
-          </li><li>
-          <a href="/index.php/home/content/index/aid/1770.html">
-            2019年11月焦作市党员干部远程教育学...</a>
-        </li><li>
-          <a href="/index.php/home/content/index/aid/1769.html">
-            2019年10月焦作市党员干部远程教育学...</a>
-        </li><li>
-          <a href="/index.php/home/content/index/aid/1228.html">
-            2019年9月焦作市党员干部远程教育学习...</a>
-        </li><li>
-          <a href="/index.php/home/content/index/aid/1088.html">
-            2019年8月焦作市党员干部远程教育学习...</a>
-        </li><li>
-          <a href="/index.php/home/content/index/aid/1087.html">
-            2019年7月焦作市党员干部远程教育学习...</a>
-        </li>			</ul>
-      </div>
-      <div class="new_list no_mar">
-        <div class="new_tit">
-          <h3><i class="icon iconfont icon-danghui-copy"></i>廉政之窗</h3>
-          <span class="more"><a href="/index.php/home/list/index/sid/27.html">更多</a></span>
-          <div class="clear"></div>
-        </div>
-        <ul>
-          <li>
-            <a href="http://www.12371.cn/2019/01/06/ARTI1546779927287206.shtml" target="_blank">	                    	                    中共中央办公厅印发《中国共产党纪律检查机...</a>
-          </li><li>
-          <a href="http://news.12371.cn/2016/11/02/ARTI1478087905680175.shtml" target="_blank">	                    	                    中国共产党党内监督条例（全文）</a>
-        </li><li>
-          <a href="http://www.12371.cn/2018/08/27/ARTI1535321516261382.shtml" target="_blank">	                    	                    中共中央印发《中国共产党纪律处分条例》</a>
-        </li><li>
-          <a href="http://news.12371.cn/2015/10/22/ARTI1445481444215144.shtml" target="_blank">	                    	                    中国共产党廉洁自律准则</a>
-        </li><li>
-          <a href="http://www.12371.cn/2019/09/04/ARTI1567597631554709.shtml" target="_blank">	                    	                    《中国共产党问责条例》修订前后对照表</a>
-        </li><li>
-          <a href="http://www.12371.cn/2019/09/04/ARTI1567592644876586.shtml" target="_blank">	                    	                    中共中央印发《中国共产党问责条例》</a>
-        </li>			</ul>
-      </div>
-      <div class="clear"></div>
-    </div>
+    <!--<div class="box">-->
+      <!--<div class="banner_img">-->
+        <!--<a href="http://www.jzdj.org/" target="_blank">-->
+          <!--<img src="../../assets/img/5d565aca5c170.jpg">-->
+        <!--</a>-->
+      <!--</div>-->
+    <!--</div>-->
+    <!--<div class="ht20"></div>-->
+    <!--<div class="box">-->
+      <!--<div class="new_list">-->
+        <!--<div class="new_tit">-->
+          <!--<h3><i class="icon iconfont icon-danghui-copy"></i>公务员工作</h3>-->
+          <!--<span class="more"><a href="/index.php/home/list/index/sid/22.html">更多</a></span>-->
+          <!--<div class="clear"></div>-->
+        <!--</div>-->
+        <!--<ul>-->
+          <!--<li>-->
+            <!--<a href="http://www.wsbm.jzrsks.com/cjcx/2020/202/Default.aspx" target="_blank">	                    	                    河南省2020年统一考试录用公务员焦作市...</a>-->
+          <!--</li><li>-->
+          <!--<a href="http://www.scs.gov.cn/zcfg/202003/t20200313_16203.html" target="_blank">	                    	                    公务员范围规定</a>-->
+        <!--</li><li>-->
+          <!--<a href="http://www.scs.gov.cn/zcfg/202003/t20200313_16204.html" target="_blank">	                    	                    公务员登记办法</a>-->
+        <!--</li><li>-->
+          <!--<a href="http://www.scs.gov.cn/zcfg/202003/t20200313_16205.html" target="_blank">	                    	                    公务员职务、职级与级别管理办法</a>-->
+        <!--</li><li>-->
+          <!--<a href="http://www.scs.gov.cn/zcfg/202003/t20200313_16206.html" target="_blank">	                    	                    参照《中华人民共和国公务员法》管理的单位...</a>-->
+        <!--</li><li>-->
+          <!--<a href="http://www.scs.gov.cn/zcfg/202001/t20200108_16198.html" target="_blank">	                    	                    公务员录用规定</a>-->
+        <!--</li>			</ul>-->
+      <!--</div>-->
+      <!--<div class="new_list">-->
+        <!--<div class="new_tit">-->
+          <!--<h3><i class="icon iconfont icon-danghui-copy"></i>党员教育</h3>-->
+          <!--<span class="more"><a href="/index.php/home/list/index/sid/30.html">更多</a></span>-->
+          <!--<div class="clear"></div>-->
+        <!--</div>-->
+        <!--<ul>-->
+          <!--<li>-->
+            <!--<a href="/index.php/home/content/index/aid/1771.html">-->
+              <!--2019年12月焦作市党员干部远程教育学...</a>-->
+          <!--</li><li>-->
+          <!--<a href="/index.php/home/content/index/aid/1770.html">-->
+            <!--2019年11月焦作市党员干部远程教育学...</a>-->
+        <!--</li><li>-->
+          <!--<a href="/index.php/home/content/index/aid/1769.html">-->
+            <!--2019年10月焦作市党员干部远程教育学...</a>-->
+        <!--</li><li>-->
+          <!--<a href="/index.php/home/content/index/aid/1228.html">-->
+            <!--2019年9月焦作市党员干部远程教育学习...</a>-->
+        <!--</li><li>-->
+          <!--<a href="/index.php/home/content/index/aid/1088.html">-->
+            <!--2019年8月焦作市党员干部远程教育学习...</a>-->
+        <!--</li><li>-->
+          <!--<a href="/index.php/home/content/index/aid/1087.html">-->
+            <!--2019年7月焦作市党员干部远程教育学习...</a>-->
+        <!--</li>			</ul>-->
+      <!--</div>-->
+      <!--<div class="new_list no_mar">-->
+        <!--<div class="new_tit">-->
+          <!--<h3><i class="icon iconfont icon-danghui-copy"></i>廉政之窗</h3>-->
+          <!--<span class="more"><a href="/index.php/home/list/index/sid/27.html">更多</a></span>-->
+          <!--<div class="clear"></div>-->
+        <!--</div>-->
+        <!--<ul>-->
+          <!--<li>-->
+            <!--<a href="http://www.12371.cn/2019/01/06/ARTI1546779927287206.shtml" target="_blank">	                    	                    中共中央办公厅印发《中国共产党纪律检查机...</a>-->
+          <!--</li><li>-->
+          <!--<a href="http://news.12371.cn/2016/11/02/ARTI1478087905680175.shtml" target="_blank">	                    	                    中国共产党党内监督条例（全文）</a>-->
+        <!--</li><li>-->
+          <!--<a href="http://www.12371.cn/2018/08/27/ARTI1535321516261382.shtml" target="_blank">	                    	                    中共中央印发《中国共产党纪律处分条例》</a>-->
+        <!--</li><li>-->
+          <!--<a href="http://news.12371.cn/2015/10/22/ARTI1445481444215144.shtml" target="_blank">	                    	                    中国共产党廉洁自律准则</a>-->
+        <!--</li><li>-->
+          <!--<a href="http://www.12371.cn/2019/09/04/ARTI1567597631554709.shtml" target="_blank">	                    	                    《中国共产党问责条例》修订前后对照表</a>-->
+        <!--</li><li>-->
+          <!--<a href="http://www.12371.cn/2019/09/04/ARTI1567592644876586.shtml" target="_blank">	                    	                    中共中央印发《中国共产党问责条例》</a>-->
+        <!--</li>			</ul>-->
+      <!--</div>-->
+      <!--<div class="clear"></div>-->
+    <!--</div>-->
     <div class="ht20"></div>
     <div class="box">
       <!--<el-carousel :interval="114000" type="card" height="300px" indicator-position="none" autoplay="false">-->
@@ -271,9 +273,11 @@
         <!--</el-carousel-item>-->
       <!--</el-carousel>-->
       <div class="video_tit_bg">
-        <div class="video_tit fl"></div>
-        <div class="more"><a href="/index.php/home/video/index.html">更多</a></div>
-        <div class="clear"></div>
+        <div class="new_tit">
+          <h3><i class="icon iconfont icon-danghui-copy"></i>优秀党员风采</h3>
+          <span class="more"><a href="/index.php/home/list/index/sid/21.html">更多</a></span>
+          <div class="clear"></div>
+        </div>
       </div>
       <!-- <div class="video_4">
               <a href="http://www.hndyjyfw.gov.cn/courseDetail.html?id=367a6c24-e18f-4edb-b3fc-794fb9fa718c&amp;type=dfyj&amp;city=jiaozuo" target="_blank">
@@ -368,193 +372,24 @@
               </div>
           </div> -->
       <div id="marquee1" class="marqueeleft">
-        <div style="width:8000px;">
-          <ul id="marquee1_1">
-            <div class="video_4">
+        <!--<div style="width:8000px;">-->
+        <div style="width:3000px;">
+          <ul id="marquee1_1"  ref="con1a" :class="{anim:animate==true}" @mouseenter="mEnter" @mouseleave="mLeave" >
+            <div class="video_4" v-for='item in items'>
               <a href="http://www.hndyjyfw.gov.cn/courseDetail.html?id=367a6c24-e18f-4edb-b3fc-794fb9fa718c&amp;type=dfyj&amp;city=jiaozuo" target="_blank">
-                <img src="/Public/attached/2019/09/06/5d71ecf758522.jpg">
-                <p>《先锋》电视栏目</p>
+                <img src="../../assets/img/5d565aca5c170.jpg">
+                <p class="text-center">{{item.name}}</p>
                 <div class="bg000"></div>
               </a>
-              <div id="caseBlanche">
-                <a href="http://www.hndyjyfw.gov.cn/courseDetail.html?id=367a6c24-e18f-4edb-b3fc-794fb9fa718c&amp;type=dfyj&amp;city=jiaozuo" target="_blank">			                        <div id="rond">
-                  <div id="test"></div>
-                </div>
-                  <div id="load"></div>
-                </a>
-              </div>
-            </div><div class="video_4">
-            <a href="http://www.hndyjyfw.gov.cn/courseDetail.html?id=82d68411-6d16-4e4b-9b28-0ce9f0ac7e82&amp;type=dfyj&amp;city=jiaozuo" target="_blank">
-              <img src="/Public/attached/2019/09/06/5d72242895e65.jpg">
-              <p>《“板凳局长”杨法谊》</p>
-              <div class="bg000"></div>
-            </a>
-            <div id="caseBlanche">
-              <a href="http://www.hndyjyfw.gov.cn/courseDetail.html?id=82d68411-6d16-4e4b-9b28-0ce9f0ac7e82&amp;type=dfyj&amp;city=jiaozuo" target="_blank">			                        <div id="rond">
-                <div id="test"></div>
-              </div>
-                <div id="load"></div>
-              </a>
+              <!--<div id="caseBlanche">-->
+                <!--<a href="http://www.hndyjyfw.gov.cn/courseDetail.html?id=367a6c24-e18f-4edb-b3fc-794fb9fa718c&amp;type=dfyj&amp;city=jiaozuo" target="_blank">			                        <div id="rond">-->
+                  <!--<div id="test"></div>-->
+                <!--</div>-->
+                  <!--<div id="load"></div>-->
+                <!--</a>-->
+              <!--</div>-->
             </div>
-          </div><div class="video_4">
-            <a href="http://chuxin.people.cn/GB/428819/428859/index.html" target="_blank">
-              <img src="/Public/attached/2019/09/06/5d71fc1d8f65b.jpg">
-              <p>“不忘初心 牢记使命”主题教育微视频作品展示</p>
-              <div class="bg000"></div>
-            </a>
-            <div id="caseBlanche">
-              <a href="http://chuxin.people.cn/GB/428819/428859/index.html" target="_blank">			                        <div id="rond">
-                <div id="test"></div>
-              </div>
-                <div id="load"></div>
-              </a>
-            </div>
-          </div><div class="video_4">
-            <a href="http://www.hndyjyfw.gov.cn/courseDetail.html?id=399f978c-e4a7-4771-ab42-4afe85379a3f&amp;type=hnyj&amp;idx1=0&amp;idx2=0" target="_blank">
-              <img src="/Public/attached/2019/09/06/5d71f95729d16.jpg">
-              <p>我是援疆人</p>
-              <div class="bg000"></div>
-            </a>
-            <div id="caseBlanche">
-              <a href="http://www.hndyjyfw.gov.cn/courseDetail.html?id=399f978c-e4a7-4771-ab42-4afe85379a3f&amp;type=hnyj&amp;idx1=0&amp;idx2=0" target="_blank">			                        <div id="rond">
-                <div id="test"></div>
-              </div>
-                <div id="load"></div>
-              </a>
-            </div>
-          </div><div class="video_4">
-            <a href="http://www.hndyjyfw.gov.cn/courseDetail.html?id=27f96705-2889-49c8-81d1-2e711a2f2838&amp;type=dfyj" target="_blank">
-              <img src="/Public/attached/2019/09/06/5d71ef8961580.jpg">
-              <p>支部规范化—换届选举</p>
-              <div class="bg000"></div>
-            </a>
-            <div id="caseBlanche">
-              <a href="http://www.hndyjyfw.gov.cn/courseDetail.html?id=27f96705-2889-49c8-81d1-2e711a2f2838&amp;type=dfyj" target="_blank">			                        <div id="rond">
-                <div id="test"></div>
-              </div>
-                <div id="load"></div>
-              </a>
-            </div>
-          </div><div class="video_4">
-            <a href="http://www.hndyjyfw.gov.cn/epg_dfyj.html?city=jiaozuo" target="_blank">
-              <img src="/Public/attached/2019/09/06/5d71f70d13547.jpg">
-              <p>焦作市远程教育平台课件专题</p>
-              <div class="bg000"></div>
-            </a>
-            <div id="caseBlanche">
-              <a href="http://www.hndyjyfw.gov.cn/epg_dfyj.html?city=jiaozuo" target="_blank">			                        <div id="rond">
-                <div id="test"></div>
-              </div>
-                <div id="load"></div>
-              </a>
-            </div>
-          </div><div class="video_4">
-            <a href="http://www.hndyjyfw.gov.cn/courseDetail.html?id=aca1fa15-27c1-4a1f-be81-984e9bdf932f&amp;type=dfyj&amp;city=jiaozuo" target="_blank">
-              <img src="/edit/uploadfile/2018726103442704.jpg">
-              <p>“不忘初心 牢记使命”焦作市庆祝建党98周年表彰晚会一堂用艺...</p>
-              <div class="bg000"></div>
-            </a>
-            <div id="caseBlanche">
-              <a href="http://www.hndyjyfw.gov.cn/courseDetail.html?id=aca1fa15-27c1-4a1f-be81-984e9bdf932f&amp;type=dfyj&amp;city=jiaozuo" target="_blank">			                        <div id="rond">
-                <div id="test"></div>
-              </div>
-                <div id="load"></div>
-              </a>
-            </div>
-          </div>				</ul>
-          <ul id="marquee1_2">
-            <div class="video_4">
-              <a href="http://www.hndyjyfw.gov.cn/courseDetail.html?id=367a6c24-e18f-4edb-b3fc-794fb9fa718c&amp;type=dfyj&amp;city=jiaozuo" target="_blank">
-                <img src="/Public/attached/2019/09/06/5d71ecf758522.jpg">
-                <p>《先锋》电视栏目</p>
-                <div class="bg000"></div>
-              </a>
-              <div id="caseBlanche">
-                <a href="http://www.hndyjyfw.gov.cn/courseDetail.html?id=367a6c24-e18f-4edb-b3fc-794fb9fa718c&amp;type=dfyj&amp;city=jiaozuo" target="_blank">			                        <div id="rond">
-                  <div id="test"></div>
-                </div>
-                  <div id="load"></div>
-                </a>
-              </div>
-            </div><div class="video_4">
-            <a href="http://www.hndyjyfw.gov.cn/courseDetail.html?id=82d68411-6d16-4e4b-9b28-0ce9f0ac7e82&amp;type=dfyj&amp;city=jiaozuo" target="_blank">
-              <img src="/Public/attached/2019/09/06/5d72242895e65.jpg">
-              <p>《“板凳局长”杨法谊》</p>
-              <div class="bg000"></div>
-            </a>
-            <div id="caseBlanche">
-              <a href="http://www.hndyjyfw.gov.cn/courseDetail.html?id=82d68411-6d16-4e4b-9b28-0ce9f0ac7e82&amp;type=dfyj&amp;city=jiaozuo" target="_blank">			                        <div id="rond">
-                <div id="test"></div>
-              </div>
-                <div id="load"></div>
-              </a>
-            </div>
-          </div><div class="video_4">
-            <a href="http://chuxin.people.cn/GB/428819/428859/index.html" target="_blank">
-              <img src="/Public/attached/2019/09/06/5d71fc1d8f65b.jpg">
-              <p>“不忘初心 牢记使命”主题教育微视频作品展示</p>
-              <div class="bg000"></div>
-            </a>
-            <div id="caseBlanche">
-              <a href="http://chuxin.people.cn/GB/428819/428859/index.html" target="_blank">			                        <div id="rond">
-                <div id="test"></div>
-              </div>
-                <div id="load"></div>
-              </a>
-            </div>
-          </div><div class="video_4">
-            <a href="http://www.hndyjyfw.gov.cn/courseDetail.html?id=399f978c-e4a7-4771-ab42-4afe85379a3f&amp;type=hnyj&amp;idx1=0&amp;idx2=0" target="_blank">
-              <img src="/Public/attached/2019/09/06/5d71f95729d16.jpg">
-              <p>我是援疆人</p>
-              <div class="bg000"></div>
-            </a>
-            <div id="caseBlanche">
-              <a href="http://www.hndyjyfw.gov.cn/courseDetail.html?id=399f978c-e4a7-4771-ab42-4afe85379a3f&amp;type=hnyj&amp;idx1=0&amp;idx2=0" target="_blank">			                        <div id="rond">
-                <div id="test"></div>
-              </div>
-                <div id="load"></div>
-              </a>
-            </div>
-          </div><div class="video_4">
-            <a href="http://www.hndyjyfw.gov.cn/courseDetail.html?id=27f96705-2889-49c8-81d1-2e711a2f2838&amp;type=dfyj" target="_blank">
-              <img src="/Public/attached/2019/09/06/5d71ef8961580.jpg">
-              <p>支部规范化—换届选举</p>
-              <div class="bg000"></div>
-            </a>
-            <div id="caseBlanche">
-              <a href="http://www.hndyjyfw.gov.cn/courseDetail.html?id=27f96705-2889-49c8-81d1-2e711a2f2838&amp;type=dfyj" target="_blank">			                        <div id="rond">
-                <div id="test"></div>
-              </div>
-                <div id="load"></div>
-              </a>
-            </div>
-          </div><div class="video_4">
-            <a href="http://www.hndyjyfw.gov.cn/epg_dfyj.html?city=jiaozuo" target="_blank">
-              <img src="/Public/attached/2019/09/06/5d71f70d13547.jpg">
-              <p>焦作市远程教育平台课件专题</p>
-              <div class="bg000"></div>
-            </a>
-            <div id="caseBlanche">
-              <a href="http://www.hndyjyfw.gov.cn/epg_dfyj.html?city=jiaozuo" target="_blank">			                        <div id="rond">
-                <div id="test"></div>
-              </div>
-                <div id="load"></div>
-              </a>
-            </div>
-          </div><div class="video_4">
-            <a href="http://www.hndyjyfw.gov.cn/courseDetail.html?id=aca1fa15-27c1-4a1f-be81-984e9bdf932f&amp;type=dfyj&amp;city=jiaozuo" target="_blank">
-              <img src="/edit/uploadfile/2018726103442704.jpg">
-              <p>“不忘初心 牢记使命”焦作市庆祝建党98周年表彰晚会一堂用艺...</p>
-              <div class="bg000"></div>
-            </a>
-            <div id="caseBlanche">
-              <a href="http://www.hndyjyfw.gov.cn/courseDetail.html?id=aca1fa15-27c1-4a1f-be81-984e9bdf932f&amp;type=dfyj&amp;city=jiaozuo" target="_blank">			                        <div id="rond">
-                <div id="test"></div>
-              </div>
-                <div id="load"></div>
-              </a>
-            </div>
-          </div>				</ul>
+          </ul>
         </div>
       </div>
 
@@ -587,6 +422,16 @@
             return {
                 // SERVER_HOST:SERVER_HOST,
                 pageNum: 1,
+                animate:false,
+                items:[ //消息列表对应的数组
+                    {name:"马云"},
+                    {name:"雷军"},
+                    {name:"王勤1"},
+                    {name:"王勤2"},
+                    {name:"王勤3"},
+                    {name:"王勤4"},
+                    {name:"王勤5"},
+                ],
                 pageSize: 15,
                 swiperOption: {
                     notNextTick: true,
@@ -646,6 +491,28 @@
             }
         },
         methods: {
+            scroll(){
+                let con1 = this.$refs.con1a;
+                if(con1) con1.style.marginLeft='-280px';
+                this.animate=!this.animate;
+                var that = this; // 在异步函数中会出现this的偏移问题，此处一定要先保存好this的指向
+                setTimeout(()=>{
+                      that.items.push(that.items[0]);
+                    that.items.shift();
+                    con1.style.marginLeft='0px';
+                    that.animate=!that.animate; // 这个地方如果不把animate 取反会出现消息回滚的现象，此时把ul 元素的过渡属性取消掉就可以完美实现无缝滚动的效果了
+                },1000)
+            },
+            mEnter () {
+                clearInterval(this.timer1)
+            },
+            mLeave () {
+                this.timer1= setInterval(this.scroll,2000)
+            },
+            goPage(index){
+                console.log(index);
+                this.$router.push({path: '/home/birthlist'})
+            }
 //             getBanner() {
 // //                let para = {
 // //                    pageNum: this.pageNum,
@@ -678,13 +545,20 @@
 //             },
         },
         mounted() {
+            this.timer1= setInterval(this.scroll,2000)
             // this.getBanner();
-        }
+        },
+        beforeDestroy() {
+            clearInterval(this.timer1)
+        },
     }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+  .anim{
+    transition: all 1s;
+  }
   .tab_new_box {
     float: left;
     width: 440px;
@@ -738,7 +612,7 @@
   .video_tit{width:114px;height:45px;}
   .video_4{width:260px;float:left;background:#fff;margin:0px 10px;height:190px;margin-top:15px;position:relative;}
   .video_4 img{height:150px;width:260px;}
-  .video_4 p{text-align:left;font-size:14px;padding-top:5px;line-height:22px;}
+  .video_4 p{font-size:14px;padding-top:5px;line-height:22px;}
 
   .video_4 .bg000{position:absolute;background:#000;  fliter: alpha(opacity=30); background:rgba(0,0,0,.3); display:none; top:0px; left:10; z-index:1;width:260px;height:150px;padding:0px;}
   .video_4 #caseBlanche #test{height:8px;width:8px;position:absolute;background-color:#fff;border-radius:50%;top:0px;left:10px; z-index:2;cursor:pointer;}
@@ -760,7 +634,13 @@
   .video_4:hover .bg000{display:block;}
   .video_4:hover #caseBlanche{display:block;}
 
-  .marqueeleft{height:190px;width:1100px;overflow:hidden;margin:0px auto;}
+  .marqueeleft{
+    height:190px;
+    width:1100px;
+    overflow:hidden;
+    margin:0px auto;
+    /*border: 1px solid black;*/
+  }
   .marqueeleft ul{float:left;}
   .xxzl {
     display: block;
@@ -769,7 +649,7 @@
     img{
       text-align: center;
     }
-    margin: 10px auto;
+    margin: 0px auto;
     margin-bottom: 15px;
   }
   .new_container ul {

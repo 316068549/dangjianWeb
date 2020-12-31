@@ -7,10 +7,14 @@ import 'element-ui/lib/theme-chalk/index.css';
 import './assets/icon/iconfont.css';
 import filter from './common/filter'
 import util from './common/util'
+import preview from 'vue-photo-preview'
+import 'vue-photo-preview/dist/skin.css'
+// import echarts from 'echarts'
+Vue.use(preview)
 // import 'swiper/dist/css/swiper.css';
 var  echarts = require('echarts');
 
-Vue.prototype.$echarts = echarts
+Vue.prototype.echarts = echarts
 
 import {
     Swiper as SwiperClass,

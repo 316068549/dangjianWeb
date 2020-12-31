@@ -9,7 +9,7 @@
                     <div class="group_buying">
                         <ul>
                             <li class="clearfix" v-for="(item,index) in newslist">
-                                <a :href="'/newsdetail/'+item.id">
+                                <a href="javascript:;" @click="gotoDetail(item.id)">
                                     <div class="radis">
                                         <img :src="SERVER_HOST+'/file/downloadFile/'+item.image" alt=""/>
                                     </div>
@@ -101,7 +101,12 @@
                     }
 
                 })
-            }
+            },
+            gotoDetail(id){
+                console.log(id)
+                // $router.push({path: '/administrator/maintenance/view/'+scope.row.id})
+                this.$router.push({path: '/home/birthdetail/'+id});
+            },
         }
     }
 

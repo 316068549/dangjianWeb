@@ -8,7 +8,7 @@
                 <div class="col-md-12" style="padding-top: 20px">
                     <el-row>
                         <el-col :span="6" class="pic" v-for="(item,index) in newslist" :style="{marginRight: index==0||index%3?'2%':'0'}">
-                            <div class="demo-image__placeholder">
+                            <div class="demo-image__placeholder" @click="gotoDetail(item.id)">
                                 <div class="block">
 
                                     <el-image :src="item.src">
@@ -110,7 +110,10 @@
                     }
 
                 })
-            }
+            },
+            gotoDetail(id){
+                this.$router.push({path: '/home/picdetail/'+id});
+            },
         }
     }
 

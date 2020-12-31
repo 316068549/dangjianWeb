@@ -5,6 +5,8 @@
 @import './sidebar.scss';
 @import './variable.scss';
 body {
+  width: 100%;
+  min-width: 1200px;
   height: 100%;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
@@ -175,6 +177,7 @@ code {
   background-color: #d50f10 !important;
   border-color: #d50f10 !important;
 }
+
 .green{
   color:#73D661
 }.hong{
@@ -188,6 +191,9 @@ code {
 }
 .box{
   min-height: 350px;
+}
+.bon .box{
+  min-height: 190px;
 }
 //分页颜色
 .el-pagination.is-background .el-pager li:not(.disabled).active {
@@ -332,5 +338,10 @@ code {
   }
   .github-corner .octo-arm {
     animation: octocat-wave 560ms ease-in-out
+  }
+}
+@media (min-width: 1400px){
+  .main {
+    min-height: 592px;
   }
 }

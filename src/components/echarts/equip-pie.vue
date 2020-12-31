@@ -28,7 +28,7 @@
             drawPie(){
                 let that = this;
                 // 基于准备好的dom，初始化echarts实例
-                this.myChart = this.$echarts.init(this.$refs.equipPie);
+                this.myChart = this.echarts.init(this.$refs.equipPie);
                 // 绘制图表
                 if(this.type==1){
                     this.myChart.setOption({
