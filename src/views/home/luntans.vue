@@ -6,83 +6,92 @@
                     <router-link to='/home' style="margin-top: -16px;">
                         <a class="daohang">网站首页</a>&gt;&nbsp;
                     </router-link>
-                    <router-link to='/home/danggui' style="margin-top: -16px;">
-                        <a class="daohang">党规党纪</a>
+                    <router-link to='/home/guide' style="margin-top: -16px;">
+                        <a class="daohang">党建论坛</a>
                     </router-link>
                 </div>
                 <div class="ht5"></div>
                 <div class="newsbox" style="text-align: left;overflow: auto;">
-                    <div class="news_name"><h1>党规党纪</h1></div>
+                    <div class="news_name"><h1>党建论坛</h1></div>
                     <div class="col-xs-3 catemenu-box">
                         <ul class="catmenu-ul">
-                            <h3 style="font-size: 20px;">制度建设
-                                <!--<router-link to='/home' >-->
-                                <!--<a class="daohang">制度建设</a>-->
-                                <!--</router-link>-->
+                            <h3 style="font-size: 20px;"> 信息门户
                             </h3>
-                            <li >
-                                <router-link to='/home/dangzhang' >
-                                    <a class="daohang">党章</a>
-                                </router-link>
-                            </li>
-                            <li class="cactive">
-                                <router-link to='/home/danggui' >
-                                    <a class="daohang">党规党纪</a>
+                            <li>
+                                <router-link to='/home/newslist' >
+                                    <a class="daohang">党建要闻</a>
                                 </router-link>
                             </li>
                             <li >
-                                <router-link to='/home/study' >
-                                    <a class="daohang">学习文件</a>
+                                <router-link to='/home/notices' >
+                                    <a class="daohang">通知公告</a>
                                 </router-link>
                             </li>
                             <li >
-                                <router-link to='/home/fanfu' >
-                                    <a class="daohang">反腐倡廉</a>
+                                <router-link to='/home/gongshi' >
+                                    <a class="daohang">党务公开</a>
+                                </router-link>
+                            </li>
+                            <li >
+                                <router-link to='/home/birthlist' >
+                                    <a class="daohang">党政生日</a>
                                 </router-link>
                             </li> <li >
-                            <router-link to='/home/tongzhan' >
-                                <a class="daohang">统战群工</a>
+                            <router-link to='/home/pictures' >
+                                <a class="daohang">党建相册</a>
                             </router-link>
                         </li> <li >
-                            <router-link to='/home/jingcui' >
-                                <a class="daohang">当时精粹</a>
+                            <router-link to='/home/elegant' >
+                                <a class="daohang">优秀党员风采</a>
                             </router-link>
                         </li> <li >
-                            <router-link to='/home/yaolun' >
-                                <a class="daohang">党报要论</a>
+                            <router-link to='/home/shuju' >
+                                <a class="daohang">党员队伍</a>
                             </router-link>
                         </li> <li >
-                            <router-link to='/home/zhuanti' >
-                                <a class="daohang">党建专题</a>
+                            <router-link to='/home/question' >
+                                <a class="daohang">问卷调查</a>
                             </router-link>
                         </li>
+                            <li >
+                            <router-link to='/home/guide' >
+                                <a class="daohang">办事指南</a>
+                            </router-link>
+                        </li>
+                            <li class="cactive">
+                            <router-link to='/home/guide' >
+                                <a class="daohang">党建论坛</a>
+                            </router-link>
+                        </li>
+
                         </ul>
                     </div>
                     <section class="col-xs-9">
                         <section class="hot">
                             <ul class="hdNews">
-                                <li v-for="(item,index) in newslist"  >
-                                    <div class="newslist" @click="gotoDetail(item.id)">
-                                        <p class="title">
-                                            <a href="javascript:;">
-                                                {{item.title}}
-                                            </a>
-                                        </p>
-                                        <!-- <p class="desc"><a target="_blank" class="more_link" href="/index.php/home/content/index/aid/1771.html">[详情]</a></p> -->
-                                        <!--<span class="new_time">2020-02-24</span>-->
-                                        <span class="new_time">{{item.time|dateunix}}</span>
-                                    </div>
-                                    <div class="clear"></div>
-                                </li>
+                            <li v-for="(item,index) in newslist"  >
+                            <div class="newslist" @click="gotoDetail(item.id)">
+                            <p class="title">
+                            <a href="javascript:;">
+                            {{item.title}}
+                            <!--{{item.addr}}-->
+                            </a>
+                            </p>
+                            <!-- <p class="desc"><a target="_blank" class="more_link" href="/index.php/home/content/index/aid/1771.html">[详情]</a></p> -->
+                            <!--<span class="new_time">2020-02-24</span>-->
+                            <span class="new_time">{{dayjs.unix(item.time).format('YYYY-MM-DD')}}</span>
+                            </div>
+                            <div class="clear"></div>
+                            </li>
                             </ul>
                             <!--<ul class="hdNews">-->
-                            <!--<li><a href="http://www.sx-dj.gov.cn/a/rcgg/20200901/32488.shtml" target="_blank">图解：参加就业见习，你需要了解这些</a><span>(2020-09-01 15:03:57)</span></li>-->
-                            <!--<li><a href="http://www.sx-dj.gov.cn/a/rcgg/20200831/32360.shtml" target="_blank">陕西省2020年省级机关公开遴选公务员公告</a><span>(2020-08-31 08:59:49)</span></li>-->
-                            <!--<li><a href="http://www.sx-dj.gov.cn/a/rcgg/20200831/32358.shtml" target="_blank">陕西省2020年统一考试录用公务员公告</a><span>(2020-08-31 08:59:10)</span></li>-->
-                            <!--<li><a href="http://www.sx-dj.gov.cn/a/rcgg/20200831/32355.shtml" target="_blank">2020年陕西省省属事业单位公开招聘工作人员公告</a><span>(2020-08-31 08:58:16)</span></li>-->
-                            <!--<li><a href="http://www.sx-dj.gov.cn/a/rcgg/20200610/27547.shtml" target="_blank">图说：就业季 这些政策请收好</a><span>(2020-06-10 15:51:31)</span></li>-->
-                            <!--<li><a href="http://www.sx-dj.gov.cn/a/rcgg/20191008/9811.shtml" target="_blank">2019年陕西省人才计划申报材料下载入口</a><span>(2019-10-08 17:12:14)</span></li>-->
-                            <!--<li><a href="http://www.sx-dj.gov.cn/a/rcgg/20190917/8658.shtml" target="_blank">陕西省2019年从优秀村干部中考试录用乡镇公务员公告</a><span>(2019-09-17 17:07:00)</span></li>-->
+                                <!--<li><a href="http://www.sx-dj.gov.cn/a/rcgg/20200901/32488.shtml" target="_blank">图解：参加就业见习，你需要了解这些</a><span>(2020-09-01 15:03:57)</span></li>-->
+                                <!--<li><a href="http://www.sx-dj.gov.cn/a/rcgg/20200831/32360.shtml" target="_blank">陕西省2020年省级机关公开遴选公务员公告</a><span>(2020-08-31 08:59:49)</span></li>-->
+                                <!--<li><a href="http://www.sx-dj.gov.cn/a/rcgg/20200831/32358.shtml" target="_blank">陕西省2020年统一考试录用公务员公告</a><span>(2020-08-31 08:59:10)</span></li>-->
+                                <!--<li><a href="http://www.sx-dj.gov.cn/a/rcgg/20200831/32355.shtml" target="_blank">2020年陕西省省属事业单位公开招聘工作人员公告</a><span>(2020-08-31 08:58:16)</span></li>-->
+                                <!--<li><a href="http://www.sx-dj.gov.cn/a/rcgg/20200610/27547.shtml" target="_blank">图说：就业季 这些政策请收好</a><span>(2020-06-10 15:51:31)</span></li>-->
+                                <!--<li><a href="http://www.sx-dj.gov.cn/a/rcgg/20191008/9811.shtml" target="_blank">2019年陕西省人才计划申报材料下载入口</a><span>(2019-10-08 17:12:14)</span></li>-->
+                                <!--<li><a href="http://www.sx-dj.gov.cn/a/rcgg/20190917/8658.shtml" target="_blank">陕西省2019年从优秀村干部中考试录用乡镇公务员公告</a><span>(2019-09-17 17:07:00)</span></li>-->
                             <!--</ul>-->
                         </section>
                     </section>
@@ -157,13 +166,17 @@
 
 <script>
     import {findNews} from "../../api/web-api/guide-api";
+    import dayjs from 'dayjs'
+    // import util from '../../../common/util'
 
     export default {
         data() {
             return {
                 total: 0,
                 pageNum: 1,
-                pageSize: 10,
+                dayjs:dayjs,
+                pageSize: 2,
+                cateId: 30,
                 src: 'https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg',
                 newslist:[
                     // {
@@ -190,6 +203,8 @@
             };
         },
         mounted() {
+            // console.log(dayjs.unix(1609811854).format('{YYYY} MM-DDTHH:mm:ssZ[Z]'))
+            console.log(this.dayjs.unix(1609811854).format('YYYY-MM-DD'))
             this.getAboutPage();
         },
         methods: {
@@ -207,11 +222,11 @@
                 }
             },
             getAboutPage() {
-                let that=this;
+                var that=this;
                 let para = {
                     pageNum: this.pageNum,
                     pageSize: this.pageSize,
-                    cateId: 46,
+                    cateId: this.cateId,
                 };
                 findNews(para).then(
                     (res) => {
@@ -219,6 +234,8 @@
                         if(res.code===1){
                             that.total = res.count;
                             that.newslist = res.data;
+                            // that.newslist[0].time = dayjs.unix(that.newslist[0].time).format('YYYY-MM-DD HH:mm:ss');
+                            console.log(this.newslist)
                         }else {
                             that.$message({
                                 message:"查询失败",
@@ -234,7 +251,7 @@
             gotoDetail(id){
                 console.log(id)
                 // $router.push({path: '/administrator/maintenance/view/'+scope.row.id})
-                this.$router.push({path: '/home/detail/'+id,query: { type: 'danggui' }});
+                this.$router.push({path: '/home/detail2/'+id,query: { type: 'guide' }});
                 // this.$router.push({path: '/home/guidedetail'});
             },
         }

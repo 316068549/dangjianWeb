@@ -1,22 +1,23 @@
 import request from '../../utils/Request'
 
 
-//企业动态列表查询
-export function findNews(params) {
+//列表查询
+export function findCates(params) {
     return request({
-        url: 'V1/content_lst',
+        url: 'V1/cate',
         method: 'get',
         params:params
     })
 }
-//企业动态详情查询
-export function findPageNewsDetail(params) {
+//轮播图查询
+export function findBanner(params) {
     return request({
-        url: 'V1/content',
+        url: 'V1/headAd',
         method: 'get',
         params:params
     })
 }
+
 
 
 

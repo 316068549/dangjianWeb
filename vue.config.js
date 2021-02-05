@@ -25,21 +25,21 @@ module.exports = {
     },
     // webpack-dev-server 相关配置
     devServer: {
-        host: '0.0.0.0',
+        host: 'localhost',
         port: 8080,
         https: false,
         hotOnly: false,
-        // proxy: {
-        //     //名字可以自定义，这里我用的是api/
-        //     '/api/': {
-        //         target: 'https://www.163.com', //设置你调用的接口域名和端口号 别忘了加https
-        //         ws: true, // 是否代理websockets
-        //         changeOrigin: true, //这里设置是否跨域
-        //         pathRewrite: {
-        //             '^/api/': 'https://www.163.com'
-        //         }
-        //     }
-        // }
+        proxy: {
+            //名字可以自定义，这里我用的是api/
+            '/api/': {
+                target: 'http://192.168.108.69/public/index.php/api/', //设置你调用的接口域名和端口号 别忘了加https
+                ws: true, // 是否代理websockets
+                changeOrigin: true, //这里设置是否跨域
+                pathRewrite: {
+                    '^/api/': ''
+                }
+            }
+        }
     },
     // enabled by default if the machine has more than 1 cores
     parallel: require('os').cpus().length > 1,

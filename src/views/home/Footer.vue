@@ -3,10 +3,10 @@
     <div class="yqlj">
       <select class="yqt" name="">
         <option value="###">--政府门户--</option>
-        <option value="http://www.henan.gov.cn/">陕西省人民政府</option><option value="http://www.jiaozuo.gov.cn/">西安市人民政府</option>        </select>
+        <option value="http://www.shaanxi.gov.cn/">陕西省人民政府</option><option value="http://www.xa.gov.cn/">西安市人民政府</option>        </select>
       <select class="yqt" name="">
         <option value="###">--党建网群--</option>
-        <option value="http://www.bjdj.gov.cn/index.html">陕西党建网</option><option value="http://www.jcqzw.com/">西安党建网</option> </select>
+        <option value="http://www.sx-dj.gov.cn/">陕西党建网</option><option value="http://www.xadj.gov.cn/">西安党建网</option> </select>
       <select class="yqt" name="">
         <option value="###">--新闻媒体--</option>
         <option value="http://www.people.com.cn/">人民网</option><option value="http://www.xinhuanet.com/">新华网</option><option value="http://www.cctv.com/">央视网</option>      </select>

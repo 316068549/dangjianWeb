@@ -40,7 +40,7 @@
                                     <a class="daohang">反腐倡廉</a>
                                 </router-link>
                             </li> <li >
-                            <router-link to='/home/qungong' >
+                            <router-link to='/home/tongzhan' >
                                 <a class="daohang">统战群工</a>
                             </router-link>
                         </li> <li >
@@ -65,13 +65,12 @@
                             <div class="newslist" @click="gotoDetail(item.id)">
                             <p class="title">
                             <a href="javascript:;">
-                            <!--{{item.title}}</a>-->
-                            {{item.addr}}
+                            {{item.title}}
                             </a>
                             </p>
                             <!-- <p class="desc"><a target="_blank" class="more_link" href="/index.php/home/content/index/aid/1771.html">[详情]</a></p> -->
                             <!--<span class="new_time">2020-02-24</span>-->
-                            <span class="new_time">{{item.applyTime}}</span>
+                            <span class="new_time">{{item.time|dateunix}}</span>
                             </div>
                             <div class="clear"></div>
                             </li>
@@ -157,7 +156,7 @@
 </template>
 
 <script>
-    import {findPageNews} from "../../api/web-api/guide-api";
+    import {findNews} from "../../api/web-api/guide-api";
 
     export default {
         data() {
@@ -212,14 +211,14 @@
                 let para = {
                     pageNum: this.pageNum,
                     pageSize: this.pageSize,
+                    cateId: 51,
                 };
-                findPageNews(para).then(
+                findNews(para).then(
                     (res) => {
                         console.log(res);
                         if(res.code===1){
-                            that.total = res.data.total;
-                            that.newslist = res.data.records;
-                            console.log(this.newslist)
+                            that.total = res.count;
+                            that.newslist = res.data;
                         }else {
                             that.$message({
                                 message:"查询失败",
@@ -235,7 +234,7 @@
             gotoDetail(id){
                 console.log(id)
                 // $router.push({path: '/administrator/maintenance/view/'+scope.row.id})
-                this.$router.push({path: '/home/detail/'+id,query: { type: 'danggui' }});
+                this.$router.push({path: '/home/detail/'+id,query: { type: 'yaolun' }});
                 // this.$router.push({path: '/home/guidedetail'});
             },
         }

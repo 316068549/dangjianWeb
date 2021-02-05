@@ -11,16 +11,16 @@
                             <li class="clearfix" v-for="(item,index) in newslist">
                                 <a href="javascript:;" @click="gotoDetail(item.id)">
                                     <div class="radis">
-                                        <img :src="SERVER_HOST+'/file/downloadFile/'+item.image" alt=""/>
+                                        <img :src="SERVER_HOST+item.litpic" alt=""/>
                                     </div>
                                     <div class="tit2">
                                         <h4>{{item.title}}</h4>
                                     </div>
                                     <div class="tit2">
-                                        <h4>生日 | 1949-10-01</h4>
+                                        <h4>生日 | 1920</h4>
                                     </div>
                                     <div class="tit2">
-                                        <h4>党龄 | 三年</h4>
+                                        <h4>党龄 | 56年</h4>
                                     </div>
                                     <!--<div class="tit2">-->
                                          <!--<h4>{{item.title}}</h4>-->
@@ -87,11 +87,12 @@
                 let para = {
                     pageNum: this.pageNum,
                     pageSize: this.pageSize,
+                    cateId: 32,
                 };
                 findNews(para).then((res) => {
                     if(res.code===1){
-                        that.total = res.data.total;
-                        that.newslist = res.data.records;
+                        that.total = res.count;
+                        that.newslist = res.data;
                         console.log(this.newslist)
                     }else {
                         that.$message({

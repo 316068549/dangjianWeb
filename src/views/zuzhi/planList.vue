@@ -27,7 +27,7 @@
                             </li>
                             <li  >
                                 <router-link to='/home/liangxue' >
-                                    <a class="daohang">两学一做</a>
+                                    <a class="daohang">党建专题</a>
                                 </router-link>
                             </li>
                             <li>
@@ -62,12 +62,12 @@
                             <div class="newslist" @click="gotoDetail(item.id)">
                             <p class="title">
                             <a href="javascript:;">
-                            <!--{{item.title}}</a>-->
-                            {{item.addr}}
+                            {{item.title}}
+
                             </a>
                             </p>
 
-                            <span class="new_time">{{item.applyTime}}</span>
+                            <span class="new_time">{{item.time|dateunix}}</span>
                             </div>
                             <div class="clear"></div>
                             </li>
@@ -97,7 +97,7 @@
 </template>
 
 <script>
-    import {findPageNews} from "../../api/web-api/guide-api";
+    import {findNews} from "../../api/web-api/guide-api";
 
     export default {
         data() {
@@ -107,25 +107,14 @@
                 pageSize: 10,
                 src: 'https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg',
                 newslist:[
-                    // {
-                    //     id:1,
-                    //     title: '入党程序有关知识的问与答',
-                    // },{
-                    //     id:1,
-                    //     title: '入党程序有关知识的问与答',
-                    // },{
-                    //     id:1,
-                    //     title: '入党程序有关知识的问与答',
-                    // },{
-                    //     id:1,
-                    //     title: '入党程序有关知识的问与答',
-                    // },{
-                    //     id:1,
-                    //     title: '入党程序有关知识的问与答',
-                    // },{
-                    //     id:1,
-                    //     title: '入党程序有关知识的问与答',
-                    // },
+        //             {
+        //             id:29,
+        //         title: '测试',
+        //         author: '测试',
+        //         time: '2020-12-20 09:00',
+        //         status: '已结束',
+        //         content: '投票选举预备党员',
+        // }
 
                 ]
             };
@@ -152,14 +141,14 @@
                 let para = {
                     pageNum: this.pageNum,
                     pageSize: this.pageSize,
+                    cateId: 59,
                 };
-                findPageNews(para).then(
+                findNews(para).then(
                     (res) => {
                         console.log(res);
                         if(res.code===1){
-                            that.total = res.data.total;
-                            that.newslist = res.data.records;
-                            console.log(this.newslist)
+                            that.total = res.count;
+                            that.newslist = res.data;
                         }else {
                             that.$message({
                                 message:"查询失败",
@@ -175,7 +164,7 @@
             gotoDetail(id){
                 console.log(id)
                 // $router.push({path: '/administrator/maintenance/view/'+scope.row.id})
-                this.$router.push({path: '/home/detail/'+id,query: { type: 'danggui' }});
+                this.$router.push({path: '/home/detail/'+id,query: { type: 'planlist' }});
                 // this.$router.push({path: '/home/guidedetail'});
             },
         }

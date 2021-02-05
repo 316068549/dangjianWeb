@@ -9,7 +9,8 @@ import filter from './common/filter'
 import util from './common/util'
 import preview from 'vue-photo-preview'
 import 'vue-photo-preview/dist/skin.css'
-// import echarts from 'echarts'
+import dayjs from 'dayjs'
+//import echarts from 'echarts'
 Vue.use(preview)
 // import 'swiper/dist/css/swiper.css';
 var  echarts = require('echarts');
@@ -42,11 +43,17 @@ Vue.filter("date_from_unix", unixTime => {
         return util.formatDate.format(new Date((unixTime)), 'yyyy-MM-dd')
     }
 })
+//查看页面日期格式化
+Vue.filter("dateunix", unixTime => {
+    if(unixTime){
+        return dayjs.unix(unixTime).format('YYYY-MM-DD');
+    }
+})
 
 Vue.config.productionTip = false
 
 new Vue({
-  router,
-  store,
-  render: h => h(App)
+    router,
+    store,
+    render: h => h(App)
 }).$mount('#app')

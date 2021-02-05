@@ -27,7 +27,7 @@
                                 </li>
                             <li  >
                                 <router-link to='/home/liangxue' >
-                                    <a class="daohang">两学一做</a>
+                                    <a class="daohang">党建专题</a>
                                 </router-link>
                             </li>
                             <li>
@@ -44,7 +44,8 @@
                                 <router-link to='/home/juankuan' >
                                     <a class="daohang">捐款捐物</a>
                                 </router-link>
-                            </li><li>
+                            </li>
+                            <li>
                                 <router-link to='/home/mailbox' >
                                     <a class="daohang">书记信箱</a>
                                 </router-link>
@@ -83,10 +84,11 @@
                                     <div class="newslist" @click="gotoDetail(item.id)">
                                         <p class="title">
                                             <a href="javascript:;">
-                                                {{item.title}}—{{item.author}}
+                                                {{item.title}}
+                                                <!--{{item.title}}—{{item.author}}-->
                                             </a>
                                         </p>
-                                        <span class="new_time">{{item.time}}</span>
+                                        <span class="new_time">{{item.time|dateunix}}</span>
                                     </div>
                                     <div class="clear"></div>
                                 </li>
@@ -119,8 +121,7 @@
 </template>
 
 <script>
-    import {findNews} from "../../api/web-api/companyNews-api";
-    import {findPageNews} from "../../api/web-api/guide-api";
+    import {findNews} from "../../api/web-api/guide-api";
     import {SERVER_HOST} from './../../common/portConfig'
 
     export default {
@@ -131,20 +132,20 @@
                 pageSize: 10,
                 src: 'https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg',
                 newslist:[
-                    {
-                        id:1,
-                        title: '给贫',
-                        author: '测试',
-                        time: '2020-12-20 09:00',
-                        status: '已结束',
-                        content: '投票选举预备党员',
-                    }
+                    // {
+                    //     id:29,
+                    //     title: '测试',
+                    //     author: '测试',
+                    //     time: '2020-12-20 09:00',
+                    //     status: '已结束',
+                    //     content: '投票选举预备党员',
+                    // }
                 ]
             };
         },
         mounted() {
             document.getElementById('web-content').style.backgroundColor='#EEE';
-           // this.getAboutPage();
+            this.getAboutPage();
         },
         methods: {
             handleCurrentChange(val) {
@@ -165,14 +166,14 @@
                 let para = {
                     pageNum: this.pageNum,
                     pageSize: this.pageSize,
+                    cateId: 57,
                 };
-                findPageNews(para).then(
+                findNews(para).then(
                     (res) => {
                         console.log(res);
                         if(res.code===1){
-                            that.total = res.data.total;
-                            that.newslist = res.data.records;
-                            console.log(this.newslist)
+                            that.total = res.count;
+                            that.newslist = res.data;
                         }else {
                             that.$message({
                                 message:"查询失败",

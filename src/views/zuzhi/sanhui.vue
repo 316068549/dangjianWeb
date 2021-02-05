@@ -27,7 +27,7 @@
                                 </li>
                             <li  >
                                 <router-link to='/home/liangxuelist' >
-                                    <a class="daohang">两学一做</a>
+                                    <a class="daohang">党建专题</a>
                                 </router-link>
                             </li>
                             <li>
@@ -105,8 +105,8 @@
                         content: '三会一课',
                     },{
                         id:1,
-                        title: '两学一做',
-                        content: '两学一做',
+                        title: '党建专题',
+                        content: '党建专题',
                     },{
                         id:1,
                         title: '民主生活会',

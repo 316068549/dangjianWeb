@@ -7,12 +7,12 @@
                         <a class="daohang">网站首页</a>&gt;&nbsp;
                     </router-link>
                     <router-link to='/home/liangxue' style="margin-top: -16px;">
-                        <a class="daohang">两学一做</a>
+                        <a class="daohang">党建专题</a>
                     </router-link>
                 </div>
                 <div class="ht5"></div>
                 <div class="newsbox" style="text-align: left;overflow: auto;">
-                    <div class="news_name"><h1>两学一做</h1></div>
+                    <div class="news_name"><h1>党建专题</h1></div>
                     <div class="col-xs-3 catemenu-box">
                         <ul class="catmenu-ul">
                             <h3 style="font-size: 20px;">组织生活
@@ -27,7 +27,7 @@
                                 </li>
                             <li  class="cactive">
                                 <router-link to='/home/liangxue' >
-                                    <a class="daohang">两学一做</a>
+                                    <a class="daohang">党建专题</a>
                                 </router-link>
                             </li>
                             <li>

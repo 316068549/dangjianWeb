@@ -19,6 +19,22 @@
                     </div>
                     <div class="newcon">
                         <p v-html="news.content"></p>
+                        <div id='reply' class="text-left">
+                            <div v-for='(reply,index) in post.replies' class='replySec'>
+                                <div class='replyUp'>
+                                    <router-link :to='{name: "user_info",params:{name: reply.author.loginname}}'><img :src='reply.author.avatar_url'></router-link>
+                                    <router-link :to='{name: "user_info",params:{name: reply.author.loginname}}'>{{reply.author.loginname}}</router-link>
+                                    <span>
+       			    	{{index + 1}}楼
+       			    </span>
+                                </div>
+                                <section v-if='reply.ups.length > 0' class='thumbsClass'>
+                                    <span>❤ </span>{{reply.ups.length}}
+                                </section>
+                                <p v-html='reply.content'></p>
+                            </div>
+                        </div>
+                    </div>
                     </div>
                     <!--留言板-->
                     <div id="messageboard" v-if="type=='juankuan'" style="width: 70%;margin: 0 auto;">
@@ -66,7 +82,7 @@
                                         <!--<span v-show="item.isedit" @click="saveeditProjectMemo(item)" class="edit-delete-save">保存</span>-->
                                     <!--</div>-->
                                 </div>
-                            </div>
+
 
                         <el-dialog title="提示" v-model="dialogVisible" size="tiny">
                             <span v-if="nowIndex==-2">删除全部条留言</span>
@@ -100,6 +116,26 @@
                 dialogVisible: false,
                 nowIndex: -100,
                 projectmemoedit:'',
+                post: {
+                    author: {
+                        loginname: 'temp',//设置默认值，防止Vue在axios未被调用前报错
+                    },
+                    replies: [
+                        {
+                            author: {
+                                loginname: 'temp',//设置默认值，防止Vue在axios未被调用前报错
+                            },
+                            ups:10,
+                            content:'河南省2020年统一考试录用公务员焦作市体检结果及进入考察人员名单公告'
+                        },
+                        {
+                            author: {
+                                loginname: 'temp',//设置默认值，防止Vue在axios未被调用前报错
+                            },
+                            content:'2222222222222'
+                        }
+                        ]
+                },
                 type:'',
                 projectmemoData:[
                     // {
@@ -559,5 +595,56 @@
             width: 30%;
             font-size: 12px;
         }
+    }
+    .replySec {
+        box-sizing: border-box;
+        border-bottom: 1px solid #C0CCDA;
+        width: 100%;
+        padding: 1rem;
+        background: white;
+    }
+    #reply {
+        display: flex;
+        flex-direction: column;
+    }
+    .replyUp {
+        display: inline-block;
+    }
+    .replyUp span {
+        display: inline-block;
+        vertical-align: top;
+        margin-top: 7px;
+        margin-left: 6px;
+        font-size: 14px;
+        color: #806767;
+    }
+    .thumbsClass {
+        float: right;
+    }
+    .replyUp > a{
+        color: black;
+        text-decoration: none;
+        font-weight: 600;
+    }
+    .replyUp a:nth-of-type(2) {
+        margin-left: -14px;
+        vertical-align: super;
+    }
+    .thumbsClass  {
+        color: red;
+    }
+    .replySec > p {
+        padding-left: 50px;
+        clear: both;
+    }
+    .replySec img {
+        width: 1.5rem;
+        height: 1.5rem;
+        margin-right: 1rem;
+    }
+    .replySec p img {
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
     }
 </style>

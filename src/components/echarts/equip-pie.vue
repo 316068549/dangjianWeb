@@ -39,7 +39,8 @@
                         },
                         tooltip: {
                             trigger: 'item',
-                            formatter: '{a} <br/>{b} : {c} ({d}%)'
+                            // formatter: '{a} <br/>{b} : {c} ({d}%)'
+                            formatter: '{b} : {c} ({d}%)'
                         },
                         legend: {
                             type: 'scroll',

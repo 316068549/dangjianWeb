@@ -5,34 +5,51 @@
                 <h2 class="col-md-12 m-tit">
                     <em>党建要闻</em>
                 </h2>
-                <div class="col-md-12 bd-upon">
-                    <div class="group_buying">
-                        <ul>
-                            <li class="clearfix" v-for="item in newslist">
-                                <a href="javascript:;" @click="gotoDetail(item.id)">
-                                    <!--<img :src="SERVER_HOST+'/file/downloadFile/'+item.image" alt=""/>-->
-                                    <div class="tit">
-                                         <h4>{{item.title}}</h4>
-                                        <p v-html="item.content">
-                                        </p>
-                                        <span class="date">{{item.createTime|date_from_unix}}</span>
-                                    </div>
-                                </a>
-
-                            </li>
-                        </ul>
-                    </div>
-
-                    <el-pagination class="tc mb30"
-                                   @size-change="handleSizeChange"
-                            @current-change="handleCurrentChange"
-                                   background
-                            :page-size="pageSize"
-                            layout="total, prev, pager, next"
-                            :total="total" >
-                    </el-pagination>
-
+                <div class="col-md-12" style="padding: 20px 0 50px 0">
+                    <el-row>
+                        <el-col :span="6" class="pic" v-for="(item,index) in newslist" :style="{marginRight: index==0||index%3?'2%':'0'}" >
+                            <div class="demo-image__placeholder"  @click="gotoDetail(item.id)">
+                                <div class="block">
+                                    <!--<img src="../../assets/img/ren.jpg" alt="">-->
+                                    <el-image :src="SERVER_HOST+item.litpic" style="width: 100%;height: 292.5px;">
+                                        <div slot="placeholder" class="image-slot" style="min-height: 256px;">
+                                            加载中<span class="dot">...</span>
+                                        </div>
+                                    </el-image>
+                                    <span class="demonstration">{{item.title}}</span>
+                                </div>
+                            </div>
+                        </el-col>
+                    </el-row>
                 </div>
+                <!--<div class="col-md-12 bd-upon">-->
+                    <!--<div class="group_buying">-->
+                        <!--<ul>-->
+                            <!--<li class="clearfix" v-for="item in newslist">-->
+                                <!--<a href="javascript:;" @click="gotoDetail(item.id)">-->
+                                    <!--<img :src="SERVER_HOST+item.litpic" alt=""/>-->
+                                    <!--<div class="tit">-->
+                                        <!--<h4>{{item.title}}</h4>-->
+                                        <!--&lt;!&ndash;<p v-html="item.content">&ndash;&gt;-->
+                                        <!--&lt;!&ndash;</p>&ndash;&gt;-->
+                                        <!--{{item.writer}}<span class="date">{{item.time|dateunix}}</span>-->
+                                    <!--</div>-->
+                                <!--</a>-->
+
+                            <!--</li>-->
+                        <!--</ul>-->
+                    <!--</div>-->
+
+                    <!--<el-pagination class="tc mb30"-->
+                                   <!--@size-change="handleSizeChange"-->
+                                   <!--@current-change="handleCurrentChange"-->
+                                   <!--background-->
+                                   <!--:page-size="pageSize"-->
+                                   <!--layout="total, prev, pager, next"-->
+                                   <!--:total="total" >-->
+                    <!--</el-pagination>-->
+
+                <!--</div>-->
             </section>
         </div>
     </div>
@@ -41,14 +58,17 @@
 </template>
 
 <script>
+    import {SERVER_HOST} from '../../common/portConfig'
     import util from '../../common/util'
-    import {findNews} from "../../api/web-api/companyNews-api";
+    import {findNews} from "@/api/web-api/companyNews-api";
     export default {
         data() {
             return {
                 total: 0,
+                SERVER_HOST:SERVER_HOST,
                 pageNum: 1,
                 pageSize: 5,
+                cateId: 27,
                 newslist:[
                 ]
             };
@@ -76,6 +96,7 @@
                 let para = {
                     pageNum: this.pageNum,
                     pageSize: this.pageSize,
+                    cateId: this.cateId,
                 };
                 // return new Promise((resolve, reject) => {
                 //     findNews(para).then(response => {
@@ -89,10 +110,10 @@
                 findNews(para).then(
                     (res) => {
                         console.log(res);
-                        console.log(res.data);
-                        console.log(res.data);
                         if(res.code===1){
-                            that.newslist = res.data.records;
+                            that.total = res.count;
+                            that.newslist = res.data;
+                            // that.newslist[0].time = dayjs.unix(that.newslist[0].time).format('YYYY-MM-DD HH:mm:ss');
                             console.log(this.newslist)
                         }else {
                             that.$message({
@@ -133,6 +154,9 @@
 
 <style scoped lang="scss">
     @media (min-width: 768px){
+        .pic{
+            width:23.5% !important;
+        }
         .main {
             width: 750px;
             /*padding-top: 80px;*/
@@ -158,7 +182,10 @@
             width: 1170px;
         }
     }
-
+    .demonstration{
+        font-size: 13px;
+        line-height: 1.1rem;
+    }
     .group_buying{
         padding: 50px 25px 5px 25px;
     }
@@ -337,7 +364,7 @@
     }
     .tit p{
         font-size: 20px;
-       line-height: 30px;
+        line-height: 30px;
         text-indent: 12px;
         max-height: 64px;
         overflow: hidden;
@@ -371,15 +398,15 @@
             font-size: 12px;
         }
         /*.main{*/
-            /*margin-left: 15px !important;*/
-            /*margin-right: 15px !important;*/
+        /*margin-left: 15px !important;*/
+        /*margin-right: 15px !important;*/
         /*}*/
         .group_buying{
             padding: 15px 0;
         }
 
         .m-tit{
-        margin-left: 1px !important;
+            margin-left: 1px !important;
         }
         .group_buying ul li{
             padding: 10px 0 5px 0;
@@ -399,8 +426,8 @@
         .tit h4 {
             font-size: 15px;
             line-height: 25px;
-             padding: 0;
-             text-indent: 0;
+            padding: 0;
+            text-indent: 0;
             width: 100%;
             white-space: nowrap;
             padding-right: 10px;
@@ -409,7 +436,7 @@
         }
         .tit p {
             font-size: 13px;
-           line-height: 18px;
+            line-height: 18px;
             overflow: hidden;
             text-indent: 0;
             max-height: 34px;

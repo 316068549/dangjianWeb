@@ -27,7 +27,7 @@
                                 </li>
                             <li  >
                                 <router-link to='/home/liangxue' >
-                                    <a class="daohang">两学一做</a>
+                                    <a class="daohang">党建专题</a>
                                 </router-link>
                             </li>
                             <li>

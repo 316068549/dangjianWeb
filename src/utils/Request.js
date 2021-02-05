@@ -25,8 +25,10 @@ service.interceptors.request.use(function (config) {
 service.interceptors.response.use(function (response) {
   // 对响应数据做点什么
   let data = response.data;
-  if (data.code === 1) return response.data;
-  if (data.code !== 0) errorMessage(data.message);
+  if (data) return response.data;
+  // if (data.code === 1) return response.data;
+  if (!data) errorMessage(data.message);
+  // if (data.code !== 0) errorMessage(data.message);
 }, function (error) {
   // 对响应错误做点什么
   if (error.message)

@@ -14,8 +14,8 @@
                 <div class="content_box">
                     <div class="newtit">{{news.title}}</div>
                     <div class="newtime">
-                        <span>{{news.author}}</span>   |   <span>{{news.createTime}}</span>
-                        |   <span>阅读：2587</span>
+                        <span>{{news.writer}}</span>   |   <span>{{news.time|dateunix}}</span>
+                        |   <span>阅读：{{news.click}}</span>
                     </div>
                     <div class="newcon">
                         <p v-html="news.content"></p>
@@ -26,21 +26,21 @@
                         <br>
                         <el-form ref="form" label-width="10px">
                             <el-form-item label="" style="margin-bottom: 5px">
-                                <p class="fff" ref='sxx' v-html="content3.replace(/\#[\u4E00-\u9FA5]{1,3}\;/gi, emotion)"   @keyup.delete="aa()" contenteditable></p>
+                                <p class="fff" ref='sxx' v-html="content3?content3.replace(/\#[\u4E00-\u9FA5]{1,3}\;/gi, emotion):''"   @keyup.delete="aa()" contenteditable></p>
                                 <emotion v-if="isShowd" @emotion="handleEmotion" :height="200" ></emotion>
                                 <!--<el-input v-model="content" placeholder="请输入"></el-input>-->
                             </el-form-item>
                             <el-form-item class="text-right">
-                                <p>文本输入框</p>
-                                <p   >{{bainma}}</p>
+                                <!--<p>文本输入框</p>-->
+                                <p>{{bainma}}</p>
                                 <el-button type="danger" @click="add()" size="mini">发表</el-button>
 
                             </el-form-item>
                         </el-form>
                         <div class="projectlistbox" style="margin: 0 10px;padding-bottom: 50px">
                             <div class="projectlist" v-for="(item,index) in projectmemoData" :key="index">
-                                <div style="font-size:12px;font-weight:bold;"><span>{{item.createby}}</span>&nbsp;&nbsp;<span>{{item.createdate}}</span></div>
-                                <p >{{item.content}}</p>
+                                <div style="font-size:12px;font-weight:bold;"><span>{{item.user_id}}</span>&nbsp;&nbsp;<span>{{item.time|dateunix}}</span></div>
+                                <p v-html="item.message?item.message.replace(/\#[\u4E00-\u9FA5]{1,3}\;/gi, emotion):''"></p>
                                 <!--<div v-show="item.isedit">-->
                                     <!--<Input type="textarea" :rows="3" v-model="projectmemoedit" placeholder="请输入"></Input>-->
                                 <!--</div>-->
@@ -91,13 +91,15 @@
 
 <script>
      import Emotion from '../../components/Emotion/index'
+     import {findPageNewsDetail} from "../../api/web-api/guide-api";
+     import {message,messageQuery} from "../../api/web-api/companyNews-api";
      import $ from 'jquery'
 //    import {SERVER_HOST} from '../../common/portConfig'
-      import {findPageNewsDetail} from "../../api/web-api/rules-api";
     export default {
         data() {
             return {
                 title:'',
+                id:'',
                 content: '',
                 bainma:'',
                 touList:[],
@@ -144,6 +146,7 @@
             console.log($('a'))
             console.log($('.clear'));
            this.getNews();
+           this.getMsg();
 
         },
         methods: {
@@ -181,6 +184,7 @@
                 console.log('编码'+dd)
                 this.bainma = dd;
                 this.content3 += i;
+                this.handleReset();
                 // console.log(this.content);
             },
             //将匹配结果替换表情图片
@@ -198,25 +202,140 @@
                 let index = list.indexOf(word)
                 return `<img src="https://res.wx.qq.com/mpres/htmledition/images/icon/emotion/${index}.gif" >`
             },
+            getMsg(){
+                let aa = {
+                    archivesId: this.id
+                }
+                messageQuery(aa).then(
+                    (res) => {
+                        console.log(res);
+                        if(res.code===1){
+                            this.projectmemoData=res.data;
+                            console.log(this.projectmemoData);
+                        }else {
+                            this.$message({
+                                message:"查询失败",
+                                type:'error',
+                            });
+                        }
+                    },
+                    (error) => {
+                        console.log(error);
+                    }
+                );
+            },
             getNews() {
                 console.log(this.$route)
+                this.id = this.$route.params.id;
                 let aa = {
-                    id: this.$route.params.id
+                    contentId: this.id
                 }
+                findPageNewsDetail(aa).then(
+                    (res) => {
+                        console.log(res);
+                        if(res.code===1){
+                            this.news=res.data;
+                            console.log(this.news);
+                        }else {
+                            this.$message({
+                                message:"查询失败",
+                                type:'error',
+                            });
+                        }
+                    },
+                    (error) => {
+                        console.log(error);
+                    }
+                );
+                switch (this.type) {
+                    case 'danggui':
+                        this.title = '党规党纪'
+                        findPageNewsDetail(aa).then((res) => {
+                                if (res.code===1) {
+                                    if(res.data){
+                                        this.news=res.data;
+                                        this.news.author='组织部'
+                                        console.log(this.news)
+                                    }
+                                }else{
+                                    this.$message({
+                                        message: res.data.msg,
+                                        type: 'error'
+                                    });
+                                }
+                            },
+                            (error) => {
+                                console.log(error);
+                            })
+                        break;
+                    case 'dangzhang':
+                        this.title = '党章'
+                        break;
+                    case 'fanfu':
+                        this.title = '反腐倡廉'
+                        break;
+                    case 'juankuan':
+                        this.title = '捐款捐物'
+                        break;
+                    case 'notices':
+                        this.title = '通知公告'
+                        break;
+                    case 'gongshi':
+                        this.title = '党务公开'
+                        break;
+                    case 'guide':
+                        this.title = '办事指南'
+                        break;
+                    case 'newslist':
+                        this.title = '党建要闻'
+                        break;
+                }
+
             },
             add() {
-                this.content =this.bainma;
-                this.title =this.bainma;
-                if (this.title == '' || this.content == '') {
-                    this.$message.error('请填写完整');
+                console.log(this.bainma)
+                if(this.bainma){
+                    this.content=this.bainma;
+                }else{
+                    this.content=this.$refs.sxx.innerHTML;
+                }
+                // this.content =this.bainma;
+                // this.title =this.bainma;
+                if (this.content == '') {
+                    this.$message.error('请填写留言');
                 } else {
-                    this.projectmemoData.push({
-                        title: this.title,
-                        content: this.content,
-                    });
+                    let that = this;
+                    that.formData=new FormData();
+                    that.formData.append('message', this.content)
+                    that.formData.append('archivesId', this.id)
+                    that.formData.append('userId', this.id)
+                    message(that.formData).then((res) => {
+                        console.log( res);
+                        if (res==1) {
+                            that.$message({
+                                message: '提交成功',
+                                type: 'success'
+                            });
+                            this.content='';
+                            this.content3='';
+                            that.formData = new FormData();
+                            this.getMsg();
+                            // that.$refs.ruleForm.resetFields();
+                        }  else {
+                            that.$message({
+                                message: '提交失败',
+                                type: 'error'
+                            });
+                        }
+                    })
+                    // this.projectmemoData.push({
+                    //     title: this.title,
+                    //     content: this.content,
+                    // });
                     this.title = '';
                     this.content = '';
                 }
+
             },
             showDialog() {
                 this.dialogVisible = true;

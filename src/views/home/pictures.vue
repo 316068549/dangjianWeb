@@ -8,7 +8,7 @@
                 <div class="col-md-12" style="padding-top: 20px">
                     <el-row>
                         <el-col :span="6" class="pic" v-for="(item,index) in newslist" :style="{marginRight: index==0||index%3?'2%':'0'}">
-                            <div class="demo-image__placeholder" @click="gotoDetail(item.id)">
+                            <div class="demo-image__placeholder" @click="gotoDetail(item.id,item.title)">
                                 <div class="block">
 
                                     <el-image :src="item.src">
@@ -16,7 +16,7 @@
                                             加载中<span class="dot">...</span>
                                         </div>
                                     </el-image>
-                                    <span class="demonstration">自定义</span>
+                                    <span class="demonstration">{{item.title}}</span>
                                 </div>
                             </div>
                         </el-col>
@@ -41,7 +41,7 @@
 
 <script>
     import {SERVER_HOST} from '../../common/portConfig'
-    import {findCompanyNews} from '../../api/web-api/companyNews-api'
+    import {findNews} from '../../api/web-api/companyNews-api'
     export default {
         data() {
             return {
@@ -52,25 +52,26 @@
                 src: 'https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg',
                 newslist:[
                     {
+                        id:1,
                         src: 'https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg',
-                        title: '标题1',
+                        title: '测试',
                     }
-                    ,{
-                        src: 'https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg',
-                        title: '标题1',
-                    },{
-                        src: 'https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg',
-                        title: '标题1',
-                    },{
-                        src: 'https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg',
-                        title: '标题1',
-                    },{
-                        src: 'https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg',
-                        title: '标题1',
-                    },{
-                        src: 'https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg',
-                        title: '标题1',
-                    }
+                    // ,{
+                    //     src: 'https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg',
+                    //     title: '标题1',
+                    // },{
+                    //     src: 'https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg',
+                    //     title: '标题1',
+                    // },{
+                    //     src: 'https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg',
+                    //     title: '标题1',
+                    // },{
+                    //     src: 'https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg',
+                    //     title: '标题1',
+                    // },{
+                    //     src: 'https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg',
+                    //     title: '标题1',
+                    // }
                 ]
             };
         },
@@ -111,8 +112,8 @@
 
                 })
             },
-            gotoDetail(id){
-                this.$router.push({path: '/home/picdetail/'+id});
+            gotoDetail(id,tit){
+                this.$router.push({path: '/home/picdetail/'+id,query: { type: tit }});
             },
         }
     }

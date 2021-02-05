@@ -6,149 +6,149 @@
                     <router-link to='/home' style="margin-top: -16px;">
                         <a class="daohang">网站首页</a>&gt;&nbsp;
                     </router-link>
-                    <router-link to='/home/danggui' style="margin-top: -16px;">
-                        <a class="daohang">党规党纪</a>
+                    <router-link to='/home/guide' style="margin-top: -16px;">
+                        <a class="daohang">办事指南</a>
                     </router-link>
                 </div>
-                <div class="ht5"></div>
-                <div class="newsbox" style="text-align: left;overflow: auto;">
-                    <div class="news_name"><h1>党规党纪</h1></div>
-                    <div class="col-xs-3 catemenu-box">
-                        <ul class="catmenu-ul">
-                            <h3 style="font-size: 20px;">制度建设
-                                <!--<router-link to='/home' >-->
-                                <!--<a class="daohang">制度建设</a>-->
-                                <!--</router-link>-->
-                            </h3>
-                            <li >
-                                <router-link to='/home/dangzhang' >
-                                    <a class="daohang">党章</a>
-                                </router-link>
+                <!-- 导航栏 -->
+                <nav class="navbar navbar-expand-lg navbar-dark bg-success mb-5">
+                    <a class="navbar-brand" href="#">{{title}}</a>
+<!--                    <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse"-->
+<!--                            data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"-->
+<!--                            aria-label="Toggle navigation">-->
+<!--                        <span class="navbar-toggler-icon"></span>-->
+<!--                    </button>-->
+                    <div class="collapse navbar-collapse" id="collapsibleNavId">
+                        <ul class="navbar-nav mr-auto mt-2 mt-lg-0" style="line-height: 50px;">
+                            <!-- <li class="nav-item active">
+                            <a class="nav-link" href="#">Home</span></a>
+                        </li> -->
+                            <!-- 菜单 -->
+                            <li v-for="(menu, index) in  menus" :key="index" class="nav-item">
+                                <a class="nav-link" :class="{active:index==0}" href="#">{{menu}}</a>
                             </li>
-                            <li class="cactive">
-                                <router-link to='/home/danggui' >
-                                    <a class="daohang">党规党纪</a>
-                                </router-link>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown"
+                                   aria-haspopup="true" aria-expanded="false">关于</a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownId">
+                                    <a v-for="(about, index) in abouts" :key="index" class="dropdown-item"
+                                       href="#">{{about}}</a>
+
+                                </div>
                             </li>
-                            <li >
-                                <router-link to='/home/study' >
-                                    <a class="daohang">学习文件</a>
-                                </router-link>
-                            </li>
-                            <li >
-                                <router-link to='/home/fanfu' >
-                                    <a class="daohang">反腐倡廉</a>
-                                </router-link>
-                            </li> <li >
-                            <router-link to='/home/tongzhan' >
-                                <a class="daohang">统战群工</a>
-                            </router-link>
-                        </li> <li >
-                            <router-link to='/home/jingcui' >
-                                <a class="daohang">当时精粹</a>
-                            </router-link>
-                        </li> <li >
-                            <router-link to='/home/yaolun' >
-                                <a class="daohang">党报要论</a>
-                            </router-link>
-                        </li> <li >
-                            <router-link to='/home/zhuanti' >
-                                <a class="daohang">党建专题</a>
-                            </router-link>
-                        </li>
                         </ul>
+<!--                        <form class="form-inline my-2 my-lg-0">-->
+<!--                            <input class="form-control mr-sm-2" type="text" placeholder="搜索题目.用户">-->
+<!--                            <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">搜索</button>-->
+<!--                        </form>-->
                     </div>
-                    <section class="col-xs-9">
-                        <section class="hot">
-                            <ul class="hdNews">
-                                <li v-for="(item,index) in newslist"  >
-                                    <div class="newslist" @click="gotoDetail(item.id)">
-                                        <p class="title">
-                                            <a href="javascript:;">
-                                                {{item.title}}
-                                            </a>
-                                        </p>
-                                        <!-- <p class="desc"><a target="_blank" class="more_link" href="/index.php/home/content/index/aid/1771.html">[详情]</a></p> -->
-                                        <!--<span class="new_time">2020-02-24</span>-->
-                                        <span class="new_time">{{item.time|dateunix}}</span>
-                                    </div>
-                                    <div class="clear"></div>
-                                </li>
-                            </ul>
-                            <!--<ul class="hdNews">-->
-                            <!--<li><a href="http://www.sx-dj.gov.cn/a/rcgg/20200901/32488.shtml" target="_blank">图解：参加就业见习，你需要了解这些</a><span>(2020-09-01 15:03:57)</span></li>-->
-                            <!--<li><a href="http://www.sx-dj.gov.cn/a/rcgg/20200831/32360.shtml" target="_blank">陕西省2020年省级机关公开遴选公务员公告</a><span>(2020-08-31 08:59:49)</span></li>-->
-                            <!--<li><a href="http://www.sx-dj.gov.cn/a/rcgg/20200831/32358.shtml" target="_blank">陕西省2020年统一考试录用公务员公告</a><span>(2020-08-31 08:59:10)</span></li>-->
-                            <!--<li><a href="http://www.sx-dj.gov.cn/a/rcgg/20200831/32355.shtml" target="_blank">2020年陕西省省属事业单位公开招聘工作人员公告</a><span>(2020-08-31 08:58:16)</span></li>-->
-                            <!--<li><a href="http://www.sx-dj.gov.cn/a/rcgg/20200610/27547.shtml" target="_blank">图说：就业季 这些政策请收好</a><span>(2020-06-10 15:51:31)</span></li>-->
-                            <!--<li><a href="http://www.sx-dj.gov.cn/a/rcgg/20191008/9811.shtml" target="_blank">2019年陕西省人才计划申报材料下载入口</a><span>(2019-10-08 17:12:14)</span></li>-->
-                            <!--<li><a href="http://www.sx-dj.gov.cn/a/rcgg/20190917/8658.shtml" target="_blank">陕西省2019年从优秀村干部中考试录用乡镇公务员公告</a><span>(2019-09-17 17:07:00)</span></li>-->
-                            <!--</ul>-->
-                        </section>
-                    </section>
-                    <!--<ul>-->
-                        <!--<li v-for="(item,index) in newslist"  >-->
-                            <!--<div class="newslist" @click="gotoDetail(item.id)">-->
-                                <!--<p class="title">-->
-                                    <!--<a href="javascript:;">-->
-                                        <!--&lt;!&ndash;{{item.title}}</a>&ndash;&gt;-->
-                                        <!--{{item.addr}}-->
-                                    <!--</a>-->
-                                <!--</p>-->
-                                <!--&lt;!&ndash; <p class="desc"><a target="_blank" class="more_link" href="/index.php/home/content/index/aid/1771.html">[详情]</a></p> &ndash;&gt;-->
-                                <!--&lt;!&ndash;<span class="new_time">2020-02-24</span>&ndash;&gt;-->
-                                <!--<span class="new_time">{{item.applyTime}}</span>-->
-                            <!--</div>-->
-                            <!--<div class="clear"></div>-->
-                        <!--</li>-->
-                  <!--</ul>-->
-                </div>
-                <div class="fanye" style="text-align:center;margin-top: 40px">
-                    <el-pagination class="tc mb30"
-                                   @size-change="handleSizeChange"
-                                   prev-text="上一页"
-                                   next-text="下一页"
-                                   @current-change="handleCurrentChange"
-                                   background
-                                   :page-size="pageSize"
-                                   layout="total, prev, pager, next"
-                                   :total="total" >
-                    </el-pagination>
-                    <!--<div><ul class="pagination">  <li class="disabled"><a href="#">1</a></li><li><a href="/index.php/home/list/index/sid/30/p/2.html">2</a></li><li><a href="/index.php/home/list/index/sid/30/p/3.html">3</a></li> <li><a href="/index.php/home/list/index/sid/30/p/2.html">下一页</a></li> </ul></div>                <div class="clear"></div>-->
-                </div>
-            <!--<section class="row">-->
-                <!--<h2 class="col-md-12 m-tit">-->
-                    <!--<em>办事指南</em>-->
-                <!--</h2>-->
-                <!--<div class="col-md-12" style="padding: 20px 0 50px 0">-->
-                    <!--<el-row>-->
-                        <!--<el-col :span="6" class="pic" v-for="(item,index) in newslist" :style="{marginRight: index==0||index%3?'2%':'0'}" >-->
-                            <!--<div class="demo-image__placeholder"  @click="gotoDetail(item.id)">-->
-                                <!--<div class="block">-->
-                                    <!--&lt;!&ndash;<img src="../../assets/img/ren.jpg" alt="">&ndash;&gt;-->
-                                    <!--<el-image :src="item.src">-->
-                                        <!--<div slot="placeholder" class="image-slot">-->
-                                            <!--加载中<span class="dot">...</span>-->
-                                        <!--</div>-->
-                                    <!--</el-image>-->
-                                    <!--<span class="demonstration">{{item.title}}</span>-->
-                                <!--</div>-->
-                            <!--</div>-->
-                        <!--</el-col>-->
-                    <!--</el-row>-->
+                </nav>
+                <!-- 答题区域 -->
 
-                    <!--&lt;!&ndash;<el-pagination class="tc mb30"&ndash;&gt;-->
-                                   <!--&lt;!&ndash;@size-change="handleSizeChange"&ndash;&gt;-->
-                            <!--&lt;!&ndash;@current-change="handleCurrentChange"&ndash;&gt;-->
-                                   <!--&lt;!&ndash;background&ndash;&gt;-->
-                            <!--&lt;!&ndash;:page-size="pageSize"&ndash;&gt;-->
-                            <!--&lt;!&ndash;layout="total, prev, pager, next"&ndash;&gt;-->
-                            <!--&lt;!&ndash;:total="total" >&ndash;&gt;-->
-                    <!--&lt;!&ndash;</el-pagination>&ndash;&gt;-->
+                <div v-if="!isFinish" class="container ">
+                    <!-- 进度条 -->
+                    <div class="progress mb-3">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary" role="progressbar"
+                             :style="progressStyle" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{progressBar}}
+                        </div>
+                    </div>
+                    <div class="jumbotron text-left">
 
-                <!--</div>-->
-            <!--</section>-->
-        </div>
+                        <h2 class="display-4"><span class="badge badge-dark mr-3">{{question.id}}</span>{{question.title}}</h2>
+
+                        <hr class="my-2">
+                        <!-- 选项 -->
+                        <div v-for="(item, i) in question.items" :key="i" class="form-check my-3">
+                            <label class="form-check-label">
+                                <input @change="setAnswer(question.id)" v-model="answer" type="radio" class="form-check-input"
+                                       name="item" id="" value="checkedValue" :value="itemIndexs[i]">
+                                <span class="badge badge-pill badge-danger mr-2">{{itemIndexs[i]}}</span>
+                                {{item}}
+                            </label>
+                        </div>
+
+                        <!-- 按钮 -->
+                        <!-- h行 -->
+                        <div class="row">
+                            <div class="col-lg-6 col-sm-12">
+<!--                                <el-button v-if="progress==0" type="danger" @click="del(scope.$index,scope.row)" size="mini">上一题</el-button>-->
+<!--                                <el-button v-if="progress==0" type="danger" @click="del(scope.$index,scope.row)" size="mini">上一题</el-button>-->
+                                <button v-if="progress==0" disabled type="button"  class="btn btn-danger btn-block disabled">上一题
+                                </button>
+                                <button v-else @click="prev()" type="button" class="btn btn-danger btn-block">上一题</button>
+                            </div>
+                            <div class="col-lg-6 col-sm-12">
+                                <button v-if="isLast"
+                                        @click="submit()"
+                                        type="button" class="btn btn-primary btn-block mt-sm-3 mt-lg-0 ">提交</button>
+                                <button v-else @click="next()" type="button"
+                                        class="btn btn-success btn-block mt-sm-3 mt-lg-0">下一题</button>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                    <!-- 题目的按钮 -->
+                    <span v-for="(item, index) in questionList" :key="index" style="margin-right: 10px">
+               <button @click="skip(index)" v-if="answers.has(index+1)" type="button" class="btn btn-primary">{{index+1}}</button>
+               <button @click="skip(index)" v-else type="button" class="btn btn-danger">{{index+1}}</button>
+           </span>
+                </div>
+
+
+
+                <!-- 显示答案 -->
+                <div v-else class="container">
+                    <div class="jumbotron">
+                        <h1 class="display-3 text-center">答案与成绩</h1>
+
+                        <hr class="my-2">
+                        <table class="table table-bordered table-striped">
+                            <thead class="thead-dark text-center">
+                            <tr>
+                                <th>序号</th>
+                                <th>答案</th>
+                                <th>正确答案</th>
+                                <th>得分</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr  v-for="([k,v], index) in answers" :key="index">
+                                <td>{{k}}</td>
+                                <td><span v-if="v===correct(k)" class="badge badge-pill badge-danger">{{v}}</span>
+                                    <span v-else class="badge badge-pill badge-primary">{{v}}</span>
+
+
+                                </td>
+                                <!-- 根据id获取正确答案 -->
+                                <td><span class="badge badge-pill badge-danger">{{correct(k)}}</span></td>
+
+                                <!-- 根据索引获取正确答案 -->
+                                <!-- <td><span class="badge badge-pill badge-danger">{{questionList[index].answer}}</span></td> -->
+                                <td>
+                                    {{v===correct(k)?20:0}}
+                                </td>
+                            </tr>
+
+                            <!-- 总计 -->
+                            <tr
+                                    class="text-center h3 ">
+                                <td colspan="3">总成绩</td>
+                                <td > {{score}}</td>
+
+                            </tr>
+
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                </div>
+
+
+
+            </div>
         </div>
     </div>
 
@@ -157,40 +157,108 @@
 
 <script>
     import {findNews} from "../../api/web-api/guide-api";
+    import dayjs from 'dayjs'
+    // import util from '../../../common/util'
 
     export default {
         data() {
             return {
                 total: 0,
-                pageNum: 1,
-                pageSize: 10,
-                src: 'https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg',
-                newslist:[
-                    // {
-                    //     id:1,
-                    //     title: '入党程序有关知识的问与答',
-                    // },{
-                    //     id:1,
-                    //     title: '入党程序有关知识的问与答',
-                    // },{
-                    //     id:1,
-                    //     title: '入党程序有关知识的问与答',
-                    // },{
-                    //     id:1,
-                    //     title: '入党程序有关知识的问与答',
-                    // },{
-                    //     id:1,
-                    //     title: '入党程序有关知识的问与答',
-                    // },{
-                    //     id:1,
-                    //     title: '入党程序有关知识的问与答',
-                    // },
+                score:0,
+                title: '在线测试',
+                menus: ['首页', '单选题', '多选题', '模拟测试'],
+                abouts: ['联系我们', '加入我们', '其他信息'],
+                isFinish: false,
+                progress: 0,
+                size: 0,
 
-                ]
+                answer: '',
+                answers: new Map(),
+
+                itemIndexs: ['A', 'B', 'C', 'D', 'E', 'F'],
+
+                questionList: [
+                    {
+                        id: 1,
+                        title: '测试?',
+                        items: ['1', '2', '3', '4', '5'],
+                        answer: 'A'
+                    },
+                    {
+                        id: 2,
+                        title: '最高级的数据库？',
+                        items: ['Redit', 'MySQL', 'postgreSQL', 'MongDB'],
+                        answer: 'C'
+                    },
+                    {
+                        id: 3,
+                        title: '开源数据是？',
+                        items: ['DB2', 'Oracle', 'SQL Server', 'MySQL'],
+                        answer: 'A'
+                    },
+                    {
+                        id: 4,
+                        title: '市值最高的公司？',
+                        items: ['微软', '亚马逊', '苹果', '中国建行'],
+                        answer: 'C'
+                    },
+                    {
+                        id: 5,
+                        title: '最好的前端框架？',
+                        items: ['Angular', 'Vue', 'React', 'Java'],
+                        answer: 'B'
+                    }
+                ],
+
+                pageNum: 1,
+                dayjs:dayjs,
+                pageSize: 2,
+                cateId: 30,
+                src: 'https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg',
             };
         },
         mounted() {
+            // console.log(dayjs.unix(1609811854).format('{YYYY} MM-DDTHH:mm:ssZ[Z]'))
+            console.log(this.dayjs.unix(1609811854).format('YYYY-MM-DD'))
             this.getAboutPage();
+        },
+        computed: {
+            // 根据id去获取题目的正确答案
+            correct(){
+                return function (id) {
+                    for(const i of this.questionList){
+                        if(i.id==id){
+                            return i.answer;
+                        }
+                    }
+
+                }
+            },
+
+
+            // isFinish:function(){
+            //     return this.size===this.questionList.length;
+            // },
+            question: function () {
+                return this.questionList[this.progress];
+            },
+            isLast: function () {
+                return this.progress == this.questionList.length - 1;
+            },
+            // progressStyle: function () {
+            //     return `width:${this.progressChange}%;`;
+            // },
+
+            progressBar: function () {
+                return Math.round(this.size / this.questionList.length * 100);
+            },
+
+            progressStyle: function () {
+                return `width:${this.progressBar}%;`;
+            }
+
+
+
         },
         methods: {
             handleCurrentChange(val) {
@@ -207,11 +275,11 @@
                 }
             },
             getAboutPage() {
-                let that=this;
+                var that=this;
                 let para = {
                     pageNum: this.pageNum,
                     pageSize: this.pageSize,
-                    cateId: 46,
+                    cateId: this.cateId,
                 };
                 findNews(para).then(
                     (res) => {
@@ -219,6 +287,8 @@
                         if(res.code===1){
                             that.total = res.count;
                             that.newslist = res.data;
+                            // that.newslist[0].time = dayjs.unix(that.newslist[0].time).format('YYYY-MM-DD HH:mm:ss');
+                            console.log(this.newslist)
                         }else {
                             that.$message({
                                 message:"查询失败",
@@ -234,9 +304,57 @@
             gotoDetail(id){
                 console.log(id)
                 // $router.push({path: '/administrator/maintenance/view/'+scope.row.id})
-                this.$router.push({path: '/home/detail/'+id,query: { type: 'danggui' }});
+                this.$router.push({path: '/home/detail/'+id,query: { type: 'guide' }});
                 // this.$router.push({path: '/home/guidedetail'});
             },
+            submit:function(){
+                // 答题完毕，提交答案
+                this.isFinish=true;
+                for (const q of this.questionList) {
+                    if(q.answer===this.answers.get(q.id)){
+                        this.score+=20;
+                    }
+
+                }
+
+            },
+
+
+            skip:function(i){
+                this.progress=i;
+                this.answer='';
+
+            },
+
+            setAnswer: function (id) {
+                //判断是否重复的一道题
+                if (!this.answers.has(id)) {
+                    // 答题的数量
+                    this.size++;
+                }
+
+                this.answers.set(id, this.answer);
+                // console.log(this.answers);
+
+
+            },
+            next: function () {
+                this.progress++;
+                if (this.answers.has(this.progress)) {
+                    this.answer = this.answers.get(this.progress + 1);
+                } else {
+                    this.answer = '';
+                }
+
+
+            },
+            prev: function () {
+                //获得上一题的答案并且复位
+                this.answer = this.answers.get(this.progress);
+                this.progress--;
+
+            }
+
         }
     }
 
@@ -257,10 +375,14 @@
     .daohang{
         color: rgb(51,51,51);
     }
+
     .catemenu-box{
         margin-top: 33px;
         padding-left: 0;
         padding-right: 30px;
+    }
+    .btn-block{
+        width: 100px;
     }
     ul.catmenu-ul {border: 1px solid #ccc;border-radius: 5px;}
     ul.catmenu-ul h3 {font-weight: bolder;border-bottom: 1px solid #ccc;background: #fff3f3;border-top-left-radius:10px;border-top-right-radius:10px;line-height:60px;text-align:center;}

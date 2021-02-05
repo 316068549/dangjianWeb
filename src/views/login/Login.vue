@@ -61,7 +61,7 @@
 
 <script>
 
-  import { mapActions } from 'vuex'
+  import {mapGetters,mapActions,mapState} from 'vuex'
   import {startLoading} from "../../utils/common";
 
   export default {
@@ -70,8 +70,8 @@
       return {
         activeName: 'first',
         form:{
-          account:'19866986467',
-          password:'123456789',
+          account:'',
+          password:'',
           loginSign:'0',
         },
         rules:{
@@ -94,12 +94,15 @@
           if (valid){
               // this.$router.push({ path: '/home/homePage' });
            let loading =  startLoading({app:this,text:'登陆中........'});
-            this.$store.dispatch('Login',this.form).then(() =>{
               this.$router.push({ path: '/home/homePage' });
               loading.close()
-            }).catch(error =>{
-              this.$router.push({ path: '/' })
-            })
+              this.$store.dispatch('getUserInfo', this.form)
+            // this.$store.dispatch('Login',this.form).then(() =>{
+            //   this.$router.push({ path: '/home/homePage' });
+            //   loading.close()
+            // }).catch(error =>{
+            //   this.$router.push({ path: '/' })
+            // })
           }else{
             return false;
           }

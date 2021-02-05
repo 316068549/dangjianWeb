@@ -40,7 +40,7 @@
                                     <a class="daohang">反腐倡廉</a>
                                 </router-link>
                             </li> <li >
-                            <router-link to='/home/qungong' >
+                            <router-link to='/home/tongzhan' >
                                 <a class="daohang">统战群工</a>
                             </router-link>
                         </li> <li >
@@ -61,29 +61,28 @@
                     <section class="col-xs-9">
                         <section class="hot">
                             <ul class="hdNews">
-                            <li v-for="(item,index) in newslist"  >
-                            <div class="newslist" @click="gotoDetail(item.id)">
-                            <p class="title">
-                            <a href="javascript:;">
-                            <!--{{item.title}}</a>-->
-                            {{item.addr}}
-                            </a>
-                            </p>
-                            <!-- <p class="desc"><a target="_blank" class="more_link" href="/index.php/home/content/index/aid/1771.html">[详情]</a></p> -->
-                            <!--<span class="new_time">2020-02-24</span>-->
-                            <span class="new_time">{{item.applyTime}}</span>
-                            </div>
-                            <div class="clear"></div>
-                            </li>
+                                <li v-for="(item,index) in newslist"  >
+                                    <div class="newslist" @click="gotoDetail(item.id)">
+                                        <p class="title">
+                                            <a href="javascript:;">
+                                                {{item.title}}
+                                            </a>
+                                        </p>
+                                        <!-- <p class="desc"><a target="_blank" class="more_link" href="/index.php/home/content/index/aid/1771.html">[详情]</a></p> -->
+                                        <!--<span class="new_time">2020-02-24</span>-->
+                                        <span class="new_time">{{item.time|dateunix}}</span>
+                                    </div>
+                                    <div class="clear"></div>
+                                </li>
                             </ul>
                             <!--<ul class="hdNews">-->
-                                <!--<li><a href="http://www.sx-dj.gov.cn/a/rcgg/20200901/32488.shtml" target="_blank">图解：参加就业见习，你需要了解这些</a><span>(2020-09-01 15:03:57)</span></li>-->
-                                <!--<li><a href="http://www.sx-dj.gov.cn/a/rcgg/20200831/32360.shtml" target="_blank">陕西省2020年省级机关公开遴选公务员公告</a><span>(2020-08-31 08:59:49)</span></li>-->
-                                <!--<li><a href="http://www.sx-dj.gov.cn/a/rcgg/20200831/32358.shtml" target="_blank">陕西省2020年统一考试录用公务员公告</a><span>(2020-08-31 08:59:10)</span></li>-->
-                                <!--<li><a href="http://www.sx-dj.gov.cn/a/rcgg/20200831/32355.shtml" target="_blank">2020年陕西省省属事业单位公开招聘工作人员公告</a><span>(2020-08-31 08:58:16)</span></li>-->
-                                <!--<li><a href="http://www.sx-dj.gov.cn/a/rcgg/20200610/27547.shtml" target="_blank">图说：就业季 这些政策请收好</a><span>(2020-06-10 15:51:31)</span></li>-->
-                                <!--<li><a href="http://www.sx-dj.gov.cn/a/rcgg/20191008/9811.shtml" target="_blank">2019年陕西省人才计划申报材料下载入口</a><span>(2019-10-08 17:12:14)</span></li>-->
-                                <!--<li><a href="http://www.sx-dj.gov.cn/a/rcgg/20190917/8658.shtml" target="_blank">陕西省2019年从优秀村干部中考试录用乡镇公务员公告</a><span>(2019-09-17 17:07:00)</span></li>-->
+                            <!--<li><a href="http://www.sx-dj.gov.cn/a/rcgg/20200901/32488.shtml" target="_blank">图解：参加就业见习，你需要了解这些</a><span>(2020-09-01 15:03:57)</span></li>-->
+                            <!--<li><a href="http://www.sx-dj.gov.cn/a/rcgg/20200831/32360.shtml" target="_blank">陕西省2020年省级机关公开遴选公务员公告</a><span>(2020-08-31 08:59:49)</span></li>-->
+                            <!--<li><a href="http://www.sx-dj.gov.cn/a/rcgg/20200831/32358.shtml" target="_blank">陕西省2020年统一考试录用公务员公告</a><span>(2020-08-31 08:59:10)</span></li>-->
+                            <!--<li><a href="http://www.sx-dj.gov.cn/a/rcgg/20200831/32355.shtml" target="_blank">2020年陕西省省属事业单位公开招聘工作人员公告</a><span>(2020-08-31 08:58:16)</span></li>-->
+                            <!--<li><a href="http://www.sx-dj.gov.cn/a/rcgg/20200610/27547.shtml" target="_blank">图说：就业季 这些政策请收好</a><span>(2020-06-10 15:51:31)</span></li>-->
+                            <!--<li><a href="http://www.sx-dj.gov.cn/a/rcgg/20191008/9811.shtml" target="_blank">2019年陕西省人才计划申报材料下载入口</a><span>(2019-10-08 17:12:14)</span></li>-->
+                            <!--<li><a href="http://www.sx-dj.gov.cn/a/rcgg/20190917/8658.shtml" target="_blank">陕西省2019年从优秀村干部中考试录用乡镇公务员公告</a><span>(2019-09-17 17:07:00)</span></li>-->
                             <!--</ul>-->
                         </section>
                     </section>
@@ -157,7 +156,7 @@
 </template>
 
 <script>
-    import {findPageNews} from "../../api/web-api/guide-api";
+    import {findNews} from "../../api/web-api/guide-api";
 
     export default {
         data() {
@@ -212,14 +211,14 @@
                 let para = {
                     pageNum: this.pageNum,
                     pageSize: this.pageSize,
+                    cateId: 47,
                 };
-                findPageNews(para).then(
+                findNews(para).then(
                     (res) => {
                         console.log(res);
                         if(res.code===1){
-                            that.total = res.data.total;
-                            that.newslist = res.data.records;
-                            console.log(this.newslist)
+                            that.total = res.count;
+                            that.newslist = res.data;
                         }else {
                             that.$message({
                                 message:"查询失败",
@@ -235,7 +234,7 @@
             gotoDetail(id){
                 console.log(id)
                 // $router.push({path: '/administrator/maintenance/view/'+scope.row.id})
-                this.$router.push({path: '/home/detail/'+id,query: { type: 'danggui' }});
+                this.$router.push({path: '/home/detail/'+id,query: { type: 'study' }});
                 // this.$router.push({path: '/home/guidedetail'});
             },
         }

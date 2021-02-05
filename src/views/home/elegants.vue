@@ -12,7 +12,7 @@
                 </div>
             <section class="row">
                 <h2 class="col-md-12 m-tit">
-                    <em>优秀党员风采</em>
+                    <em>优秀党员风采 组织荣誉</em>
                 </h2>
                 <div class="col-md-12" style="padding: 20px 0 50px 0">
                     <el-row>
@@ -20,7 +20,7 @@
                             <div class="demo-image__placeholder"  @click="gotoDetail(item.id)">
                                 <div class="block">
                                     <!--<img src="../../assets/img/ren.jpg" alt="">-->
-                                    <el-image :src="item.src">
+                                    <el-image :src="SERVER_HOST+item.litpic">
                                         <div slot="placeholder" class="image-slot">
                                             加载中<span class="dot">...</span>
                                         </div>
@@ -51,7 +51,7 @@
 
 <script>
     import {SERVER_HOST} from '../../common/portConfig'
-    import {findCompanyNews} from '../../api/web-api/companyNews-api'
+       import {findNews} from "../../api/web-api/guide-api";
     export default {
         data() {
             return {
@@ -91,7 +91,7 @@
             };
         },
         mounted() {
-            // this.getAboutPage();
+            this.getAboutPage();
         },
         methods: {
             handleCurrentChange(val) {
@@ -103,12 +103,8 @@
                 this.getAboutPage();
             },
             gotoDetail(id){
-                this.$router.push('/home/elegantdetail');
-                // let req = {
-                //     id:id,
-                //     route:'list'
-                // }
-                // this.$router.push({path: '/administrator/maintenance/view/'+scope.row.id})
+                // this.$router.push('/home/elegantdetail');
+                this.$router.push({path: '/home/detail/'+id,query: { type: 'elegant' }});
             },
             createTimeFormat: function (row, colnm,cellValue, index) {
                 if (row.createTime) {
@@ -120,20 +116,27 @@
                 let para = {
                     pageNum: this.pageNum,
                     pageSize: this.pageSize,
+                    cateId: 31,
                 };
-                findCompanyNews(para).then((res) => {
-                    if(res.data.code===1){
-                        that.total = res.data.data.total;
-                        that.newslist = res.data.data.records;
-                        console.log(this.newslist)
-                    }else {
-                        that.$message({
-                            message:"查询失败",
-                            type:'error',
-                        });
+                findNews(para).then(
+                    (res) => {
+                        console.log(res);
+                        if(res.code===1){
+                            that.total = res.count;
+                            that.newslist = res.data;
+                            // that.newslist[0].time = dayjs.unix(that.newslist[0].time).format('YYYY-MM-DD HH:mm:ss');
+                            console.log(this.newslist)
+                        }else {
+                            that.$message({
+                                message:"查询失败",
+                                type:'error',
+                            });
+                        }
+                    },
+                    (error) => {
+                        console.log(error);
                     }
-
-                })
+                );
             }
         }
     }

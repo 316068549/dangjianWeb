@@ -28,7 +28,7 @@
         },
         methods: {},
         created() {
-            document.title='护理床网站';
+            document.title='智引党建';
         }
     }
 </script>

@@ -30,80 +30,80 @@
                     <!--</ol>-->
                     <div style="width: 100%;margin-top: 25px">
                         <el-form :model="ruleForm" :rules="rules" ref="ruleForm" id="fsnrRegFm" class="form-horizontal demo-ruleForm re-reg-box re-query-box" >
-                            <el-form-item label="" prop="deviceIMEI" class="form-group row">
-                                <label class="col-sm-4 control-label" >您的姓名：<span class="text-red"> *</span></label>
-                                <el-input v-model="ruleForm.deviceIMEI" class="aa col-sm-5" placeholder="请输入姓名" tabindex="1"></el-input>
-                            </el-form-item>
-                            <el-form-item label="" prop="deviceIMEI" class="form-group row">
-                                <label class="col-sm-4 control-label" >您的职位：<span class="text-red"> *</span></label>
-                                <el-input v-model="ruleForm.deviceIMEI" class="aa col-sm-5" placeholder="请输入职位" tabindex="1"></el-input>
-                            </el-form-item>
-                            <el-form-item label="" prop="code" class="form-group row">
-                                <label class="col-sm-4 control-label">您的政治面貌：<span class="text-red"> *</span></label>
-                                <el-select v-model="ruleForm.code" class="col-sm-5" placeholder="请选择政治面貌">
-                                    <el-option v-for="(item,index) in navData"  :label="item.name" :value="item.name"></el-option>
+                            <!--<el-form-item label="" prop="deviceIMEI" class="form-group row">-->
+                                <!--<label class="col-sm-4 control-label" >您的姓名：<span class="text-red"> *</span></label>-->
+                                <!--<el-input v-model="ruleForm.deviceIMEI" class="aa col-sm-5" placeholder="请输入姓名" tabindex="1"></el-input>-->
+                            <!--</el-form-item>-->
+                            <!--<el-form-item label="" prop="deviceIMEI" class="form-group row">-->
+                                <!--<label class="col-sm-4 control-label" >您的职位：<span class="text-red"> *</span></label>-->
+                                <!--<el-input v-model="ruleForm.deviceIMEI" class="aa col-sm-5" placeholder="请输入职位" tabindex="1"></el-input>-->
+                            <!--</el-form-item>-->
+                            <el-form-item label="" prop="" class="form-group row" v-for="(item,index) in anList">
+                                <label class="col-sm-4 control-label">{{item.question}}：<span class="text-red"> *</span></label>
+                                <el-select v-model="anList[index].myanswer" class="col-sm-5" placeholder="请选择">
+                                    <el-option v-for="(item2,index) in item.answerList"  :label="item2.name" :value="item2.index"></el-option>
                                 </el-select>
                             </el-form-item>
-                            <el-form-item label="" prop="code" class="form-group row">
-                                <label class="col-sm-4 control-label">您的年龄：<span class="text-red"> *</span></label>
-                                <el-select v-model="ruleForm.code" class="col-sm-5" placeholder="请选择年龄">
-                                    <el-option v-for="(item,index) in navData2"  :label="item.name" :value="item.name"></el-option>
-                                </el-select>
-                            </el-form-item>
-                            <el-form-item label="" prop="code" class="form-group row">
-                                <label class="col-sm-4 control-label">您认为当前的党建工作如何：<span class="text-red"> *</span></label>
-                                <el-select v-model="ruleForm.code" class="col-sm-5" placeholder="请选择">
-                                    <el-option v-for="(item,index) in navData3"  :label="item.name" :value="item.name"></el-option>
-                                </el-select>
-                            </el-form-item>
-                            <el-form-item label="" prop="code" class="form-group row">
-                                <label class="col-sm-4 control-label">你了解党建工作的主要途径是：<span class="text-red"> *</span></label>
-                                <el-select v-model="ruleForm.code" class="col-sm-5" placeholder="请选择">
-                                    <el-option v-for="(item,index) in navData4"  :label="item.name" :value="item.name"></el-option>
-                                </el-select>
-                            </el-form-item>
-                            <el-form-item label="" prop="code" class="form-group row">
-                                <label class="col-sm-4 control-label">您所在党组织属于：<span class="text-red"> *</span></label>
-                                <el-select v-model="ruleForm.code" class="col-sm-5" placeholder="请选择">
-                                    <el-option v-for="(item,index) in navData5"  :label="item.name" :value="item.name"></el-option>
-                                </el-select>
-                            </el-form-item>
-                            <el-form-item label="" prop="code" class="form-group row">
-                                <label class="col-sm-4 control-label">您所在的党组织多久开展一次活动：<span class="text-red"> *</span></label>
-                                <el-select v-model="ruleForm.code" class="col-sm-5" placeholder="请选择">
-                                    <el-option v-for="(item,index) in navData6"  :label="item.name" :value="item.name"></el-option>
-                                </el-select>
-                            </el-form-item><el-form-item label="" prop="code" class="form-group row">
-                                <label class="col-sm-4 control-label">您所在的党组织制度建设情况如何：<span class="text-red"> *</span></label>
-                                <el-select v-model="ruleForm.code" class="col-sm-5" placeholder="请选择">
-                                    <el-option v-for="(item,index) in navData7"  :label="item.name" :value="item.name"></el-option>
-                                </el-select>
-                            </el-form-item><el-form-item label="" prop="code" class="form-group row">
-                                <label class="col-sm-4 control-label">您认为当前基层党组织在发展党员方面做得如何：<span class="text-red"> *</span></label>
-                                <el-select v-model="ruleForm.code" class="col-sm-5" placeholder="请选择">
-                                    <el-option v-for="(item,index) in navData8"  :label="item.name" :value="item.name"></el-option>
-                                </el-select>
-                            </el-form-item><el-form-item label="" prop="code" class="form-group row">
-                                <label class="col-sm-4 control-label">您如何评价所在党组织对党员的管理：<span class="text-red"> *</span></label>
-                                <el-select v-model="ruleForm.code" class="col-sm-5" placeholder="请选择">
-                                    <el-option v-for="(item,index) in navData9"  :label="item.name" :value="item.name"></el-option>
-                                </el-select>
-                            </el-form-item><el-form-item label="" prop="code" class="form-group row">
-                                <label class="col-sm-4 control-label">您认为当前基层党建工作存在最突出的问题是：<span class="text-red"> *</span></label>
-                                <el-select v-model="ruleForm.code" class="col-sm-5" placeholder="请选择">
-                                    <el-option v-for="(item,index) in navData10"  :label="item.name" :value="item.name"></el-option>
-                                </el-select>
-                            </el-form-item><el-form-item label="" prop="code" class="form-group row">
-                                <label class="col-sm-4 control-label">您认为应该更好地去管理党员：<span class="text-red"> *</span></label>
-                                <el-select v-model="ruleForm.code" class="col-sm-5" placeholder="请选择">
-                                    <el-option v-for="(item,index) in navData11"  :label="item.name" :value="item.name"></el-option>
-                                </el-select>
-                            </el-form-item><el-form-item label="" prop="code" class="form-group row">
-                                <label class="col-sm-4 control-label">您认为应该如何改善当前基层党组织日常生活：<span class="text-red"> *</span></label>
-                                <el-select v-model="ruleForm.code" class="col-sm-5" placeholder="请选择">
-                                    <el-option v-for="(item,index) in navData12"  :label="item.name" :value="item.name"></el-option>
-                                </el-select>
-                            </el-form-item>
+                            <!--<el-form-item label="" prop="code" class="form-group row">-->
+                                <!--<label class="col-sm-4 control-label">您的年龄：<span class="text-red"> *</span></label>-->
+                                <!--<el-select v-model="ruleForm.code" class="col-sm-5" placeholder="请选择年龄">-->
+                                    <!--<el-option v-for="(item,index) in navData2"  :label="item.name" :value="item.name"></el-option>-->
+                                <!--</el-select>-->
+                            <!--</el-form-item>-->
+                            <!--<el-form-item label="" prop="code" class="form-group row">-->
+                                <!--<label class="col-sm-4 control-label">您认为当前的党建工作如何：<span class="text-red"> *</span></label>-->
+                                <!--<el-select v-model="ruleForm.code" class="col-sm-5" placeholder="请选择">-->
+                                    <!--<el-option v-for="(item,index) in navData3"  :label="item.name" :value="item.name"></el-option>-->
+                                <!--</el-select>-->
+                            <!--</el-form-item>-->
+                            <!--<el-form-item label="" prop="code" class="form-group row">-->
+                                <!--<label class="col-sm-4 control-label">你了解党建工作的主要途径是：<span class="text-red"> *</span></label>-->
+                                <!--<el-select v-model="ruleForm.code" class="col-sm-5" placeholder="请选择">-->
+                                    <!--<el-option v-for="(item,index) in navData4"  :label="item.name" :value="item.name"></el-option>-->
+                                <!--</el-select>-->
+                            <!--</el-form-item>-->
+                            <!--<el-form-item label="" prop="code" class="form-group row">-->
+                                <!--<label class="col-sm-4 control-label">您所在党组织属于：<span class="text-red"> *</span></label>-->
+                                <!--<el-select v-model="ruleForm.code" class="col-sm-5" placeholder="请选择">-->
+                                    <!--<el-option v-for="(item,index) in navData5"  :label="item.name" :value="item.name"></el-option>-->
+                                <!--</el-select>-->
+                            <!--</el-form-item>-->
+                            <!--<el-form-item label="" prop="code" class="form-group row">-->
+                                <!--<label class="col-sm-4 control-label">您所在的党组织多久开展一次活动：<span class="text-red"> *</span></label>-->
+                                <!--<el-select v-model="ruleForm.code" class="col-sm-5" placeholder="请选择">-->
+                                    <!--<el-option v-for="(item,index) in navData6"  :label="item.name" :value="item.name"></el-option>-->
+                                <!--</el-select>-->
+                            <!--</el-form-item><el-form-item label="" prop="code" class="form-group row">-->
+                                <!--<label class="col-sm-4 control-label">您所在的党组织制度建设情况如何：<span class="text-red"> *</span></label>-->
+                                <!--<el-select v-model="ruleForm.code" class="col-sm-5" placeholder="请选择">-->
+                                    <!--<el-option v-for="(item,index) in navData7"  :label="item.name" :value="item.name"></el-option>-->
+                                <!--</el-select>-->
+                            <!--</el-form-item><el-form-item label="" prop="code" class="form-group row">-->
+                                <!--<label class="col-sm-4 control-label">您认为当前基层党组织在发展党员方面做得如何：<span class="text-red"> *</span></label>-->
+                                <!--<el-select v-model="ruleForm.code" class="col-sm-5" placeholder="请选择">-->
+                                    <!--<el-option v-for="(item,index) in navData8"  :label="item.name" :value="item.name"></el-option>-->
+                                <!--</el-select>-->
+                            <!--</el-form-item><el-form-item label="" prop="code" class="form-group row">-->
+                                <!--<label class="col-sm-4 control-label">您如何评价所在党组织对党员的管理：<span class="text-red"> *</span></label>-->
+                                <!--<el-select v-model="ruleForm.code" class="col-sm-5" placeholder="请选择">-->
+                                    <!--<el-option v-for="(item,index) in navData9"  :label="item.name" :value="item.name"></el-option>-->
+                                <!--</el-select>-->
+                            <!--</el-form-item><el-form-item label="" prop="code" class="form-group row">-->
+                                <!--<label class="col-sm-4 control-label">您认为当前基层党建工作存在最突出的问题是：<span class="text-red"> *</span></label>-->
+                                <!--<el-select v-model="ruleForm.code" class="col-sm-5" placeholder="请选择">-->
+                                    <!--<el-option v-for="(item,index) in navData10"  :label="item.name" :value="item.name"></el-option>-->
+                                <!--</el-select>-->
+                            <!--</el-form-item><el-form-item label="" prop="code" class="form-group row">-->
+                                <!--<label class="col-sm-4 control-label">您认为应该更好地去管理党员：<span class="text-red"> *</span></label>-->
+                                <!--<el-select v-model="ruleForm.code" class="col-sm-5" placeholder="请选择">-->
+                                    <!--<el-option v-for="(item,index) in navData11"  :label="item.name" :value="item.name"></el-option>-->
+                                <!--</el-select>-->
+                            <!--</el-form-item><el-form-item label="" prop="code" class="form-group row">-->
+                                <!--<label class="col-sm-4 control-label">您认为应该如何改善当前基层党组织日常生活：<span class="text-red"> *</span></label>-->
+                                <!--<el-select v-model="ruleForm.code" class="col-sm-5" placeholder="请选择">-->
+                                    <!--<el-option v-for="(item,index) in navData12"  :label="item.name" :value="item.name"></el-option>-->
+                                <!--</el-select>-->
+                            <!--</el-form-item>-->
                             <!--<el-form-item label="" prop="contacts" class="form-group row">-->
                                 <!--<label class="col-sm-4 control-label" >联系电话<span class="text-red"> *</span></label>-->
                                 <!--<el-input v-model="ruleForm.contacts" class="aa col-sm-5" placeholder="您的联系电话" tabindex="1"></el-input>-->
@@ -150,13 +150,13 @@
                                     <!--</el-date-picker>-->
                                 <!--</div>-->
                             <!--</el-form-item>-->
-                            <el-form-item label="" prop="describe" class="form-group row">
-                                <label class="col-sm-4 control-label">您认为应该如何增强基层党建：</label>
-                                <el-input type="textarea" class="aa col-sm-5" v-model="ruleForm.describe" placeholder="您认为应该如何增强基层党建" tabindex="1"></el-input>
-                            </el-form-item>   <el-form-item label="" prop="describe" class="form-group row">
-                                <label class="col-sm-4 control-label">其他建议：</label>
-                                <el-input type="textarea" class="aa col-sm-5" v-model="ruleForm.describe" placeholder="其他建议" tabindex="1"></el-input>
-                            </el-form-item>
+                            <!--<el-form-item label="" prop="describe" class="form-group row">-->
+                                <!--<label class="col-sm-4 control-label">您认为应该如何增强基层党建：</label>-->
+                                <!--<el-input type="textarea" class="aa col-sm-5" v-model="ruleForm.describe" placeholder="您认为应该如何增强基层党建" tabindex="1"></el-input>-->
+                            <!--</el-form-item>   <el-form-item label="" prop="describe" class="form-group row">-->
+                                <!--<label class="col-sm-4 control-label">其他建议：</label>-->
+                                <!--<el-input type="textarea" class="aa col-sm-5" v-model="ruleForm.describe" placeholder="其他建议" tabindex="1"></el-input>-->
+                            <!--</el-form-item>-->
                             <!--<el-form-item label="" prop="file" class="form-group row" ref="uploadElement">-->
                             <!--<label class="col-sm-4 control-label">故障图片<span class="text-red"> *</span></label>-->
                             <!--<div class="col-sm-6">-->
@@ -203,7 +203,7 @@
 
 <script>
     // import {addMaintenance,findProvinceCode,findCityCode} from '../../api/web-api/repair-api'
-    // import {productLists} from '../../api/web-api/index'
+    import {findNews,goPageNewsDetail} from '../../api/web-api/exam-api'
     // import {isvalidPhone} from '../../common/validate'
 //    import {removeArray} from '../../common/util'
 //     var validPhone=(rule, value,callback)=>{
@@ -219,6 +219,7 @@
         data() {
             return {
                 fileList: [],
+                anList: [],
                 province1:[],
                 navData:[
                     {
@@ -475,81 +476,77 @@
             };
         },
         mounted() {
-            // this.getNav();
+            this.getNav();
             // this.getProvinceData();
         },
-//         methods: {
-//             getNav:function () {
-//                 let para = {
-//                     pageNum: this.pageNum,
-//                     pageSize: this.pageSize
-//                 };
-//                 productLists(para).then((res) => {
-//                     if (res.data.code===1) {
-//                         if (res.data.data.records) {
-//                             this.navData = res.data.data.records;
-//                         }
-//                     }else{
-//                         that.$message({
-//                             message: res.data.msg,
-//                             type: 'error'
-//                         });
-//                     }
-//                 })
-//             },
-//             submitForm(formName) {
-//                 let that = this;
-//                 that.formData=new FormData();
-//                 if(this.fileList.length){
-//                     this.$refs['ruleForm'].validateField('file');
-//                 }
-//                 that.rules.file = [{ required: true, message: '请上传图片' }]
-//                 if ( this.doUpload) {
-//                     that.rules.file = []
-//                     that.$refs['uploadElement'].clearValidate()
-//                 }
-//                 this.$refs[formName].validate((valid) => {
-//                     if (valid) {
-//                         this.fileList.forEach((item,index)=> {
-//                             that.formData.append('file', item)
-//                         })
-//                         //console.log(that.formData.getAll('file'));//查找所有的值
-//                         that.formData.append('code', that.ruleForm.code)
-//                         that.formData.append('productNumber', that.ruleForm.deviceIMEI)
-//                         that.formData.append('contacts', that.ruleForm.contacts)
-//                         that.formData.append('mobile', that.ruleForm.mobile)
-//                         that.formData.append('province', that.ruleForm.province)
-//                         that.formData.append('city', that.ruleForm.city)
-//                         that.formData.append('addr', that.ruleForm.addr)
-//                         that.formData.append('description', that.ruleForm.describe)
-//                         that.formData.append('buy_time', that.ruleForm.buy_time)
-//                         //console.log(that.formData.get('file'));
-//                         //console.log('提交的时间',that.formData.get('buy_time'));
-//                         addMaintenance(that.formData).then((res) => {
-//                             if (res.data.code===1) {
-//                                 that.$message({
-//                                     message: '提交成功',
-//                                     type: 'success'
-//                                 });
-//                                 that.$refs.ruleForm.dialogImageUrl = 'none'
-//                                 that.$refs.uploadxls.clearFiles()
-//                                 that.formData = new FormData()
-//                                 that.$refs.ruleForm.resetFields();
-//                                 this.fileList=[];
-// //                                that.$router.push({path: "/"});
-//                             }  else {
-//                                 that.$message({
-//                                     message: res.data.msg,
-//                                     type: 'error'
-//                                 });
-//                             }
-//                         })
-//                     } else {
-//                         console.log('error submit!!');
-//                         return false;
-//                     }
-//                 });
-//             },
+        methods: {
+            getNav:function () {
+                findNews().then(
+                    (res) => {
+                        console.log(res);
+                        if(res.code===1){
+                            this.anList = res.data;
+                            this.anList.forEach( (bb)=> {
+                                let arr= bb.answer.split('/');
+                                bb.answerList=[];
+                                arr.forEach((cc,index)=>{
+                                    let obj = {
+                                        index:index+1,
+                                        name:cc,
+                                    }
+                                    bb.answerList.push(obj);
+                                })
+                            })
+                            console.log(this.anList)
+                        }else {
+                            this.$message({
+                                message:"查询失败",
+                                type:'error',
+                            });
+                        }
+                    },
+                    (error) => {
+                        console.log(error);
+                    }
+                );
+            },
+            submitForm(formName) {
+                let that = this;
+                that.formData=new FormData();
+                this.anList.forEach((item,index)=> {
+                    that.formData.append('id', item.id)
+                    that.formData.append('answer', item.myanswer)
+                    console.log( item.id);
+                    // console.log(that.formData);
+                })
+                goPageNewsDetail(that.formData).then((res) => {
+                    console.log( res);
+                    if (res==1) {
+                        that.$message({
+                            message: '提交成功',
+                            type: 'success'
+                        });
+                        that.formData = new FormData()
+                        that.$refs.ruleForm.resetFields();
+                    }  else {
+                        that.$message({
+                            message: '提交失败',
+                            type: 'error'
+                        });
+                    }
+                })
+                // this.$refs[formName].validate((valid) => {
+                //     if (valid) {
+                //         this.fileList.forEach((item,index)=> {
+                //             that.formData.append('file', item)
+                //         })
+                //         that.formData.append('code', that.ruleForm.code)
+                //     } else {
+                //         console.log('error submit!!');
+                //         return false;
+                //     }
+                // });
+            },
 //             resetForm(formName) {
 //                 this.$refs[formName].resetFields();
 //                 this.ruleForm.buy_time='';
@@ -631,7 +628,7 @@
 // //                console.log(this.E)
 // //            },
 //
-//         }
+        }
     }
 
 </script>

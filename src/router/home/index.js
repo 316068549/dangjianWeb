@@ -22,6 +22,7 @@ import zhuanti from '../../views/rules/zhuanti'
 import tongzhan from '../../views/rules/tongzhan'
 import guidedetail from '../../views/home/guidedetail'
 import Detail from '../../views/rules/detail'
+import Detail2 from '../../views/rules/detail2'
 import shuju from '../../views/home/shuju'
 import sanhui from '../../views/zuzhi/sanhui'
 import sanhuilist from '../../views/zuzhi/sanhuiLists'
@@ -38,6 +39,9 @@ import DangzhengDetail from '../../views/home/DangzhengDetail'
 import bigdata from '../../views/home/bigData'
 import changepwd from '../../views/user/changepwd'
 import profile from '../../views/user/profile'
+import tongxun from '../../views/home/tongxue'
+import luntan from '../../views/home/luntans'
+import test from '../../views/test/test'
 
 
 export default {
@@ -68,6 +72,7 @@ export default {
             {path: 'guide', component: guide},
             {path: 'guidedetail/:id', component: guidedetail},
             {path: 'detail/:id', component: Detail},
+            {path: 'detail2/:id', component: Detail2},
             {path: 'shuju', component: shuju},
             {path: 'bigdata', component: bigdata},
             {path: 'danggui', component: danggui},
@@ -97,6 +102,9 @@ export default {
             {path: 'plan', component: sanhui},
             {path: 'changepwd', component: changepwd},
             {path: 'profile', component: profile},
+            {path: 'tongxun', component: tongxun},
+            {path: 'luntan', component: luntan},
+            {path: 'test', component: test},
             ],
       hidden: true
     }

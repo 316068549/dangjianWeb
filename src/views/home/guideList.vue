@@ -29,7 +29,7 @@
                             </li>
                             <li >
                                 <router-link to='/home/gongshi' >
-                                    <a class="daohang">党内公示</a>
+                                    <a class="daohang">党务公开</a>
                                 </router-link>
                             </li>
                             <li >
@@ -46,7 +46,7 @@
                             </router-link>
                         </li> <li >
                             <router-link to='/home/shuju' >
-                                <a class="daohang">党建数据</a>
+                                <a class="daohang">党员队伍</a>
                             </router-link>
                         </li> <li >
                             <router-link to='/home/question' >
@@ -66,13 +66,13 @@
                             <div class="newslist" @click="gotoDetail(item.id)">
                             <p class="title">
                             <a href="javascript:;">
-                            <!--{{item.title}}</a>-->
-                            {{item.addr}}
+                            {{item.title}}
+                            <!--{{item.addr}}-->
                             </a>
                             </p>
                             <!-- <p class="desc"><a target="_blank" class="more_link" href="/index.php/home/content/index/aid/1771.html">[详情]</a></p> -->
                             <!--<span class="new_time">2020-02-24</span>-->
-                            <span class="new_time">{{item.applyTime}}</span>
+                            <span class="new_time">{{dayjs.unix(item.time).format('YYYY-MM-DD')}}</span>
                             </div>
                             <div class="clear"></div>
                             </li>
@@ -158,14 +158,18 @@
 </template>
 
 <script>
-    import {findPageNews} from "../../api/web-api/guide-api";
+    import {findNews} from "../../api/web-api/guide-api";
+    import dayjs from 'dayjs'
+    // import util from '../../../common/util'
 
     export default {
         data() {
             return {
                 total: 0,
                 pageNum: 1,
-                pageSize: 10,
+                dayjs:dayjs,
+                pageSize: 2,
+                cateId: 30,
                 src: 'https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg',
                 newslist:[
                     // {
@@ -192,6 +196,8 @@
             };
         },
         mounted() {
+            // console.log(dayjs.unix(1609811854).format('{YYYY} MM-DDTHH:mm:ssZ[Z]'))
+            console.log(this.dayjs.unix(1609811854).format('YYYY-MM-DD'))
             this.getAboutPage();
         },
         methods: {
@@ -209,17 +215,19 @@
                 }
             },
             getAboutPage() {
-                let that=this;
+                var that=this;
                 let para = {
                     pageNum: this.pageNum,
                     pageSize: this.pageSize,
+                    cateId: this.cateId,
                 };
-                findPageNews(para).then(
+                findNews(para).then(
                     (res) => {
                         console.log(res);
                         if(res.code===1){
-                            that.total = res.data.total;
-                            that.newslist = res.data.records;
+                            that.total = res.count;
+                            that.newslist = res.data;
+                            // that.newslist[0].time = dayjs.unix(that.newslist[0].time).format('YYYY-MM-DD HH:mm:ss');
                             console.log(this.newslist)
                         }else {
                             that.$message({

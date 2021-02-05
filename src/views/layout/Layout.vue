@@ -6,16 +6,19 @@
              <span>
               欢迎来到智引党建，
              </span>
-
-          <span v-if="name"  style="margin-right: 20px">
-            &nbsp; &nbsp;
-              {{name}}
-             </span> &nbsp;
-          <a @click="logout" v-if="name">退出登录 &nbsp;</a>
-
-          <router-link to='/login' v-else  style="margin-top: -16px;">
+        <span v-if="$store.state.user.userInfo">
+            <span   style="margin-right: 20px">
+                    &nbsp; &nbsp;
+                      {{$store.state.user.userInfo.account}}
+                     </span> &nbsp;
+                  <a @click="logout" >退出登录 &nbsp;</a>
+        </span>
+          <span v-else>
+             <router-link to='/login'   style="margin-top: -16px;">
             <a>请登录</a>
           </router-link>
+          </span>
+
 
 
 
@@ -57,9 +60,16 @@
               name:''
           }
       },
+      mounted(){
+         console.log( this.$store.state)
+         console.log( this.$store.state.user.userInfo)
+      },
+
       methods:{
           logout(){
               this.$router.push({path: '/login'});
+              this.$store.dispatch('getUserInfo', null)
+              console.log( this.$store.state)
           }
       }
   }

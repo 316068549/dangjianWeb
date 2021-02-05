@@ -9,13 +9,11 @@
                     <router-link to='/home/Pictures' style="margin-top: -16px;">
                         <a class="daohang">党建相册</a>&gt;&nbsp;
                     </router-link>
-                    <router-link to='/home/danggui' style="margin-top: -16px;">
-                        <a class="daohang">111</a>
-                    </router-link>
+                        <a class="daohang">{{type}}</a>
                 </div>
             <section class="row">
                 <h2 class="col-md-12 m-tit">
-                    <em>111</em>
+                    <em>{{type}}</em>
                 </h2>
                 <div class="col-md-12" style="padding-top: 20px">
                     <!--<img width="200" src="https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg" preview="1" preview-text="描述文字">-->
@@ -43,17 +41,21 @@
                                         <!--<span class="el-icon-myaixin" v-else ></span>-->
                                         <span style="font-size: 14px">&nbsp;{{item.likes}}</span>
                                     </span>
-                                    <span class="demonstration text-center">自定义</span>
+                                    <span class="demonstration text-center">{{item.title}}</span>
                                     <span class="coomment fr"   style="padding-right: 5px">
-                                        <i class="el-icon-chat-line-round"  @click="show">评论</i>
+                                        <i class="el-icon-chat-line-round"  @click="show" style="cursor: pointer">评论</i>
                                         <i style="padding-left: 10px" class="el-icon-more" @click="show2"></i>
                                     </span>
                                     <div class="commentdec">
                                         <!--<b v-if="type">你回复&nbsp;{{name}}</b>\-->
                                         <div  v-if="msg">
                                                     <el-input type="textarea" v-model="newItem" v-on:keyup.enter="addNew"></el-input>
-                                                    <el-button type="primary" size="mini" @click="addComment">发表</el-button>
-                                                    <el-button size="mini" @click="canelComment">取消</el-button>
+                                            <div style="    overflow: auto;
+    margin-bottom: 10px;">
+                                                <el-button type="danger" size="mini" class="fr" @click="addComment">发表</el-button>
+                                                <el-button size="mini" class="fr" @click="canelComment">取消</el-button>
+                                            </div>
+
 
                                             <!--<textarea v-model="newItem" v-on:keyup.enter="addNew" />-->
                                             <!--<button class="btn" @click="addComment">发表</button>-->
@@ -66,7 +68,9 @@
                                                     v-bind:class="{finished: item.isFinished}"
                                                     v-on:click="toggleFinish(item)"
                                                     :key="index"
-                                            >{{item.author}}：{{item.title}}</li>
+                                            ><span class="fl">
+                                                {{item.author}}：{{item.title}}
+                                            </span></li>
                                         </ul>
                                     </div>
 
@@ -101,6 +105,7 @@
             return {
                 SERVER_HOST:SERVER_HOST,
                 total: 0,
+                type: '',
                 pageNum: 1,
                 pageSize: 5,
                 likes: 5,
@@ -115,45 +120,47 @@
                         title: '标题1',
                         likes: 0,
                     }
-                    ,{
-                        src: 'https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg',
-                        title: '标题1',
-                        likes: 0,
-                    },{
-                        src: 'https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg',
-                        title: '标题1',
-                        likes: 1,
-                    },{
-                        src: 'https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg',
-                        title: '标题1',
-                        likes: 2,
-                    },{
-                        src: 'https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg',
-                        title: '标题1',
-                        likes: 3,
-                    },{
-                        src: 'https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg',
-                        title: '标题1',
-                        likes: 110,
-                    }
+                    // ,{
+                    //     src: 'https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg',
+                    //     title: '标题1',
+                    //     likes: 0,
+                    // },{
+                    //     src: 'https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg',
+                    //     title: '标题1',
+                    //     likes: 1,
+                    // },{
+                    //     src: 'https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg',
+                    //     title: '标题1',
+                    //     likes: 2,
+                    // },{
+                    //     src: 'https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg',
+                    //     title: '标题1',
+                    //     likes: 3,
+                    // },{
+                    //     src: 'https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg',
+                    //     title: '标题1',
+                    //     likes: 110,
+                    // }
                 ]
                 ,items:[
-                    {
-                        src: 'https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg',
-                        title: '好看',
-                        author: '大虾',
-                        likes: 0,
-                    }
-                    ,{
-                        src: 'https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg',
-                        title: '非常好，666',
-                        author: '大师',
-                        likes: 0,
-                    }
+                    // {
+                    //     src: 'https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg',
+                    //     title: '好看',
+                    //     author: '大虾',
+                    //     likes: 0,
+                    // }
+                    // ,{
+                    //     src: 'https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg',
+                    //     title: '非常好，666',
+                    //     author: '大师',
+                    //     likes: 0,
+                    // }
                 ]
             };
         },
         mounted() {
+            console.log(this.$route)
+            this.type = this.$route.query.type;
             // this.getAboutPage();
         },
         methods: {
@@ -171,8 +178,19 @@
                 }
             },
             addComment: function() {
-                this.$emit("submit",this.commentText);
-                this.commentText = "";
+                // this.$emit("submit",this.commentText);
+                this.$message({
+                    message:"发表成功",
+                    type:'success',
+                });
+                this.msg = false;
+                let obj = {
+                    title: this.newItem,
+                    author: '游客',
+                }
+                this.items.push(obj)
+                this.msg2 = true;
+                this.newItem = "";
             },
             canelComment: function() {
                 this.$emit("canel");
@@ -240,10 +258,13 @@
     }
     .huifu{
     background: #ddd;
+        margin-top: 10px;
         li{
             text-align: left;
             padding-left: 10px;
             font-size: 12px;
+            width: 100%;
+            overflow: auto;
         }
     border-radius: 5px;
     }

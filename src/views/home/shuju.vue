@@ -7,7 +7,7 @@
                         <a class="daohang">网站首页</a>&gt;&nbsp;
                     </router-link>
                     <router-link to='/home/shuju' style="margin-top: -16px;">
-                        <a class="daohang">党建数据</a>
+                        <a class="daohang">党员队伍</a>
                     </router-link>
                 </div>
                 <div class="ht5"></div>
@@ -32,8 +32,17 @@
                             </el-col>
 
                         </el-row>
+                        <el-row class="first-row" :gutter="20">
+                            <el-col :span="8">
+                                <div id="business" class="block">
+                                    <TreeChart :json="treeData" id="6"></TreeChart>
+                                </div>
+                            </el-col>
+                        </el-row>
+
 
                     </el-col>
+
                 </el-row>
         </div>
         </div>
@@ -41,37 +50,38 @@
 </template>
 
 <script>
-    import {findPageNews} from "../../api/web-api/guide-api";
+    import {piedata} from "../../api/web-api/companyNews-api";
     import BiLine from "../../components/echarts/bi-line";
     import BiHBar from "../../components/echarts/bi-h-bar";
     import EquipPie from "../../components/echarts/equip-pie";
+   import TreeChart from '../../components/Treechart/tree.vue'
 
     export default{
         name: "bigData",
-        components: {EquipPie,BiLine,BiHBar},
+        components: {EquipPie,BiLine,BiHBar,TreeChart},
         data(){
             return{
-                yData:["0-9岁", "10-19岁", "20-29岁", "30-39岁", "40岁+"],
+                yData:[  "20岁-29岁", "30岁-39岁", "40岁+"],
                 yData2:["高中及以下", "大专", "本科", "硕士", "博士及以上"],
                 yData3:["男", "女"],
                 pieData:[
-                    {value: 1, name: '0-9岁'},
-                    {value: 22, name: '10-19岁'},
-                    {value: 134, name: '20-29岁'},
-                    {value: 135, name: '30-39岁'},
-                    {value: 135, name: '40岁+'},
+                    // {value: 1, name: '0-9岁'},
+                    // {value: 22, name: '10-19岁'},
+                    {value: 0, name: '20岁-29岁'},
+                    {value: 0, name: '30岁-39岁'},
+                    {value: 0, name: '40岁+'},
                 ],
                 pieData2:[
-                    {value: 1, name: '高中及以下'},
-                    {value: 22, name: '大专'},
-                    {value: 134, name: '本科'},
-                    {value: 135, name: '硕士'},
-                    {value: 135, name: '博士及以上'},
+                    {value: 0, name: '高中及以下'},
+                    {value: 0, name: '大专'},
+                    {value: 0, name: '本科'},
+                    {value: 0, name: '硕士'},
+                    {value: 0, name: '博士及以上'},
                 ], pieData3:[
-                    {value: 122, name: '男'},
-                    {value: 132, name: '女'}
+                    {value: 0, name: '男'},
+                    {value: 0, name: '女'}
                 ],
-                pieTotal:1,
+                pieTotal:0,
                 pieTotal2:1,
                 pieTotal3:1,
                 pieName:'年龄分布',
@@ -81,18 +91,137 @@
                 orders:0,
                 business: 0,
                 webUsers: 0,
-                projectArray:[],
+                pieArray:[],
                 ordersArray:[],
                 businessArray:[],
                 usersArray:[],
+                treeData: {
+                    partnerName: '陕煤集团党支部',
+                    proportionShares: '100',
+                    partnerType: 2,
+                    id: 1,
+                    childers: [{
+                        partnerName: '陕西生态水泥有限公司党支部',
+                        proportionShares: '50',
+                        childers: [{
+                            partnerName: '陕西智引科技有限公司党支部',
+                            proportionShares: '50',
+                            partnerType: 1,
+                            id: 2,
+                            partnerCode: 1
+                        },{
+                            partnerName: '陕西新汇华科技有限公司党支部',
+                            proportionShares: '50',
+                            partnerType: 1,
+                            id: 2,
+                            partnerCode: 1
+                        },{
+                            partnerName: '高陵生态水泥公司党支部',
+                            proportionShares: '50',
+                            partnerType: 1,
+                            id: 2,
+                            partnerCode: 1
+                        },
+                        ],
+                        partnerType: 1,
+                        id: 2,
+                        partnerCode: 1
+                    }
+                    // , {
+                    //     partnerName: '山西生态水泥有限公司党支部',
+                    //     proportionShares: '20',
+                    //     partnerType: 1,
+                    //     id: 4,
+                    //     partnerCode: 1
+                    // }, {
+                    //     partnerName: '西米子公司党支部',
+                    //     proportionShares: '20',
+                    //     partnerType: 2,
+                    //     id: 5,
+                    //     partnerCode: 1
+                    // }, {
+                    //     partnerName: '其他党支部',
+                    //     proportionShares: '10',
+                    //     partnerType: 3,
+                    //     id: 6,
+                    //     partnerCode: 1
+                    // }
+                    ]
+                }
             }
         },
         methods:{
             init(){
+                let that=this;
+                piedata().then((res) => {
+                    if(res){
+                        that.pieArray = res;
+                        console.log(this.pieArray)
+                        this.pieArray.forEach((item,index)=>{
+                            var count =0;
+                            var keys=Object.keys(item);
+                            // console.log(keys)
+                            if(index==0){
+                                this.pieData3.forEach(aa=>{
+                                    keys.forEach(bb=>{
+                                        count+=item[bb];
+                                        // console.log(bb)
+                                        // console.log(aa.name)
+                                        if(aa.name=='男'&& bb=='man'){
+                                            aa.value = item[bb]
+                                        }
+                                        if(aa.name=='女'&& bb=='woman'){
+                                            aa.value = item[bb]
+                                        }
+                                        // if(bb==aa.name){
+                                        //     aa.value = item[0][bb]
+                                        // }
+                                    })
+                                })
+                                // console.log(this.pieData3)
+                                this.pieTotal3 = count;
+                            }else if(index==1){
+                                this.pieData.forEach(aa=>{
+                                    keys.forEach(bb=>{
+                                        // console.log(bb)
+                                        // console.log(aa.name)
+                                        count+=item[bb];
+                                        if(bb==aa.name){
+                                            aa.value = item[bb]
+                                        }
+                                    })
+                                })
+                                // console.log(this.pieData)
+                                this.pieTotal = count;
+                            }else{
+                                this.pieData2.forEach(aa=>{
+                                    keys.forEach(bb=>{
+                                        // console.log(bb)
+                                        // console.log(aa.name)
+                                        count+=item[bb];
+                                        if(bb=='高中'){
+                                            aa.value = item[bb]
+                                        }
+                                        if(bb==aa.name){
+                                            aa.value = item[bb]
+                                        }
+                                    })
+                                })
+                                this.pieTotal2 = count;
+                            }
+                        })
+                    }else {
+                        that.$message({
+                            message:"查询失败",
+                            type:'error',
+                        });
+                    }
+
+                })
             },
         },
         mounted(){
-            // this.init();
+            this.init();
         }
     }
 

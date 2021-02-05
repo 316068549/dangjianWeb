@@ -1,6 +1,6 @@
 <template>
   <div class="bon">
-    <a href="list.asp?cid=99" target="_blank" class="xxzl"><img src="../../assets/img/xxzl.jpg"></a>
+    <a href="list.asp?cid=99" target="_blank" class="xxzl"><img height="300px" src="../../assets/img/222222.jpg"></a>
     <div style="overflow: hidden;">
       <div id="index">
         <!--<swiper :options="swiperOption">-->
@@ -14,8 +14,8 @@
         <swiper :options="swiperOption" ref="mySwiper" class="swiperBox">
           <swiper-slide v-for="(slide, index) in swiperSlides" :key="index" >
             <a href="javascript:;" @click="goPage(index)">
-              <img :src="slide.image"  >
-              <div class="jieshao">{{slide.title}}</div>
+              <img :src="SERVER_HOST+slide.fimg_src"  >
+              <div class="jieshao">{{slide.flink}}</div>
             </a>
             <!--<img :src="SERVER_HOST+'/file/downloadFile/'+slide.image" >-->
           </swiper-slide>
@@ -41,61 +41,25 @@
             <span slot="label"><i class="el-icon-date"></i>党建要闻  </span>
             <div class="new_container" style="display: block;">
               <ul>
-                <li>
-                  <a href="/index.php/home/content/index/aid/2441.html">
-                    <b>[顶]</b>	                    河南省2020年统一考试录用公务员焦作市体检结...</a>
-                </li><li>
-                <a href="/index.php/home/content/index/aid/2436.html">
-                  全文！中共中央组织部关于改进推动高质量发展的政...</a>
-              </li><li>
-                <a href="/index.php/home/content/index/aid/2425.html">
-                  <b>[顶]</b>	                    河南省2020年统一考试录用公务员焦作市(人民...</a>
-              </li><li>
-                <a href="/index.php/home/content/index/aid/2420.html">
-                  中国共产党第十九届中央委员会第五次全体会议公报</a>
-              </li><li>
-                <a href="/index.php/home/content/index/aid/2410.html">
-                  河南省2020年统一考试录用公务员 焦作市体能...</a>
-              </li><li>
-                <a href="/index.php/home/content/index/aid/2409.html">
-                  <b>[顶]</b>	                    河南省2020年统一考试录用公务员焦作市考试总...</a>
-              </li><li>
-                <a href="/index.php/home/content/index/aid/2383.html">
-                  2020年全省统一考试录用公务员焦作市面试工作...</a>
-              </li><li>
-                <a href="/index.php/home/content/index/aid/2378.html">
-                  中共中央印发《中国共产党中央委员会工作条例》</a>
-              </li>            </ul>
+                <li v-for="(item,index) in newslist">
+                  <router-link :to="{path:'/home/detail/'+item.id, query: { type: 'newslist' }}" >
+                    <a >{{item.title}}</a>
+                  </router-link>
+                  <!--<a href="/index.php/home/content/index/aid/2441.html">-->
+                                    <!--{{item.title}}</a>-->
+                </li>
+                           </ul>
             </div>
           </el-tab-pane>
           <el-tab-pane label="通知公告">
             <div class="new_container" style="display: block;">
-              <ul>
-                <li>
-                  <a href="/index.php/home/content/index/aid/2441.html">
-                    <b>[顶]</b>	                    河南省2020年统一考试录用公务员焦作市体检结...</a>
-                </li><li>
-                <a href="/index.php/home/content/index/aid/2436.html">
-                  全文！中共中央组织部关于改进推动高质量发展的政...</a>
-              </li><li>
-                <a href="/index.php/home/content/index/aid/2425.html">
-                  <b>[顶]</b>	                    河南省2020年统一考试录用公务员焦作市(人民...</a>
-              </li><li>
-                <a href="/index.php/home/content/index/aid/2420.html">
-                  中国共产党第十九届中央委员会第五次全体会议公报</a>
-              </li><li>
-                <a href="/index.php/home/content/index/aid/2410.html">
-                  河南省2020年统一考试录用公务员 焦作市体能...</a>
-              </li><li>
-                <a href="/index.php/home/content/index/aid/2409.html">
-                  <b>[顶]</b>	                    河南省2020年统一考试录用公务员焦作市考试总...</a>
-              </li><li>
-                <a href="/index.php/home/content/index/aid/2383.html">
-                  2020年全省统一考试录用公务员焦作市面试工作...</a>
-              </li><li>
-                <a href="/index.php/home/content/index/aid/2378.html">
-                  中共中央印发《中国共产党中央委员会工作条例》</a>
-              </li>            </ul>
+             <ul>
+                <li v-for="(item,index) in newslist2">
+                  <router-link :to="{path:'/home/detail/'+item.id, query: { type: 'notices' }}" >
+                    <a >{{item.title}}</a>
+                  </router-link>
+                </li>
+                           </ul>
             </div>
           </el-tab-pane>
           <!--<el-tab-pane label="角色管理">角色管理</el-tab-pane>-->
@@ -109,77 +73,57 @@
     <div class="box">
       <div class="new_list">
         <div class="new_tit">
-          <h3><i class="icon iconfont icon-danghui-copy"></i>党内公示</h3>
-          <span class="more"><a href="/index.php/home/list/index/sid/19.html">更多</a></span>
+          <h3><i class="icon iconfont icon-danghui-copy"></i>党务公开</h3>
+          <span class="more">
+            <router-link to='/home/gongshi' >
+                        <a >更多</a>
+                    </router-link>
+            <!--<a href="/index.php/home/list/index/sid/19.html">更多</a>-->
+          </span>
           <div class="clear"></div>
         </div>
         <ul>
-          <li>
-            <a href="/index.php/home/content/index/aid/2492.html">
-              全市干部监督工作联席会议召开</a>
-          </li><li>
-          <a href="/index.php/home/content/index/aid/2491.html">
-            精准引才，助民小康！修武县这样做！</a>
-        </li><li>
-          <a href="/index.php/home/content/index/aid/2490.html">
-            实施“五微”工作法！来看解放区焦西街道如...</a>
-        </li><li>
-          <a href="/index.php/home/content/index/aid/2489.html">
-            唱响“三部曲”，来看沁阳市建设党建综合体...</a>
-        </li><li>
-          <a href="/index.php/home/content/index/aid/2488.html">
-            市委常委、组织部长路红卫到党支部联系点调...</a>
-        </li><li>
-          <a href="/index.php/home/content/index/aid/2487.html">
-            下好“三步棋”，来看山阳区如何解锁基层治...</a>
-        </li>			</ul>
+          <li v-for="item in newslist3">
+            <router-link :to="{path:'/home/detail/'+item.id, query: { type: 'gongshi' }}" >
+              <a >{{item.title}}</a>
+            </router-link>
+          </li>
+        
+          	</ul>
       </div>
       <div class="new_list">
         <div class="new_tit">
           <h3><i class="icon iconfont icon-danghui-copy"></i>办事指南</h3>
-          <span class="more"><a href="/index.php/home/list/index/sid/20.html">更多</a></span>
+          <span class="more">   <router-link to='/home/guide' >
+                        <a >更多</a>
+                    </router-link></span>
           <div class="clear"></div>
         </div>
         <ul>
-          <li>
-            <a href="/index.php/home/content/index/aid/2184.html">
-              专家讲座传经验，交流观摩促发展，第七期乡...</a>
-          </li><li>
-          <a href="http://www.12371.cn/2018/11/28/ARTI1543396830661437.shtml" target="_blank">	                    	                    中共中央办公厅印发《干部人事档案工作条例...</a>
-        </li><li>
-          <a href="http://www.12371.cn/2018/11/02/ARTI1541110325478883.shtml" target="_blank">	                    	                    中共中央印发《2018－2022年全国干...</a>
-        </li><li>
-          <a href="http://www.12371.cn/2019/03/17/ARTI1552825567208273.shtml" target="_blank">	                    	                    中共中央印发《党政领导干部选拔任用工作条...</a>
-        </li><li>
-          <a href="/index.php/home/content/index/aid/1205.html">
-            中共中央办公厅印发《党政领导干部考核工作...</a>
-        </li><li>
-          <a href="/index.php/home/content/index/aid/1060.html">
-            最新《中国共产党纪律处分条例》解读+前后...</a>
-        </li>			</ul>
+           <li v-for="item in newslist4">
+             <router-link :to="{path:'/home/detail/'+item.id, query: { type: 'guide' }}" >
+               <a >{{item.title}}</a>
+             </router-link>
+          </li>
+        	
+        </ul>
       </div>
       <div class="new_list no_mar">
         <div class="new_tit">
           <h3><i class="icon iconfont icon-danghui-copy"></i>党规党纪</h3>
-          <span class="more"><a href="/index.php/home/list/index/sid/21.html">更多</a></span>
+          <span class="more">   <router-link to='/home/danggui' >
+                        <a >更多</a>
+                    </router-link></span>
           <div class="clear"></div>
         </div>
         <ul>
-          <li>
-            <a href="http://www.jzdj.cn/index.php/home/content/index/aid/2325.html" target="_blank">	                    	                    焦作市2020年面向国内外引进高层次急需...</a>
-          </li><li>
-          <a href="/index.php/home/content/index/aid/1772.html">
-            中共焦作市委组织部 焦作市人力资源和社会...</a>
-        </li><li>
-          <a href="/index.php/home/content/index/aid/1256.html">
-            我市强力推进“引才聚焦”工程</a>
-        </li><li>
-          <a href="http://www.12371.cn/2019/06/20/ARTI1560985449503348.shtml" target="_blank">	                    	                    中共中央办公厅印发《关于鼓励引导人才向艰...</a>
-        </li><li>
-          <a href="http://news.12371.cn/2018/08/01/ARTI1533077419053886.shtml" target="_blank">	                    	                    中共中央组织部 中共中央宣传部关于在广大...</a>
-        </li><li>
-          <a href="http://news.12371.cn/2018/02/26/ARTI1519649762157492.shtml" target="_blank">	                    	                    中共中央办公厅 国务院办公厅印发《关于分...</a>
-        </li>			</ul>
+           <li v-for="item in newslist4">
+             <router-link :to="{path:'/home/detail/'+item.id, query: { type: 'danggui' }}" >
+               <a >{{item.title}}</a>
+             </router-link>
+          </li>
+        	
+        </ul>
       </div>
       <div class="clear"></div>
     </div>
@@ -275,7 +219,9 @@
       <div class="video_tit_bg">
         <div class="new_tit">
           <h3><i class="icon iconfont icon-danghui-copy"></i>优秀党员风采</h3>
-          <span class="more"><a href="/index.php/home/list/index/sid/21.html">更多</a></span>
+          <span class="more">   <router-link to='/home/elegant' >
+                        <a >更多</a>
+                    </router-link></span>
           <div class="clear"></div>
         </div>
       </div>
@@ -376,11 +322,19 @@
         <div style="width:3000px;">
           <ul id="marquee1_1"  ref="con1a" :class="{anim:animate==true}" @mouseenter="mEnter" @mouseleave="mLeave" >
             <div class="video_4" v-for='item in items'>
-              <a href="http://www.hndyjyfw.gov.cn/courseDetail.html?id=367a6c24-e18f-4edb-b3fc-794fb9fa718c&amp;type=dfyj&amp;city=jiaozuo" target="_blank">
-                <img src="../../assets/img/5d565aca5c170.jpg">
-                <p class="text-center">{{item.name}}</p>
-                <div class="bg000"></div>
-              </a>
+              <router-link :to="{path:'/home/detail/'+item.id, query: { type: 'elegant' }}" >
+                <a href="javascript:;" target="_blank">
+                  <img :src="SERVER_HOST+item.litpic">
+                  <p class="text-center">{{item.title}}</p>
+                  <div class="bg000"></div>
+                </a>
+              </router-link>
+              <!---->
+              <!--<a href="http://www.hndyjyfw.gov.cn/courseDetail.html?id=367a6c24-e18f-4edb-b3fc-794fb9fa718c&amp;type=dfyj&amp;city=jiaozuo" target="_blank">-->
+                <!--<img :src="SERVER_HOST+item.litpic">-->
+                <!--<p class="text-center">{{item.title}}</p>-->
+                <!--<div class="bg000"></div>-->
+              <!--</a>-->
               <!--<div id="caseBlanche">-->
                 <!--<a href="http://www.hndyjyfw.gov.cn/courseDetail.html?id=367a6c24-e18f-4edb-b3fc-794fb9fa718c&amp;type=dfyj&amp;city=jiaozuo" target="_blank">			                        <div id="rond">-->
                   <!--<div id="test"></div>-->
@@ -411,8 +365,10 @@
 </template>
 
 <script>
-    // import {SERVER_HOST} from '../../common/portConfig'
+    import {SERVER_HOST} from '../../common/portConfig'
     // import {bannerLists} from '../../api/web-api/index'
+    import {findBanner} from "../../api/web-api/cates-api";
+        import {findNews} from "@/api/web-api/companyNews-api";
 //  import {$} from 'jquery'
 
    import { swiper, swiperSlide } from 'vue-awesome-swiper'
@@ -420,19 +376,24 @@
         name: 'app',
         data () {
             return {
-                // SERVER_HOST:SERVER_HOST,
+                SERVER_HOST:SERVER_HOST,
                 pageNum: 1,
                 animate:false,
                 items:[ //消息列表对应的数组
-                    {name:"马云"},
-                    {name:"雷军"},
-                    {name:"王勤1"},
-                    {name:"王勤2"},
-                    {name:"王勤3"},
-                    {name:"王勤4"},
-                    {name:"王勤5"},
+                    // {name:"马云"},
+                    // {name:"雷军"},
+                    // {name:"王勤1"},
+                    // {name:"王勤2"},
+                    // {name:"王勤3"},
+                    // {name:"王勤4"},
+                    // {name:"王勤5"},
                 ],
                 pageSize: 15,
+                newslist:[],
+                newslist2:[],
+                newslist3:[],
+                newslist4:[],
+                newslist5:[],
                 swiperOption: {
                     notNextTick: true,
                     //循环
@@ -472,18 +433,18 @@
                     }
                 },
                 swiperSlides: [
-                   {
-                       title:'我市举行第三季度基层党建拉练观摩，市委常委、...',
-                       image:require('../../assets/img/banner1.jpg')
-                   },
-                   {
-                       title:'我市举行第三季度基层党建拉练观摩，市委常委、...',
-                       image:require('../../assets/img/banner2.jpg')
-                   },
-                   {
-                       title:'我市举行第三季度基层党建拉练观摩，市委常委、...',
-                       image:require('../../assets/img/banner3.jpg')
-                   }
+                   // {
+                   //     title:'我市举行第三季度基层党建拉练观摩，市委常委、...',
+                   //     image:require('../../assets/img/banner1.jpg')
+                   // },
+                   // {
+                   //     title:'我市举行第三季度基层党建拉练观摩，市委常委、...',
+                   //     image:require('../../assets/img/banner2.jpg')
+                   // },
+                   // {
+                   //     title:'我市举行第三季度基层党建拉练观摩，市委常委、...',
+                   //     image:require('../../assets/img/banner3.jpg')
+                   // }
                 ],
                 swiperSlides2:[
 
@@ -491,6 +452,130 @@
             }
         },
         methods: {
+            getAboutPage() {
+                let that=this;
+                let para = {
+                    pageNum: 1,
+                    pageSize: 10,
+                    cateId: 27,
+                }; 
+                findNews(para).then(
+                    (res) => {
+                        console.log(res);
+                        if(res.code===1){
+                            that.total = res.count;
+                            that.newslist = res.data;
+                            // that.newslist[0].time = dayjs.unix(that.newslist[0].time).format('YYYY-MM-DD HH:mm:ss');
+                            console.log(this.newslist)
+                        }else {
+                            that.$message({
+                                message:"查询失败",
+                                type:'error',
+                            });
+                        }
+                    },
+                    (error) => {
+                        console.log(error);
+                    }
+                );
+            },
+             getAboutPage2() {
+                let that=this;
+                let para = {
+                    pageNum: 1,
+                    pageSize: 10,
+                    cateId: 28,
+                }; 
+                findNews(para).then(
+                    (res) => {
+                        if(res.code===1){
+                            that.total = res.count;
+                            that.newslist2 = res.data;
+                            console.log(this.newslist)
+                        }else {
+                            that.$message({
+                                message:"查询失败",
+                                type:'error',
+                            });
+                        }
+                    },
+                    (error) => {
+                        console.log(error);
+                    }
+                );
+            },
+              getAboutPage3() {
+                let that=this;
+                let para = {
+                    pageNum: 1,
+                    pageSize: 10,
+                    cateId: 29,
+                }; 
+                findNews(para).then(
+                    (res) => {
+                        if(res.code===1){
+                            that.total = res.count;
+                            that.newslist3 = res.data;
+                        }else {
+                            that.$message({
+                                message:"查询失败",
+                                type:'error',
+                            });
+                        }
+                    },
+                    (error) => {
+                        console.log(error);
+                    }
+                );
+            },
+               getAboutPage4() {
+                let that=this;
+                let para = {
+                    pageNum: 1,
+                    pageSize: 10,
+                    cateId: 30,
+                }; 
+                findNews(para).then(
+                    (res) => {
+                        if(res.code===1){
+                            that.total = res.count;
+                            that.newslist4 = res.data;
+                        }else {
+                            that.$message({
+                                message:"查询失败",
+                                type:'error',
+                            });
+                        }
+                    },
+                    (error) => {
+                        console.log(error);
+                    }
+                );
+            },
+             getAboutPage5() {
+                let that=this;
+                let para = {
+                    pageNum: this.pageNum,
+                    pageSize: this.pageSize,
+                    cateId: 31,
+                };
+                findNews(para).then(
+                    (res) => {
+               
+                        if(res.code===1){
+                            that.items = res.data;
+                        }else {
+                            that.$message({
+                                message:"查询失败",
+                                type:'error',
+                            });
+                        }
+                    },
+                    (error) => {
+                        console.log(error);
+                    }
+                );
+            },
             scroll(){
                 let con1 = this.$refs.con1a;
                 if(con1) con1.style.marginLeft='-280px';
@@ -512,41 +597,44 @@
             goPage(index){
                 console.log(index);
                 this.$router.push({path: '/home/birthlist'})
-            }
-//             getBanner() {
-// //                let para = {
-// //                    pageNum: this.pageNum,
-// //                    pageSize: this.pageSize
-// //                };
-//                 bannerLists().then((res) => {
-//                     let aa=[];
-//                     let bb=[];
-//                     if (res.data.code===1) {
-//                         if (res.data.data) {
-//                             bb = res.data.data.slice(-3);
-//                             res.data.data.forEach(function (currentValue, index) {
-//                                 if (index < 3) {
-//                                     aa[index] = currentValue;
-//                                 }
-//                             })
-//                         }
-//                     }else{
-//                         that.$message({
-//                             message: res.data.msg,
-//                             type: 'error'
-//                         });
-//                     }
-//                     this.swiperSlides=aa;
-// //                    console.log(this.swiperSlides)
-//                     this.swiperSlides2=bb;
-// //                    console.log(this.swiperSlides2)
-// //                    console.log(this.swiperSlides)
-//                 })
-//             },
+            },
+            getBanner() {
+               let para = {
+                   id: 11,
+               };
+                findBanner(para).then((res) => {
+                    let aa=[];
+                    let bb=[];
+                    if (res.code===1) {
+                        if (res.data.flash) {
+                          this.swiperSlides=res.data.flash;
+                           // bb = res.data.slice(-3);
+                            //res.data.forEach(function (currentValue, index) {
+                             //   if (index < 3) {
+                              //      aa[index] = currentValue;
+                              //  }
+                           // })
+                        }
+                    }else{
+                        this.$message({
+                            message: res.data.msg,
+                            type: 'error'
+                        });
+                    }
+               
+                   console.log(this.swiperSlides)
+                     //this.swiperSlides2=bb;
+                })
+            },
         },
         mounted() {
             this.timer1= setInterval(this.scroll,2000)
-            // this.getBanner();
+             this.getBanner();
+             this.getAboutPage();
+             this.getAboutPage2();
+             this.getAboutPage3();
+             this.getAboutPage4();
+             this.getAboutPage5();
         },
         beforeDestroy() {
             clearInterval(this.timer1)
@@ -646,6 +734,7 @@
     display: block;
     width: 1100px;
     height: 300px;
+    overflow: hidden;
     img{
       text-align: center;
     }
@@ -657,6 +746,7 @@
       height: 42px;
       font-size: 16px;
       line-height: 42px;
+      text-align:left;
       /*background: url(../img/redIcon.jpg) no-repeat left center;*/
       overflow: hidden;
       a{
