@@ -6,120 +6,35 @@
                     <router-link to='/home' style="margin-top: -16px;">
                         <a class="daohang">网站首页</a>&gt;&nbsp;
                     </router-link>
-                    <router-link to='/home/xuanjulist' style="margin-top: -16px;">
-                        <a class="daohang">换届选举</a>
-                    </router-link>
+                    <!--<router-link to='/home/danggui' style="margin-top: -16px;">-->
+                        <a class="daohang">在线考试</a>
+                    <!--</router-link>-->
                 </div>
-                <div class="ht5"></div>
                 <div class="newsbox" style="text-align: left;overflow: auto;">
-                    <div class="news_name"><h1>换届选举</h1></div>
-                    <div class="col-xs-3 catemenu-box">
-                        <ul class="catmenu-ul">
-                            <h3 style="font-size: 20px;">组织生活
-                                <!--<router-link to='/home' >-->
-                                    <!--<a class="daohang">制度建设</a>-->
-                                <!--</router-link>-->
-                            </h3>
-                            <li >
-                                <router-link to='/home/sanhuilist' >
-                                    <a class="daohang">三会一课</a>
-                                </router-link>
-                                </li>
-                            <li  >
-                                <router-link to='/home/liangxuelist' >
-                                    <a class="daohang">主题党日</a>
-                                </router-link>
-                            </li>
-                            <li >
-                                <router-link to='/home/birthlist' >
-                                    <a class="daohang">党政生日</a>
-                                </router-link>
-                            </li>
-                            <li>
-                                <router-link to='/home/minzhulist' >
-                                    <a class="daohang">民主生活会</a>
-                                </router-link>
-                            </li>
-                            <li class="cactive">
-                                <router-link to='/home/xuanjulist' >
-                                    <a class="daohang">换届选举</a>
-                                </router-link>
-                            </li>
-                            <li>
-                                <router-link to='/home/juankuanlist' >
-                                    <a class="daohang">捐款捐物</a>
-                                </router-link>
-                            </li><li>
-                                <router-link to='/home/maillist' >
-                                    <a class="daohang">书记信箱</a>
-                                </router-link>
-                            </li><li>
-                                <router-link to='/home/planlist' >
-                                    <a class="daohang">干部任用</a>
-                                </router-link>
-                            </li>
-                            <li>
-                                <router-link to='/home/minzhulist2' >
-                                    <a class="daohang">组织生活会</a>
-                                </router-link>
-                            </li>
-                        </ul>
-                    </div>
-                    <section class="col-xs-9">
+                    <section class="col-xs-12">
                         <section class="hot">
-
-
-                            <!--<ul class="hdNews">-->
-                                <!--<li v-for="(item,index) in newslist"  >-->
-                                    <!--<div class="newslist" @click="gotoDetail(item.id)">-->
-                                        <!--<p class="title">-->
-                                            <!--<a href="javascript:;">-->
-                                                <!--{{item.title}}<br>-->
-                                                <!--<i class="el-icon-user" v-if="item.author"></i>{{item.author}}-->
-
-                                            <!--</a>-->
-                                        <!--</p>-->
-                                        <!--&lt;!&ndash; <p class="desc"><a target="_blank" class="more_link" href="/index.php/home/content/index/aid/1771.html">[详情]</a></p> &ndash;&gt;-->
-                                        <!--&lt;!&ndash;<span class="new_time">2020-02-24</span>&ndash;&gt;-->
-
-                                        <!--<span class="new_time"><div class="green">{{item.status}}</div> <span style="padding-top: 10px">{{item.time}}</span></span>-->
-                                    <!--</div>-->
-                                    <!--<div class="clear"></div>-->
-                                <!--</li>-->
-                            <!--</ul>-->
-
-                            <ul class="hdNews">
-                                <li v-for="(item,index) in newslist"  >
-                                    <div class="newslist" @click="gotoDetail(item.id)">
-                                        <p class="title">
-                                            <a href="javascript:;">
-                                                {{item.title}}—{{item.author}}
-                                            </a>
-                                        </p>
-                                        <span class="new_time">{{item.time}}</span>
-                                    </div>
-                                    <div class="clear"></div>
-                                </li>
-                            </ul>
-
-
-
-
+                            <div class="grid">
+                                <ul class="news-list clearfix">
+                                    <li v-for="(item,index) in newslist"><a href="javascript:;" @click="gotoDetail(index)" class="ns-item fade">
+                                        <div class="ns-info">
+                                            <h3 title="">{{item.title}}</h3>
+                                        </div>
+                                        <div class="ns-thumb tc">
+                                            <!--<img :src="SERVER_HOST+'/file/downloadFile/'+item.image">  -->
+                                            <img src="https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg">
+                                        </div>
+                                        <div class="ns-info">
+                                            <!--<h3 title="">{{item.title}}</h3>-->
+                                            <p v-html="item.content"></p>
+                                        </div>
+                                        <!--<p class="date">{{item.createTime|date_from_unix}}</p>-->
+                                    </a>
+                                    </li>
+                                </ul>
+                            </div>
                         </section>
                     </section>
-                </div>
-                <div class="fanye" style="text-align:center;margin-top: 40px">
-                    <el-pagination class="tc mb30"
-                                   @size-change="handleSizeChange"
-                                   prev-text="上一页"
-                                   next-text="下一页"
-                                   @current-change="handleCurrentChange"
-                                   background
-                                   :page-size="pageSize"
-                                   layout="total, prev, pager, next"
-                                   :total="total" >
-                    </el-pagination>
-                    <!--<div><ul class="pagination">  <li class="disabled"><a href="#">1</a></li><li><a href="/index.php/home/list/index/sid/30/p/2.html">2</a></li><li><a href="/index.php/home/list/index/sid/30/p/3.html">3</a></li> <li><a href="/index.php/home/list/index/sid/30/p/2.html">下一页</a></li> </ul></div>                <div class="clear"></div>-->
+
                 </div>
         </div>
         </div>
@@ -130,33 +45,78 @@
 
 <script>
     import {findNews} from "../../api/web-api/companyNews-api";
-    import {findPageNews} from "../../api/web-api/guide-api";
     import {SERVER_HOST} from './../../common/portConfig'
 
     export default {
         data() {
             return {
-                total: 8,
+                total: 0,
                 pageNum: 1,
                 pageSize: 10,
                 src: 'https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg',
                 newslist:[
                     {
                         id:1,
-                        title: '投票选举预备党员',
-                        author: '测试',
-                        time: '2020-12-20 09:00',
-                        status: '已结束',
-                        content: '投票选举预备党员',
+                        title: '考试1',
+                        content: '考试1内容',
+                    },{
+                        id:1,
+                        title: '考试2',
+                        content: '考试2内容',
+                    },{
+                        id:1,
+                        title: '考试3',
+                        content: '考试3内容',
+                    },
+                    {
+                        id:1,
+                        title: '考试1',
+                        content: '考试1内容',
+                    },{
+                        id:1,
+                        title: '考试2',
+                        content: '考试2内容',
+                    },{
+                        id:1,
+                        title: '考试3',
+                        content: '考试3内容',
                     }
+
                 ]
             };
         },
         mounted() {
             document.getElementById('web-content').style.backgroundColor='#EEE';
-           // this.getAboutPage();
+            // this.getAboutPage();
+            // this.getLists();
         },
         methods: {
+            getLists() {
+                let para = {
+                    pageNum: this.pageNum,
+                    pageSize: this.pageSize
+                };
+                findNews(para).then((res) => {
+                    let aa=[];
+                    if (res.code===1) {
+                        this.newslist=res.data.records;
+                    }
+                    else{
+                        this.$message({
+                            message: res.data.msg,
+                            type: 'error'
+                        });
+                    }
+                })
+            },
+            gotoDetail(id){
+                console.log(id);
+                // this.$router.push({path: '/home/sanhuilist'});
+                this.$router.push({path: '/home/test/'+id});
+                // $router.push({path: '/administrator/maintenance/view/'+scope.row.id})
+
+
+            },
             handleCurrentChange(val) {
                 this.pageNum = val;
                 this.getAboutPage();
@@ -194,12 +154,6 @@
                         console.log(error);
                     }
                 );
-            },
-            gotoDetail(id){
-                console.log(id)
-                // $router.push({path: '/administrator/maintenance/view/'+scope.row.id})
-                this.$router.push({path: '/home/xuanjudetail/'+id,query: { type: 'xuanjulist' }});
-                // this.$router.push({path: '/home/guidedetail'});
             },
         }
     }
@@ -289,7 +243,7 @@
     .hdNews{ border-bottom:1px dotted #DCDCDC;margin-top:20px;}
     .hdNews li{font-size:18px;line-height:2.5;border-bottom:1px dashed #ddd; text-indent:10px;}
     .hdNews li a{color:#333}
-    .hdNews li span{font-size:14px;color:#555;float:right;}
+    .hdNews li span{font-size:14px;color:#555;float:right;margin-top: 5px;}
     .hdNews p{ line-height:1.5; font-size:14px;}
     .hdNews h2{font-size:16px; line-height:1.5;}
     .hasPic{ height:101px; padding-top:8px; overflow:hidden;}

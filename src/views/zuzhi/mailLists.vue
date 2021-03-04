@@ -6,7 +6,7 @@
                     <router-link to='/home' style="margin-top: -16px;">
                         <a class="daohang">网站首页</a>&gt;&nbsp;
                     </router-link>
-                    <router-link to='/home/maillist' style="margin-top: -16px;">
+                    <router-link to='/home/sanhui' style="margin-top: -16px;">
                         <a class="daohang">书记信箱</a>
                     </router-link>
                 </div>
@@ -21,36 +21,42 @@
                                 <!--</router-link>-->
                             </h3>
                             <li >
-                                <router-link to='/home/sanhui' >
+                                <router-link to='/home/sanhuilist' >
                                     <a class="daohang">三会一课</a>
                                 </router-link>
                                 </li>
                             <li  >
-                                <router-link to='/home/liangxue' >
-                                    <a class="daohang">党建专题</a>
+                                <router-link to='/home/liangxuelist' >
+                                    <a class="daohang">主题党日</a>
                                 </router-link>
                             </li>
                             <li>
-                                <router-link to='/home/minzhu' >
+                                <router-link to='/home/minzhulist' >
                                     <a class="daohang">民主生活会</a>
                                 </router-link>
                             </li>
+
                             <li >
-                                <router-link to='/home/xuanju' >
-                                    <a class="daohang">民主选举</a>
+                                <router-link to='/home/xuanjulist' >
+                                    <a class="daohang">换届选举</a>
                                 </router-link>
                             </li>
                             <li >
-                                <router-link to='/home/juankuan' >
+                                <router-link to='/home/juankuanlist' >
                                     <a class="daohang">捐款捐物</a>
                                 </router-link>
                             </li><li class="cactive">
-                                <router-link to='/home/mailbox' >
+                                <router-link to='/home/maillist' >
                                     <a class="daohang">书记信箱</a>
                                 </router-link>
                             </li><li>
-                                <router-link to='/home/plan' >
-                                    <a class="daohang">计划总结</a>
+                                <router-link to='/home/planlist' >
+                                    <a class="daohang">干部任用</a>
+                                </router-link>
+                            </li>
+                            <li>
+                                <router-link to='/home/minzhulist2' >
+                                    <a class="daohang">组织生活会</a>
                                 </router-link>
                             </li>
                         </ul>
@@ -135,8 +141,13 @@
                                             <p>{{viewForm.content}}</p>
                                             <!--<el-input v-model="addForm.content" type="textarea" auto-complete="off" placeholder="信件内容"></el-input>-->
                                         </el-form-item>
+                                        <el-form-item v-if="ishuifu" label="回复内容" prop="content">
+                                            <el-input v-model="viewForm.content2" type="textarea" auto-complete="off" placeholder="回复内容"></el-input>
+                                        </el-form-item>
                                     </el-form>
                                     <div slot="footer" class="dialog-footer" align="center">
+                                        <el-button v-if="!ishuifu" @click.native="huifu">回复</el-button>
+                                        <el-button v-else @click.native="huifu2">提交</el-button>
                                         <el-button @click.native="viewVisible = false">关闭</el-button>
                                     </div>
                                 </el-dialog>
@@ -251,6 +262,7 @@
                 pageNum: 1,
                 pageSize: 15,
                 datasLoading: false,
+                ishuifu: false,
                 addLoading: false,
                 addFormVisible: false,//新增界面是否显示
                 viewVisible: false,//界面是否显示
@@ -282,6 +294,7 @@
                     mobile:'',
                     title:'',
                     content:'',
+                    content2:'',
                 },
                 sels: [],
                 pageNum: 1,
@@ -299,6 +312,18 @@
                 console.log(b);
                 this.viewVisible = true
                 this.viewForm=b;
+            },
+            huifu(){
+                this.ishuifu=true;
+            },
+            huifu2(){
+                this.ishuifu=false;
+                if (this.viewForm.content2) {
+                    this.$message({
+                        message: '成功',
+                        type: 'success'
+                    });
+                }
             },
             handleCurrentChange(val) {
                 this.pageNum = val;

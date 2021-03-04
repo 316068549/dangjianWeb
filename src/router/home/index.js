@@ -28,6 +28,7 @@ import sanhui from '../../views/zuzhi/sanhui'
 import sanhuilist from '../../views/zuzhi/sanhuiLists'
 import liangxueLists from '../../views/zuzhi/liangxueLists'
 import minzhuLists from '../../views/zuzhi/minzhuLists'
+import minzhuLists2 from '../../views/zuzhi/minzhuLists2'
 import xuanjuLists from '../../views/zuzhi/xuanjuLists'
 import mailLists from '../../views/zuzhi/mailLists'
 import juankuanLists from '../../views/zuzhi/juankuanLists'
@@ -40,8 +41,10 @@ import bigdata from '../../views/home/bigData'
 import changepwd from '../../views/user/changepwd'
 import profile from '../../views/user/profile'
 import tongxun from '../../views/home/tongxue'
+import zuzhiji from '../../views/home/zuzhi'
 import luntan from '../../views/home/luntans'
 import test from '../../views/test/test'
+import testList from '../../views/test/testList'
 
 
 export default {
@@ -87,6 +90,7 @@ export default {
             {path: 'sanhui', component: sanhui},
             {path: 'sanhuilist', component: sanhuilist},
             {path: 'minzhulist', component: minzhuLists},
+            {path: 'minzhulist2', component: minzhuLists2},
             {path: 'liangxuelist', component: liangxueLists},
             {path: 'xuanjulist', component: xuanjuLists},
             {path: 'juankuanlist', component: juankuanLists},
@@ -103,8 +107,10 @@ export default {
             {path: 'changepwd', component: changepwd},
             {path: 'profile', component: profile},
             {path: 'tongxun', component: tongxun},
+            {path: 'zuzhiji', component: zuzhiji},
             {path: 'luntan', component: luntan},
-            {path: 'test', component: test},
+            {path: 'test/:id', component: test},
+            {path: 'testlist', component: testList},
             ],
       hidden: true
     }

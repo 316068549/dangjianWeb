@@ -6,9 +6,9 @@
                     <router-link to='/home' style="margin-top: -16px;">
                         <a class="daohang">网站首页</a>&gt;&nbsp;
                     </router-link>
-                    <router-link to='/home/guide' style="margin-top: -16px;">
-                        <a class="daohang">办事指南</a>
-                    </router-link>
+<!--                    <router-link to='/home/test' style="margin-top: -16px;">-->
+                        <a class="daohang">在线考试</a>
+<!--                    </router-link>-->
                 </div>
                 <!-- 导航栏 -->
                 <nav class="navbar navbar-expand-lg navbar-dark bg-success mb-5">
@@ -45,24 +45,29 @@
                 </nav>
                 <!-- 答题区域 -->
 
-                <div v-if="!isFinish" class="container ">
+                <div v-if="!isFinish" class="">
                     <!-- 进度条 -->
                     <div class="progress mb-3">
                         <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary" role="progressbar"
-                             :style="progressStyle" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{progressBar}}
+                             :style="progressStyle" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{progressBar?progressBar:''}}
                         </div>
                     </div>
-                    <div class="jumbotron text-left">
+                    <div class="jumbotron text-left" style="margin-bottom: 0px" >
 
-                        <h2 class="display-4"><span class="badge badge-dark mr-3">{{question.id}}</span>{{question.title}}</h2>
+                        <h2 class="display-4">
+<!--                            <span class="badge badge-dark mr-3">{{question.id}}</span>-->
+                            {{question.id}}、
+                            {{question.title}}
+                        </h2>
 
                         <hr class="my-2">
                         <!-- 选项 -->
-                        <div v-for="(item, i) in question.items" :key="i" class="form-check my-3">
+                        <div v-for="(item, i) in question.items" :key="i" class="form-check my-3" style="margin-bottom: 5px">
                             <label class="form-check-label">
                                 <input @change="setAnswer(question.id)" v-model="answer" type="radio" class="form-check-input"
                                        name="item" id="" value="checkedValue" :value="itemIndexs[i]">
-                                <span class="badge badge-pill badge-danger mr-2">{{itemIndexs[i]}}</span>
+<!--                                <span class="badge badge-pill badge-danger mr-2" style="margin-left: 15px">{{itemIndexs[i]}}</span>-->
+                                <span class="mr-2" style="margin-left: 15px">{{itemIndexs[i]}}.</span>
                                 {{item}}
                             </label>
                         </div>
@@ -99,30 +104,34 @@
 
 
                 <!-- 显示答案 -->
-                <div v-else class="container">
+                <div v-else class="">
                     <div class="jumbotron">
-                        <h1 class="display-3 text-center">答案与成绩</h1>
+                        <h1 class="display-3 text-center" style="font-size: 24px"><b>答案与成绩</b></h1>
 
                         <hr class="my-2">
                         <table class="table table-bordered table-striped">
                             <thead class="thead-dark text-center">
                             <tr>
-                                <th>序号</th>
-                                <th>答案</th>
-                                <th>正确答案</th>
-                                <th>得分</th>
+                                <th class="text-center">序号</th>
+                                <th class="text-center">答案</th>
+                                <th class="text-center">正确答案</th>
+                                <th class="text-center">得分</th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr  v-for="([k,v], index) in answers" :key="index">
                                 <td>{{k}}</td>
-                                <td><span v-if="v===correct(k)" class="badge badge-pill badge-danger">{{v}}</span>
-                                    <span v-else class="badge badge-pill badge-primary">{{v}}</span>
-
-
+                                <td>
+<!--                                    <span v-if="v===correct(k)" class="badge badge-pill badge-danger">{{v}}</span>-->
+<!--                                    <span v-else class="badge badge-pill badge-primary">{{v}}</span> -->
+                                    <span v-if="v===correct(k)" class="">{{v}}</span>
+                                    <span v-else class="text-red">{{v}}</span>
                                 </td>
                                 <!-- 根据id获取正确答案 -->
-                                <td><span class="badge badge-pill badge-danger">{{correct(k)}}</span></td>
+                                <td>
+<!--                                    <span class="badge badge-pill badge-danger">{{correct(k)}}</span>-->
+                                    {{correct(k)}}
+                                </td>
 
                                 <!-- 根据索引获取正确答案 -->
                                 <!-- <td><span class="badge badge-pill badge-danger">{{questionList[index].answer}}</span></td> -->
@@ -133,7 +142,7 @@
 
                             <!-- 总计 -->
                             <tr
-                                    class="text-center h3 ">
+                                    class="text-center h3" style="font-size: 20px">
                                 <td colspan="3">总成绩</td>
                                 <td > {{score}}</td>
 

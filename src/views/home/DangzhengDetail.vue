@@ -22,7 +22,7 @@
                     </div>
                     <!--留言板-->
                     <div id="messageboard"  style="width: 70%;margin: 0 auto;">
-                        <h2 class="text-left" style="font-size: 15px;line-height: 30px;padding-left: 10px;">留言板&nbsp;&nbsp;  <span @click="handleReset" size="mini" style="color:cornflowerblue;cursor: pointer;font-size: 12px">选择表情</span></h2>
+                        <h2 class="text-left" style="font-size: 15px;line-height: 30px;padding-left: 10px;">留言板&nbsp;&nbsp;  <span @click="handleReset" size="mini" style="color:cornflowerblue;cursor: pointer;font-size: 12px">选择表情</span> <span @click="handleReset2" size="mini" style="color:cornflowerblue;cursor: pointer;font-size: 12px;margin-left: 10px">献花<span class="text-red">❀</span></span></h2>
                         <br>
                         <el-form ref="form" label-width="10px">
                             <el-form-item label="" style="margin-bottom: 5px">
@@ -357,6 +357,13 @@
                 this.isShowd=!this.isShowd
                 // this.title = '';
                 // this.content = '';
+            },
+            handleReset2() {
+                this.$message({
+                    message: '献花成功',
+                    type: 'success'
+                });
+
             }
         }
     }

@@ -6,13 +6,13 @@
                     <router-link to='/home' style="margin-top: -16px;">
                         <a class="daohang">网站首页</a>&gt;&nbsp;
                     </router-link>
-                    <router-link to='/home/xuanjulist' style="margin-top: -16px;">
-                        <a class="daohang">换届选举</a>
+                    <router-link to='/home/minzhu' style="margin-top: -16px;">
+                        <a class="daohang">组织生活会</a>
                     </router-link>
                 </div>
                 <div class="ht5"></div>
                 <div class="newsbox" style="text-align: left;overflow: auto;">
-                    <div class="news_name"><h1>换届选举</h1></div>
+                    <div class="news_name"><h1>组织生活会</h1></div>
                     <div class="col-xs-3 catemenu-box">
                         <ul class="catmenu-ul">
                             <h3 style="font-size: 20px;">组织生活
@@ -35,12 +35,12 @@
                                     <a class="daohang">党政生日</a>
                                 </router-link>
                             </li>
-                            <li>
+                            <li >
                                 <router-link to='/home/minzhulist' >
                                     <a class="daohang">民主生活会</a>
                                 </router-link>
                             </li>
-                            <li class="cactive">
+                            <li>
                                 <router-link to='/home/xuanjulist' >
                                     <a class="daohang">换届选举</a>
                                 </router-link>
@@ -58,7 +58,7 @@
                                     <a class="daohang">干部任用</a>
                                 </router-link>
                             </li>
-                            <li>
+                            <li class="cactive">
                                 <router-link to='/home/minzhulist2' >
                                     <a class="daohang">组织生活会</a>
                                 </router-link>
@@ -96,7 +96,7 @@
                                                 {{item.title}}—{{item.author}}
                                             </a>
                                         </p>
-                                        <span class="new_time">{{item.time}}</span>
+                                        <span class="new_time" style="top: -10px;"><div class="green">{{item.status}}</div> <span style="padding-top: 10px">{{item.time}}</span></span>
                                     </div>
                                     <div class="clear"></div>
                                 </li>
@@ -143,12 +143,62 @@
                 newslist:[
                     {
                         id:1,
-                        title: '投票选举预备党员',
-                        author: '测试',
+                        title: '第一党支部民主生活会',
+                        author: '张晓',
                         time: '2020-12-20 09:00',
                         status: '已结束',
-                        content: '投票选举预备党员',
-                    }
+                        content: '三会一课',
+                    },{
+                        id:1,
+                        title: '第一党支部民主生活会',
+                        author: '张晓',
+                        time: '2020-12-20 09:00',
+                        status: '已结束',
+                        content: '三会一课',
+                    },{
+                        id:1,
+                        title: '第一党支部民主生活会',
+                        author: '张晓',
+                        time: '2020-12-20 09:00',
+                        status: '已结束',
+                        content: '三会一课',
+                    },{
+                        id:1,
+                        title: '第一党支部民主生活会',
+                        author: '张晓',
+                        time: '2020-12-20 09:00',
+                        status: '已结束',
+                        content: '三会一课',
+                    },{
+                        id:1,
+                        title: '第一党支部民主生活会',
+                        author: '张晓',
+                        time: '2020-12-20 09:00',
+                        status: '已结束',
+                        content: '三会一课',
+                    },{
+                        id:1,
+                        title: '第一党支部民主生活会',
+                        author: '张晓',
+                        time: '2020-12-20 09:00',
+                        status: '已结束',
+                        content: '三会一课',
+                    },{
+                        id:1,
+                        title: '第一党支部民主生活会',
+                        author: '张晓',
+                        time: '2020-12-20 09:00',
+                        status: '已结束',
+                        content: '三会一课',
+                    },{
+                        id:1,
+                        title: '第一党支部民主生活会',
+                        author: '张晓',
+                        time: '2020-12-20 09:00',
+                        status: '已结束',
+                        content: '三会一课',
+                    },
+
                 ]
             };
         },
@@ -198,7 +248,7 @@
             gotoDetail(id){
                 console.log(id)
                 // $router.push({path: '/administrator/maintenance/view/'+scope.row.id})
-                this.$router.push({path: '/home/xuanjudetail/'+id,query: { type: 'xuanjulist' }});
+                this.$router.push({path: '/home/zuzhidetail/'+id,query: { type: 'minzhulist2' }});
                 // this.$router.push({path: '/home/guidedetail'});
             },
         }
@@ -309,7 +359,7 @@
     .newcon{line-height:28px;font-size:16px;text-indent:2em;margin:10px 0px;padding-top:10px;}
     .newsbox .hot ul li{    padding: 15px 0px 5px 0px;border-bottom:1px dashed #c6c6c6}
     .newslist{position:relative;}
-    .new_time{position:absolute;right:0px;top:0px;font-size:16px;}
+    .new_time{position:absolute;right:0px;top:0px;font-size:16px;line-height: 1;}
     .newslist .title{border-left:3px solid #d50f10;padding-left:10px;font-size:16px;margin-bottom:10px;}
     .newslist .title a{color:#000;}
     .newslist .title a:hover{color:#d50f10;}

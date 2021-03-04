@@ -3,7 +3,7 @@
     <div class="login_header">
       <div class="header_center clearfix">
         <div class="myfl">
-          <a href="/"><img src="../../assets/img/logo.png" style="height: 79px;width: 80px;margin-top: 10px"/></a>
+          <a href="/"><img src="../../assets/img/logo2.png" style="height: 59px;margin-top: 10px"/></a>
           <span>欢迎登陆</span>
         </div>
         <div class="myfr">

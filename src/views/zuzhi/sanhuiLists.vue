@@ -6,7 +6,7 @@
                     <router-link to='/home' style="margin-top: -16px;">
                         <a class="daohang">网站首页</a>&gt;&nbsp;
                     </router-link>
-                    <router-link to='/home/danggui' style="margin-top: -16px;">
+                    <router-link to='/home/sanhui' style="margin-top: -16px;">
                         <a class="daohang">三会一课</a>
                     </router-link>
                 </div>
@@ -21,36 +21,46 @@
                                 <!--</router-link>-->
                             </h3>
                             <li class="cactive">
-                                <router-link to='/home/sanhui' >
+                                <router-link to='/home/sanhuilist' >
                                     <a class="daohang">三会一课</a>
                                 </router-link>
                                 </li>
                             <li  >
-                                <router-link to='/home/liangxue' >
-                                    <a class="daohang">党建专题</a>
+                                <router-link to='/home/liangxuelist' >
+                                    <a class="daohang">主题党日</a>
+                                </router-link>
+                            </li>
+                            <li >
+                                <router-link to='/home/birthlist' >
+                                    <a class="daohang">党政生日</a>
                                 </router-link>
                             </li>
                             <li>
-                                <router-link to='/home/minzhu' >
+                                <router-link to='/home/minzhulist' >
                                     <a class="daohang">民主生活会</a>
                                 </router-link>
                             </li>
                             <li>
-                                <router-link to='/home/xuanju' >
-                                    <a class="daohang">民主选举</a>
+                                <router-link to='/home/xuanjulist' >
+                                    <a class="daohang">换届选举</a>
                                 </router-link>
                             </li>
                             <li>
-                                <router-link to='/home/juankuan' >
+                                <router-link to='/home/juankuanlist' >
                                     <a class="daohang">捐款捐物</a>
                                 </router-link>
                             </li><li>
-                                <router-link to='/home/mailbox' >
+                                <router-link to='/home/maillist' >
                                     <a class="daohang">书记信箱</a>
                                 </router-link>
                             </li><li>
-                                <router-link to='/home/plan' >
-                                    <a class="daohang">计划总结</a>
+                                <router-link to='/home/planlist' >
+                                    <a class="daohang">干部任用</a>
+                                </router-link>
+                            </li>
+                            <li>
+                                <router-link to='/home/minzhulist2' >
+                                    <a class="daohang">组织生活会</a>
                                 </router-link>
                             </li>
                         </ul>
@@ -238,7 +248,7 @@
             gotoDetail(id){
                 console.log(id)
                 // $router.push({path: '/administrator/maintenance/view/'+scope.row.id})
-                this.$router.push({path: '/home/zuzhidetail/'+id,query: { type: 'danggui' }});
+                this.$router.push({path: '/home/zuzhidetail/'+id,query: { type: 'sanhuilist' }});
                 // this.$router.push({path: '/home/guidedetail'});
             },
         }

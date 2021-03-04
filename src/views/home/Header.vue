@@ -188,7 +188,7 @@
                                 "name" : "党报要论",
                                 "subLink" : "/home/yaolun"
                             },{
-                                "name" : "党建专题",
+                                "name" : "主题党日",
                                 "subLink" : "/home/zhuanti"
                             }
                         ]
@@ -201,13 +201,13 @@
                                 "name" : "三会一课",
                                 "subLink" : "/home/sanhui"
                             },{
-                                "name" : "党建专题",
+                                "name" : "主题党日",
                                 "subLink" : "/home/sanhui"
                             },{
                                 "name" : "民主生活会",
                                 "subLink" : "/home/sanhui"
                             },{
-                                "name" : "民主选举",
+                                "name" : "换届选举",
                                 "subLink" : "/home/xuanju"
                             },{
                                 "name" : "捐款捐物",
@@ -216,7 +216,7 @@
                                 "name" : "书记信箱",
                                 "subLink" : "/home/mailbox"
                             },{
-                                "name" : "计划总结",
+                                "name" : "干部任用",
                                 "subLink" : "/home/plan"
                             }
                         ]

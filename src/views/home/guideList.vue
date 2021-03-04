@@ -32,11 +32,12 @@
                                     <a class="daohang">党务公开</a>
                                 </router-link>
                             </li>
+<!--                            <li >-->
+<!--                                <router-link to='/home/birthlist' >-->
+<!--                                    <a class="daohang">党政生日</a>-->
+<!--                                </router-link>-->
+<!--                            </li> -->
                             <li >
-                                <router-link to='/home/birthlist' >
-                                    <a class="daohang">党政生日</a>
-                                </router-link>
-                            </li> <li >
                             <router-link to='/home/pictures' >
                                 <a class="daohang">党建相册</a>
                             </router-link>

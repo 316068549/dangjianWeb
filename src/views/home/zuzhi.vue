@@ -6,12 +6,12 @@
                     <router-link to='/home' style="margin-top: -16px;">
                         <a class="daohang">网站首页</a>&gt;&nbsp;
                     </router-link>
-                    <router-link to='/home/tongxun' style="margin-top: -16px;">
-                        <a class="daohang">通讯录</a>
+                    <router-link to='/home/zuzhiji' style="margin-top: -16px;">
+                        <a class="daohang">组织机构</a>
                     </router-link>
                 </div>
                 <h2 class="col-md-12 m-tit">
-                    <em>通讯录</em>
+                    <em>组织机构</em>
                 </h2>
                 <div class="lalala">
 
@@ -56,7 +56,7 @@
                                   :allow-drop="allowDrop"
 
                                   :allow-drag="allowDrag"
-                                class="col-xs-3"
+                                class="col-xs-2"
 
                                 ref="tree">
 
@@ -89,32 +89,37 @@
                         <section class="hot" style="margin-top: 40px">
                             <el-col :span="24" class="warp-main">
                                 <el-col :span="24" class="toolbar" style="padding-bottom: 0px;">
-                                    <el-form :inline="true" :model="filters">
+                                    <el-form :inline="true" :model="filters" style="float: left;">
                                         <el-form-item>
                                             <el-input v-model="filters.name" placeholder="标题" style="width: 240px;"></el-input>
                                         </el-form-item>
                                         <el-form-item>
                                             <el-button type="danger" size="small" v-on:click="getProductPage" icon="search">查询</el-button>
                                         </el-form-item>
-<!--                                        <el-form-item >-->
-<!--                                            <el-button type="danger" size="small" @click="addHandle" icon="plus">写信</el-button>-->
-<!--                                        </el-form-item>-->
+                                        <el-form-item >
+                                            <el-button type="danger" size="small" @click="addHandle2" icon="plus">添加党员</el-button>
+                                        </el-form-item>
+                                        <el-form-item >
+                                            <el-button type="danger" size="small" @click="addHandle" icon="plus">批量导入</el-button>
+                                        </el-form-item>
                                     </el-form>
                                 </el-col>
                                 <el-table :data="datas" highlight-current-row v-loading="datasLoading" @selection-change="selsChange" border>
                                     <!--<el-table-column type="selection" align="center"></el-table-column>-->
                                     <!--<el-table-column type="index" align="center"></el-table-column>-->
 
-                                    <el-table-column prop="id" label="编码" align="center"></el-table-column>
+<!--                                    <el-table-column prop="id" label="姓名" align="center"></el-table-column>-->
                                     <el-table-column prop="name" label="姓名" align="center"></el-table-column>
-                                    <el-table-column prop="title" label="电话" align="center"></el-table-column>
-                                    <!--<el-table-column prop="content" label="信件内容" align="center"></el-table-column>-->
-<!--                                    <el-table-column prop="createTime" label="来信时间" align="center" width="200"></el-table-column>-->
+                                    <el-table-column prop="name" label="性别" align="center"></el-table-column>
+<!--                                    <el-table-column prop="title" label="联系电话" align="center"></el-table-column>-->
+                                    <el-table-column prop="name" label="职务" align="center"></el-table-column>
+                                    <el-table-column prop="createTime" label="转为正式党员日期" align="center" width="200"></el-table-column>
+                                    <el-table-column prop="createTime" label="转为预备党员日期" align="center" width="200"></el-table-column>
                                     <!--<el-table-column prop="status" label="处理状态" align="center"></el-table-column>-->
-                                    <el-table-column label="操作" align="center"  width="100">
+                                    <el-table-column label="操作" align="center"  width="250">
                                         <template slot-scope="scope">
 <!--                                            <el-button size="small" @click="goV(scope.$index,scope.row)">查看</el-button>-->
-                                            <!--<el-button size="small" @click="$router.push({path: '/administrator/product/edit/'+scope.row.id})">编辑</el-button>-->
+                                            <el-button size="small" @click="addHandle3(scope.row)">编辑</el-button>
                                             <el-button type="danger" @click="del(scope.$index,scope.row)" size="small">删除</el-button>
                                         </template>
                                     </el-table-column>
@@ -168,16 +173,129 @@
                             </div>
 
                         </el-card>
+<!--                    添加党员-->
+                    <el-dialog title="新增" :visible.sync="addFormVisible2" width="30%" :close-on-click-modal="false" >
+                        <div class="contact-edit">
+                            <el-form ref="contactForm2" :model="addForm" :rules="addFormRules2" label-width="80px">
+                                <el-form-item label="姓名" prop="name">
+                                    <el-input v-model="addForm.name"></el-input>
+                                </el-form-item>
+                                <el-form-item label="性别" prop="sex">
+                                    <el-radio-group v-model="addForm.sex">
+                                        <el-radio :label="1">男</el-radio>
+                                        <el-radio :label="2">女</el-radio>
+                                    </el-radio-group>
+                                </el-form-item>
+                                <el-form-item label="人员类别">
+                                    <el-select v-model="form.area" placeholder="请选择">
+                                        <el-option label="上海" value="shanghai"></el-option>
+                                        <el-option label="北京" value="beijing"></el-option>
+                                        <el-option label="广州" value="guangzhou"></el-option>
+                                    </el-select>
+                                </el-form-item>
+<!--                                <el-form-item label="角色" prop="roleId">-->
+<!--                                    <el-radio-group v-model="editForm.roleId">-->
+<!--                                        <el-radio v-for="item in roleArray" :label="item.roleId" :key="item.roleId">{{item.roleName}}</el-radio>-->
+<!--                                    </el-radio-group>-->
+<!--                                </el-form-item>-->
+                                <el-form-item label="职务" prop="post">
+                                    <el-input v-model="addForm.post"></el-input>
+                                </el-form-item>
+                                <el-form-item label="联系方式" prop="mobile">
+                                    <el-input v-model="addForm.mobile"></el-input>
+                                </el-form-item>
+                                <el-form-item label="时间">
+                                        <el-date-picker type="date" placeholder="选择日期" v-model="addForm.date" style="width: 100%;"></el-date-picker>
+                                </el-form-item>
+                                <!--                <el-form-item label="常用联系人">-->
+                                <!--                    <el-switch on-text="" off-text="" v-model="form.always"></el-switch>-->
+                                <!--                </el-form-item>-->
+                                <!--                <el-form-item label="关系">-->
+                                <!--                    <el-checkbox-group v-model="form.relationship">-->
+                                <!--                        <el-checkbox label="家人" name="type"></el-checkbox>-->
+                                <!--                        <el-checkbox label="朋友" name="type"></el-checkbox>-->
+                                <!--                        <el-checkbox label="同学" name="type"></el-checkbox>-->
+                                <!--                        <el-checkbox label="同事" name="type"></el-checkbox>-->
+                                <!--                        <el-checkbox label="客户" name="type"></el-checkbox>-->
+                                <!--                    </el-checkbox-group>-->
+                                <!--                </el-form-item>-->
+                                <el-form-item label="备注">
+                                    <el-input type="textarea" v-model="addForm.desc"></el-input>
+                                </el-form-item>
+                                <el-form-item>
+                                    <el-button type="primary" @click="onSubmit('contactForm')">确定</el-button>
+                                    <el-button @click="cancelForm">取消</el-button>
+                                </el-form-item>
+                            </el-form>
+                        </div>
+                    </el-dialog>
+                    <!--                    编辑党员-->
+                    <el-dialog title="编辑" :visible.sync="addFormVisible3" width="30%" :close-on-click-modal="false" >
+                        <div class="contact-edit">
+                            <el-form ref="contactForm2" :model="addForm" :rules="addFormRules2" label-width="80px">
+                                <el-form-item label="姓名" prop="name">
+                                    <el-input v-model="addForm.name"></el-input>
+                                </el-form-item>
+                                <el-form-item label="性别" prop="sex">
+                                    <el-radio-group v-model="addForm.sex">
+                                        <el-radio :label="1">男</el-radio>
+                                        <el-radio :label="2">女</el-radio>
+                                    </el-radio-group>
+                                </el-form-item>
+                                <el-form-item label="人员类别">
+                                    <el-select v-model="form.area" placeholder="请选择">
+                                        <el-option label="上海" value="shanghai"></el-option>
+                                        <el-option label="北京" value="beijing"></el-option>
+                                        <el-option label="广州" value="guangzhou"></el-option>
+                                    </el-select>
+                                </el-form-item>
+                                <!--                                <el-form-item label="角色" prop="roleId">-->
+                                <!--                                    <el-radio-group v-model="editForm.roleId">-->
+                                <!--                                        <el-radio v-for="item in roleArray" :label="item.roleId" :key="item.roleId">{{item.roleName}}</el-radio>-->
+                                <!--                                    </el-radio-group>-->
+                                <!--                                </el-form-item>-->
+                                <el-form-item label="职务" prop="post">
+                                    <el-input v-model="addForm.post"></el-input>
+                                </el-form-item>
+                                <el-form-item label="联系方式" prop="mobile">
+                                    <el-input v-model="addForm.mobile"></el-input>
+                                </el-form-item>
+                                <el-form-item label="时间">
+                                    <el-date-picker type="date" placeholder="选择日期" v-model="addForm.date" style="width: 100%;"></el-date-picker>
+                                </el-form-item>
+                                <!--                <el-form-item label="常用联系人">-->
+                                <!--                    <el-switch on-text="" off-text="" v-model="form.always"></el-switch>-->
+                                <!--                </el-form-item>-->
+                                <!--                <el-form-item label="关系">-->
+                                <!--                    <el-checkbox-group v-model="form.relationship">-->
+                                <!--                        <el-checkbox label="家人" name="type"></el-checkbox>-->
+                                <!--                        <el-checkbox label="朋友" name="type"></el-checkbox>-->
+                                <!--                        <el-checkbox label="同学" name="type"></el-checkbox>-->
+                                <!--                        <el-checkbox label="同事" name="type"></el-checkbox>-->
+                                <!--                        <el-checkbox label="客户" name="type"></el-checkbox>-->
+                                <!--                    </el-checkbox-group>-->
+                                <!--                </el-form-item>-->
+                                <el-form-item label="备注">
+                                    <el-input type="textarea" v-model="addForm.desc"></el-input>
+                                </el-form-item>
+                                <el-form-item>
+                                    <el-button type="primary" @click="onSubmit('contactForm')">确定</el-button>
+                                    <el-button @click="cancelForm">取消</el-button>
+                                </el-form-item>
+                            </el-form>
+                        </div>
+                    </el-dialog>
+                    <!--                    添加机构-->
                     <el-dialog title="新增" :visible.sync="addFormVisible" width="30%" :close-on-click-modal="false" >
                         <div class="contact-edit">
                             <el-form ref="contactForm" :model="form" :rules="addFormRules" label-width="80px">
-                                <el-form-item label="姓名" prop="name">
+                                <el-form-item label="组织机构名称" prop="name">
                                     <el-input v-model="form.name"></el-input>
                                 </el-form-item>
-                                <el-form-item label="性别">
-                                    <el-select v-model="form.sex" placeholder="请选择性别">
-                                        <el-option label="男" value="male"></el-option>
-                                        <el-option label="女" value="female"></el-option>
+                                <el-form-item label="所属组织机构">
+                                    <el-select v-model="form.sex" placeholder="请选择组织机构">
+                                        <el-option label="组织机构1" value="male"></el-option>
+                                        <el-option label="组织机构2" value="female"></el-option>
                                     </el-select>
                                 </el-form-item>
                                 <!--                <el-form-item label="所在地">-->
@@ -187,7 +305,7 @@
                                 <!--                        <el-option label="广州" value="guangzhou"></el-option>-->
                                 <!--                    </el-select>-->
                                 <!--                </el-form-item>-->
-                                <el-form-item label="手机" prop="mobile">
+                                <el-form-item label="联系方式" prop="mobile">
                                     <el-input v-model="form.mobile"></el-input>
                                 </el-form-item>
                                 <!--                <el-form-item label="常用联系人">-->
@@ -267,7 +385,9 @@
                 addForm: {
                     name: '',
                     mobile:'',
+                    sex:1,
                     title:'',
+                    date: '',
                     content:'',
                 },
                 form: {
@@ -290,6 +410,13 @@
                         {validator: mobileValid, trigger: 'blur'}
                     ]
                 },
+                addFormRules2: {
+                    name: [{validator: nameValid, trigger: 'blur'}],
+                    mobile: [
+//            {required: true, message: '手机号不能为空', trigger: 'blur'},
+                        {validator: mobileValid, trigger: 'blur'}
+                    ]
+                },
                 eleId:'',
 
                 isShow:false,
@@ -300,6 +427,8 @@
 
                 menuVisible:false,
                 addFormVisible:false,
+                addFormVisible2:false,
+                addFormVisible3:false,
                 firstLevel:false,
 
                 filterText:'',
@@ -768,6 +897,12 @@
             },
             addHandle: function () {
                 this.addFormVisible = true;
+            },
+            addHandle2: function () {
+                this.addFormVisible2 = true;
+            },
+            addHandle3: function (row) {
+                this.addFormVisible3 = true;
             },
             addSubmit: function () {
                 this.$refs.addForm.validate((valid) => {

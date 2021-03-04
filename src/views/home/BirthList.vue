@@ -22,6 +22,9 @@
                                     <div class="tit2">
                                         <h4>党龄 | 56年</h4>
                                     </div>
+                                    <div class="tit2">
+                                        <h4>献花| 1 <span class="text-red">❀</span>     </h4>
+                                    </div>
                                     <!--<div class="tit2">-->
                                          <!--<h4>{{item.title}}</h4>-->
                                         <!--<p v-html="item.content">-->
@@ -323,7 +326,7 @@
         float: right;
     }
     .group_buying ul li a .tit2{
-        width: 25%;
+        width: 22%;
         float: left;
         h4{
             line-height: 100px;

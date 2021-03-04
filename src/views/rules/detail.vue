@@ -170,7 +170,7 @@
                     case 'fanfu':
                         this.title = '反腐倡廉'
                         break;
-                    case 'juankuan':
+                    case 'juankuanlist':
                     this.title = '捐款捐物'
                     break;
                     case 'notices':
@@ -189,13 +189,13 @@
                     this.title = '党员风采'
                     break;
                     case 'planlist':
-                    this.title = '计划总结'
+                    this.title = '干部任用'
                     break;
                     case 'yaolun':
                     this.title = '党报要论'
                     break;
                     case 'zhuanti':
-                    this.title = '党建专题'
+                    this.title = '主题党日'
                     break;
                     case 'study':
                     this.title = '学习文件'

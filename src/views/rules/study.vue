@@ -37,25 +37,26 @@
                             </li>
                             <li >
                                 <router-link to='/home/fanfu' >
-                                    <a class="daohang">反腐倡廉</a>
+                                    <a class="daohang">制度（党、工、统）</a>
                                 </router-link>
                             </li> <li >
                             <router-link to='/home/tongzhan' >
                                 <a class="daohang">统战群工</a>
                             </router-link>
-                        </li> <li >
-                            <router-link to='/home/jingcui' >
-                                <a class="daohang">当时精粹</a>
-                            </router-link>
-                        </li> <li >
-                            <router-link to='/home/yaolun' >
-                                <a class="daohang">党报要论</a>
-                            </router-link>
-                        </li> <li >
-                            <router-link to='/home/zhuanti' >
-                                <a class="daohang">党建专题</a>
-                            </router-link>
                         </li>
+<!--                            <li >-->
+<!--                            <router-link to='/home/jingcui' >-->
+<!--                                <a class="daohang">当时精粹</a>-->
+<!--                            </router-link>-->
+<!--                        </li> <li >-->
+<!--                            <router-link to='/home/yaolun' >-->
+<!--                                <a class="daohang">党报要论</a>-->
+<!--                            </router-link>-->
+<!--                        </li> <li >-->
+<!--                            <router-link to='/home/zhuanti' >-->
+<!--                                <a class="daohang">主题党日</a>-->
+<!--                            </router-link>-->
+<!--                        </li>-->
                         </ul>
                     </div>
                     <section class="col-xs-9">

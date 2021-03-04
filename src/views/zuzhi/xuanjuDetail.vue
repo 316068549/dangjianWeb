@@ -6,8 +6,8 @@
                     <router-link to='/home' style="margin-top: -16px;">
                         <a class="daohang">网站首页</a>&gt;&nbsp;
                     </router-link>
-                    <router-link :to="'/home/'+type" style="margin-top: -16px;">
-                        <a class="daohang">{{title}}</a>
+                    <router-link :to="'/home/xuanjulist'" style="margin-top: -16px;">
+                        <a class="daohang">换届选举</a>
                     </router-link>
                 </div>
                 <div class="ht5"></div>
@@ -167,6 +167,9 @@
                         break;
                     case 'fanfu':
                         this.title = '反腐倡廉'
+                        break;
+                    case 'xuanjudetail':
+                        this.title = '换届选举'
                         break;
                 }
 

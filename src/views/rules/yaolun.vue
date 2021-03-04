@@ -53,7 +53,7 @@
                             </router-link>
                         </li> <li >
                             <router-link to='/home/zhuanti' >
-                                <a class="daohang">党建专题</a>
+                                <a class="daohang">主题党日</a>
                             </router-link>
                         </li>
                         </ul>

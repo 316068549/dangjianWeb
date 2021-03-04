@@ -176,7 +176,7 @@
             };
         },
         mounted() {
-           // this.getNews();
+           this.getNews();
         },
         methods: {
             onSubmit() {
@@ -191,23 +191,23 @@
                 switch (this.type) {
                     case 'danggui':
                         this.title = '党规党纪'
-                        findPageNewsDetail(aa).then((res) => {
-                                if (res.code===1) {
-                                    if(res.data){
-                                        this.news=res.data;
-                                        this.news.author='组织部'
-                                        console.log(this.news)
-                                    }
-                                }else{
-                                    this.$message({
-                                        message: res.data.msg,
-                                        type: 'error'
-                                    });
-                                }
-                            },
-                            (error) => {
-                                console.log(error);
-                            })
+                        // findPageNewsDetail(aa).then((res) => {
+                        //         if (res.code===1) {
+                        //             if(res.data){
+                        //                 this.news=res.data;
+                        //                 this.news.author='组织部'
+                        //                 console.log(this.news)
+                        //             }
+                        //         }else{
+                        //             this.$message({
+                        //                 message: res.data.msg,
+                        //                 type: 'error'
+                        //             });
+                        //         }
+                        //     },
+                        //     (error) => {
+                        //         console.log(error);
+                        //     })
                         break;
                     case 'dangzhang':
                         this.title = '党章'
@@ -215,6 +215,15 @@
                     case 'fanfu':
                         this.title = '反腐倡廉'
                         break;
+                    case 'liangxuelist':
+                    this.title = '主题党日'
+                    break;
+                    case 'minzhulist':
+                    this.title = '民主生活会'
+                    break;
+                    case 'minzhulist2':
+                    this.title = '组织生活会'
+                    break;
                 }
 
             }

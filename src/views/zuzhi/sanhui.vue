@@ -27,7 +27,12 @@
                                 </li>
                             <li  >
                                 <router-link to='/home/liangxuelist' >
-                                    <a class="daohang">党建专题</a>
+                                    <a class="daohang">主题党日</a>
+                                </router-link>
+                            </li>
+                            <li >
+                                <router-link to='/home/birthlist' >
+                                    <a class="daohang">党政生日</a>
                                 </router-link>
                             </li>
                             <li>
@@ -37,7 +42,7 @@
                             </li>
                             <li>
                                 <router-link to='/home/xuanjulist' >
-                                    <a class="daohang">民主选举</a>
+                                    <a class="daohang">换届选举</a>
                                 </router-link>
                             </li>
                             <li>
@@ -50,7 +55,12 @@
                                 </router-link>
                             </li><li>
                                 <router-link to='/home/planlist' >
-                                    <a class="daohang">计划总结</a>
+                                    <a class="daohang">干部任用</a>
+                                </router-link>
+                            </li>
+                            <li>
+                                <router-link to='/home/minzhulist2' >
+                                    <a class="daohang">组织生活会</a>
                                 </router-link>
                             </li>
                         </ul>
@@ -103,18 +113,21 @@
                         id:1,
                         title: '三会一课',
                         content: '三会一课',
-                    },{
+                    },
+                    {
                         id:1,
-                        title: '党建专题',
-                        content: '党建专题',
-                    },{
+                        title: '主题党日',
+                        content: '主题党日',
+                    },
+                    {
                         id:1,
                         title: '民主生活会',
                         content: '民主生活会',
-                    },{
+                    },
+                    {
                         id:1,
-                        title: '民主选举',
-                        content: '民主选举',
+                        title: '换届选举',
+                        content: '换届选举',
                     },{
                         id:1,
                         title: '捐款捐物',
@@ -125,10 +138,19 @@
                         content: '书记信箱',
                     },{
                         id:1,
-                        title: '计划总结',
-                        content: '计划总结',
+                        title: '干部任用',
+                        content: '干部任用',
                     },
-
+                    {
+                        id:1,
+                        title: '党政生日',
+                        content: '党政生日',
+                    },
+                    {
+                        id:1,
+                        title: '组织生活会',
+                        content: '组织生活会',
+                    },
                 ]
             };
         },
@@ -180,6 +202,12 @@
                     break;
                     case 6:
                         this.$router.push({path: '/home/planlist'});
+                    break;
+                    case 7:
+                        this.$router.push({path: '/home/birthlist'});
+                    break;
+                    case 8:
+                        this.$router.push({path: '/home/minzhulist2'});
                     break;
                 }
 
@@ -240,7 +268,7 @@
     }
     .news-list li {
         float: left;
-        width: 23.5%;
+        width: 23%;
         margin: 2% 2% 0 0;
     }
     .news-list li:nth-child(4){
